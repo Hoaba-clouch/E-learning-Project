@@ -430,6 +430,9 @@ router.post("/courses/:courseId/batches/:batchId/sessions", async (req, res) => 
       (error.message.includes("required") ||
         error.message.includes("Invalid") ||
         error.message.includes("within the batch date range") ||
+        error.message.includes("Thời gian buổi học") ||
+        error.message.includes("Lớp học chưa có ngày") ||
+        error.message.includes("Buổi học phải nằm") ||
         error.message.includes("overlaps"))
     ) {
       return res.status(400).json({ success: false, message: error.message });
@@ -457,6 +460,9 @@ router.put("/courses/:courseId/batches/:batchId/sessions/:sessionId", async (req
       (error.message.includes("required") ||
         error.message.includes("Invalid") ||
         error.message.includes("within the batch date range") ||
+        error.message.includes("Thời gian buổi học") ||
+        error.message.includes("Lớp học chưa có ngày") ||
+        error.message.includes("Buổi học phải nằm") ||
         error.message.includes("overlaps"))
     ) {
       return res.status(400).json({ success: false, message: error.message });

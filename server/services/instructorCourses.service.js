@@ -204,23 +204,21 @@ function assertSessionWithinBatchRange(startTime, endTime, batchStartDate, batch
   const batchStart = parseDateOnly(batchStartDate);
   const batchEnd = parseDateOnly(batchEndDate);
 
-  if (
-    Number.isNaN(sessionStart.getTime()) ||
-    Number.isNaN(sessionEnd.getTime()) ||
-    !batchStart ||
-    !batchEnd
-  ) {
-    throw new Error("Invalid schedule date.");
+  if (Number.isNaN(sessionStart.getTime()) || Number.isNaN(sessionEnd.getTime())) {
+    throw new Error("Thời gian buổi học không hợp lệ.");
+  }
+
+  if (!batchStart || !batchEnd) {
+    throw new Error("Lớp học chưa có ngày bắt đầu hoặc ngày kết thúc hợp lệ.");
   }
 
   const allowedStart = combineDateAndTime(batchStart, "00:00");
   const allowedEnd = createEndOfDay(batchEnd);
-  if (!allowedStart) {
-    throw new Error("Invalid batch start date.");
-  }
 
   if (sessionStart < allowedStart || sessionEnd > allowedEnd) {
-    throw new Error("Session time must stay within the batch date range.");
+    throw new Error(
+      `Buổi học phải nằm trong thời gian của lớp (${formatDateOnly(batchStart)} đến ${formatDateOnly(batchEnd)}).`,
+    );
   }
 }
 
@@ -2948,7 +2946,10 @@ export async function createInstructorSession(rawTeacherId, rawCourseId, rawBatc
 
   const [batchRows] = await db.query(
     `
-      SELECT batch_id AS id
+      SELECT
+        batch_id AS id,
+        start_date,
+        end_date
       FROM course_batches
       WHERE batch_id = ? AND teacher_id = ? AND course_id = ?
       LIMIT 1

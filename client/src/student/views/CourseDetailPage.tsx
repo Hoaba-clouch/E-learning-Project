@@ -119,6 +119,16 @@ function CourseDetailPage({
     return batch.maxStudents > 0 && batch.stats.enrollmentCount >= batch.maxStudents;
   }
 
+  function isBatchEnrollmentExpired(batch: StudentCourseDetail["batches"][number]) {
+    if (!batch.enrollmentDeadline) return false;
+
+    const deadline = new Date(batch.enrollmentDeadline);
+    if (Number.isNaN(deadline.getTime())) return false;
+
+    deadline.setHours(23, 59, 59, 999);
+    return deadline.getTime() < Date.now();
+  }
+
   function getBatchDisabledReason(
     batch: StudentCourseDetail["batches"][number],
     eligibility: StudentCourseReviewEligibility | null = reviewEligibility,
@@ -151,15 +161,12 @@ function CourseDetailPage({
     const enrollmentStart = batch.enrollmentStartDate
       ? new Date(batch.enrollmentStartDate).getTime()
       : null;
-    const enrollmentDeadline = batch.enrollmentDeadline
-      ? new Date(batch.enrollmentDeadline).getTime()
-      : null;
 
     if (enrollmentStart && enrollmentStart > now) {
       return "Lớp này chưa tới thời gian mở đăng ký.";
     }
 
-    if (enrollmentDeadline && enrollmentDeadline < now) {
+    if (isBatchEnrollmentExpired(batch)) {
       return "Lớp này đã hết hạn đăng ký.";
     }
 
@@ -246,6 +253,9 @@ function CourseDetailPage({
   const selectedBatch = course.batches.find((batch) => batch.id === selectedBatchId) ?? null;
   const selectedBatchDisabledReason = selectedBatch ? getBatchDisabledReason(selectedBatch) : "";
   const purchasableBatch = selectedBatch;
+  const visibleBatches = reviewEligibility?.hasEnrollment
+    ? course.batches
+    : course.batches.filter((batch) => !isBatchEnrollmentExpired(batch));
 
   async function handleAddToCart() {
 
@@ -599,8 +609,8 @@ function CourseDetailPage({
 
           <div className="sp-detail-section compact">
             <h2>{t("courseDetail.batches")}</h2>
-            {course.batches.length ? (
-              course.batches.map((batch) => (
+            {visibleBatches.length ? (
+              visibleBatches.map((batch) => (
                 <article
                   className={`sp-batch-card ${selectedBatchId === batch.id ? "selected" : ""} ${
                     !isBatchSelectable(batch) ? "disabled" : ""
@@ -679,8 +689,8 @@ function CourseDetailPage({
 
           <div className="sp-detail-section compact">
             <h2>{t("courseDetail.upcomingSchedule")}</h2>
-            {course.batches.flatMap((batch) => batch.sessions).length ? (
-              course.batches
+            {visibleBatches.flatMap((batch) => batch.sessions).length ? (
+              visibleBatches
                 .flatMap((batch) => batch.sessions)
                 .slice(0, 5)
                 .map((session) => (

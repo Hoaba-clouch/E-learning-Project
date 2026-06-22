@@ -136,6 +136,8 @@ export async function addStudentCartItem(studentId, batchId) {
          cb.batch_id,
          cb.course_id,
          cb.status,
+         cb.enrollment_start_date,
+         cb.enrollment_deadline,
          cb.max_students,
          COUNT(DISTINCT CASE
            WHEN e.status IN ('PENDING', 'ACTIVE', 'COMPLETED') THEN e.enrollment_id
@@ -146,7 +148,15 @@ export async function addStudentCartItem(studentId, batchId) {
        INNER JOIN courses c ON c.course_id = cb.course_id
        LEFT JOIN enrollments e ON e.batch_id = cb.batch_id
        WHERE cb.batch_id = ? AND c.status = 'APPROVED'
-       GROUP BY cb.batch_id, cb.course_id, cb.status, cb.max_students, c.price, cb.tuition_fee
+       GROUP BY
+         cb.batch_id,
+         cb.course_id,
+         cb.status,
+         cb.enrollment_start_date,
+         cb.enrollment_deadline,
+         cb.max_students,
+         c.price,
+         cb.tuition_fee
        LIMIT 1`,
       [batchId],
     );
@@ -168,6 +178,29 @@ export async function addStudentCartItem(studentId, batchId) {
         ok: false,
         status: 400,
         message: "Đợt mở lớp này chưa thể thêm vào giỏ hàng.",
+      };
+    }
+    if (
+      batch.enrollment_start_date &&
+      new Date(batch.enrollment_start_date) > new Date()
+    ) {
+      await connection.rollback();
+      return {
+        ok: false,
+        status: 409,
+        message: "Lớp này chưa tới thời gian mở đăng ký.",
+      };
+    }
+
+    if (
+      batch.enrollment_deadline &&
+      new Date(batch.enrollment_deadline) < new Date(new Date().setHours(0, 0, 0, 0))
+    ) {
+      await connection.rollback();
+      return {
+        ok: false,
+        status: 409,
+        message: "Lớp này đã hết hạn đăng ký.",
       };
     }
 

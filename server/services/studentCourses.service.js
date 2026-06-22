@@ -223,7 +223,24 @@ export async function getPublicInstructorDetail(teacherId) {
 
 export async function getStudentCourses({ categoryId, search, level } = {}) {
   const params = [];
-  const filters = ["c.status = 'APPROVED'", "cc.status = 'ACTIVE'"];
+  const filters = [
+    "c.status = 'APPROVED'",
+    "cc.status = 'ACTIVE'",
+    `EXISTS (
+      SELECT 1
+      FROM course_batches available_batch
+      WHERE available_batch.course_id = c.course_id
+        AND available_batch.status IN ('OPEN', 'STARTED')
+        AND (
+          available_batch.enrollment_start_date IS NULL
+          OR available_batch.enrollment_start_date <= CURRENT_DATE()
+        )
+        AND (
+          available_batch.enrollment_deadline IS NULL
+          OR available_batch.enrollment_deadline >= CURRENT_DATE()
+        )
+    )`,
+  ];
 
   if (categoryId) {
     filters.push("c.category_id = ?");
