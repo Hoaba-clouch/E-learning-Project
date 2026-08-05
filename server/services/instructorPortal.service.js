@@ -394,6 +394,7 @@ export async function getInstructorQuizzesData(rawTeacherId) {
       LEFT JOIN questions qu ON qu.quiz_id = q.quiz_id
       LEFT JOIN quiz_attempts qa ON qa.quiz_id = q.quiz_id AND qa.status IN ('SUBMITTED', 'GRADED')
       WHERE b.teacher_id = ?
+        AND q.lesson_id IS NULL
       GROUP BY q.quiz_id, q.title, q.duration_minutes, c.course_name, b.batch_code
       ORDER BY q.created_at DESC, q.quiz_id DESC
     `,
@@ -413,6 +414,7 @@ export async function getInstructorQuizzesData(rawTeacherId) {
       LEFT JOIN lessons l ON l.lesson_id = q.lesson_id
       LEFT JOIN course_modules cm ON cm.module_id = l.module_id
       WHERE b.teacher_id = ?
+        AND q.lesson_id IS NULL
       GROUP BY COALESCE(cm.module_title, c.course_name), qn.question_type
       ORDER BY count DESC
       LIMIT 3
@@ -428,6 +430,7 @@ export async function getInstructorQuizzesData(rawTeacherId) {
       INNER JOIN course_batches b ON b.batch_id = q.batch_id
       INNER JOIN users u ON u.user_id = qa.student_id
       WHERE b.teacher_id = ?
+        AND q.lesson_id IS NULL
         AND qa.status = 'SUBMITTED'
       ORDER BY qa.submitted_at DESC
       LIMIT 3
