@@ -74,6 +74,93 @@ INSERT IGNORE INTO answer_options (option_id, question_id, option_text, is_corre
 (67, 19, 'Thời gian xem trung bình', TRUE), (68, 19, 'Số ký tự trong caption', FALSE), (69, 19, 'Số lần đổi avatar', FALSE), (70, 19, 'Số sản phẩm trong kho', FALSE),
 (71, 20, 'Số đơn hàng chia cho số lượt truy cập sản phẩm', TRUE), (72, 20, 'Số người theo dõi chia cho số video', FALSE), (73, 20, 'Số phút livestream', FALSE), (74, 20, 'Số hashtag trong caption', FALSE);
 
+-- 4b) Bổ sung quiz cho các bài học còn lại để khóa demo có đủ dữ liệu kiểm thử.
+-- Các mã 10-20, 22-54 và 75-184 là mã demo riêng, INSERT IGNORE giúp chạy lặp an toàn.
+INSERT IGNORE INTO quizzes
+    (quiz_id, batch_id, lesson_id, title, description, duration_minutes, max_score, pass_score, attempt_limit)
+VALUES
+(10, 5, 61, 'Quiz chân dung người xem', 'Kiểm tra cách xác định khách hàng mục tiêu và nhu cầu xem.', 15, 10, 5, 2),
+(11, 5, 63, 'Quiz lịch đăng 30 ngày', 'Kiểm tra cách lập lịch và duy trì nhịp xuất bản.', 15, 10, 5, 2),
+(12, 5, 64, 'Quiz tối ưu hồ sơ TikTok', 'Kiểm tra bio, ảnh đại diện và thông điệp kênh.', 15, 10, 5, 2),
+(13, 5, 65, 'Quiz hashtag và từ khóa', 'Kiểm tra cách chọn từ khóa có ý định mua hàng.', 15, 10, 5, 2),
+(14, 5, 67, 'Quiz thiết lập TikTok Shop', 'Kiểm tra sản phẩm, giá bán và voucher trước khi mở bán.', 20, 10, 6, 2),
+(15, 5, 69, 'Quiz Spark Ads', 'Kiểm tra các chỉ số và quy trình chạy quảng cáo Spark Ads.', 20, 10, 6, 2),
+(16, 5, 71, 'Quiz phễu chuyển đổi', 'Kiểm tra hành trình từ lượt xem tới đơn hàng.', 15, 10, 5, 2),
+(17, 5, 72, 'Quiz workshop tối ưu video', 'Kiểm tra cách đọc insight và đề xuất cải thiện video.', 15, 10, 5, 2),
+(18, 5, 73, 'Quiz brief dự án cuối khóa', 'Kiểm tra yêu cầu và tiêu chí của chiến dịch cuối khóa.', 15, 10, 5, 2),
+(19, 5, 74, 'Quiz quay video dự án', 'Kiểm tra quy trình quay, dựng và xuất bản video bán hàng.', 20, 10, 5, 2),
+(20, 5, 75, 'Quiz báo cáo chiến dịch', 'Kiểm tra cách trình bày số liệu và insight sau chiến dịch.', 20, 10, 6, 2);
+
+INSERT IGNORE INTO questions (question_id, quiz_id, question_text, question_type, score) VALUES
+(22, 10, 'Chân dung người xem nên tập trung vào thông tin nào?', 'SINGLE_CHOICE', 2),
+(23, 10, 'Có thể dùng dữ liệu bình luận để hiểu nhu cầu người xem.', 'TRUE_FALSE', 2),
+(24, 10, 'Cách nào giúp kiểm tra giả thuyết về khách hàng mục tiêu?', 'SINGLE_CHOICE', 2),
+(25, 11, 'Lịch đăng 30 ngày nên được xây dựng dựa trên yếu tố nào?', 'SINGLE_CHOICE', 2),
+(26, 11, 'Những việc nào giúp duy trì lịch đăng ổn định?', 'MULTIPLE_CHOICE', 2),
+(27, 11, 'Nên theo dõi hiệu quả từng nhóm nội dung sau khi đăng.', 'TRUE_FALSE', 2),
+(28, 12, 'Bio tốt cần giúp người mới hiểu điều gì trong vài giây đầu?', 'SINGLE_CHOICE', 2),
+(29, 12, 'Ảnh đại diện không cần liên quan tới chủ đề kênh.', 'TRUE_FALSE', 2),
+(30, 12, 'Thông tin nào nên xuất hiện trong hồ sơ bán hàng?', 'SINGLE_CHOICE', 2),
+(31, 13, 'Từ khóa có ý định mua hàng thường mô tả điều gì?', 'SINGLE_CHOICE', 2),
+(32, 13, 'Những việc nào giúp hashtag phù hợp với nội dung?', 'MULTIPLE_CHOICE', 2),
+(33, 13, 'Dùng càng nhiều hashtag thì video luôn càng hiệu quả.', 'TRUE_FALSE', 2),
+(34, 14, 'Trước khi mở bán trên TikTok Shop cần chuẩn bị gì?', 'SINGLE_CHOICE', 2),
+(35, 14, 'Những yếu tố nào hỗ trợ tăng tỷ lệ chốt đơn?', 'MULTIPLE_CHOICE', 2),
+(36, 14, 'Nên kiểm tra giá và tồn kho trước khi livestream.', 'TRUE_FALSE', 2),
+(37, 15, 'Spark Ads thường dùng nội dung nào làm điểm bắt đầu?', 'SINGLE_CHOICE', 2),
+(38, 15, 'Những chỉ số nào cần theo dõi khi chạy quảng cáo?', 'MULTIPLE_CHOICE', 2),
+(39, 15, 'Có thể tối ưu quảng cáo chỉ dựa vào lượt hiển thị.', 'TRUE_FALSE', 2),
+(40, 16, 'Bước nào gần với chuyển đổi mua hàng nhất?', 'SINGLE_CHOICE', 2),
+(41, 16, 'Những điểm chạm nào có thể đưa người xem vào phễu?', 'MULTIPLE_CHOICE', 2),
+(42, 16, 'Tỷ lệ chuyển đổi nên được so sánh theo từng giai đoạn.', 'TRUE_FALSE', 2),
+(43, 17, 'Khi tối ưu video, nên ưu tiên cải thiện yếu tố nào trước?', 'SINGLE_CHOICE', 2),
+(44, 17, 'Những dữ liệu nào giúp đánh giá chất lượng video?', 'MULTIPLE_CHOICE', 2),
+(45, 17, 'Một video nhiều lượt xem chắc chắn tạo ra nhiều đơn hàng.', 'TRUE_FALSE', 2),
+(46, 18, 'Brief dự án cần nêu rõ mục tiêu nào?', 'SINGLE_CHOICE', 2),
+(47, 18, 'Brief tốt cần có những thành phần nào?', 'MULTIPLE_CHOICE', 2),
+(48, 18, 'Có thể bỏ qua tiêu chí đo lường trong brief.', 'TRUE_FALSE', 2),
+(49, 19, 'Trước khi quay video cần chuẩn bị gì?', 'SINGLE_CHOICE', 2),
+(50, 19, 'Những yếu tố nào ảnh hưởng chất lượng video bán hàng?', 'MULTIPLE_CHOICE', 2),
+(51, 19, 'Nên kiểm tra âm thanh trước khi xuất bản video.', 'TRUE_FALSE', 2),
+(52, 20, 'Báo cáo chiến dịch nên bắt đầu bằng nội dung nào?', 'SINGLE_CHOICE', 2),
+(53, 20, 'Những chỉ số nào nên có trong báo cáo?', 'MULTIPLE_CHOICE', 2),
+(54, 20, 'Insight chỉ là danh sách số liệu, không cần giải thích.', 'TRUE_FALSE', 2);
+
+INSERT IGNORE INTO answer_options (option_id, question_id, option_text, is_correct) VALUES
+(75, 22, 'Nhu cầu, hành vi và vấn đề của nhóm khách hàng', TRUE), (76, 22, 'Màu nền của ứng dụng', FALSE), (77, 22, 'Số lượng nhân viên bán hàng', FALSE), (78, 22, 'Tên nhà cung cấp mạng', FALSE),
+(79, 23, 'Đúng', TRUE), (80, 23, 'Sai', FALSE),
+(81, 24, 'Phỏng vấn, thử nội dung và đo phản hồi', TRUE), (82, 24, 'Đoán theo cảm tính', FALSE), (83, 24, 'Chỉ xem số người theo dõi', FALSE), (84, 24, 'Tắt bình luận', FALSE),
+(85, 25, 'Mục tiêu, nguồn lực và hành vi người xem', TRUE), (86, 25, 'Số ngày nghỉ của người bán', FALSE), (87, 25, 'Màu sắc logo', FALSE), (88, 25, 'Số lượng điện thoại', FALSE),
+(89, 26, 'Chuẩn bị nội dung trước', TRUE), (90, 26, 'Dùng lịch nhắc đăng', TRUE), (91, 26, 'Theo dõi hiệu quả', TRUE), (92, 26, 'Đăng ngẫu nhiên hoàn toàn', FALSE),
+(93, 27, 'Đúng', TRUE), (94, 27, 'Sai', FALSE),
+(95, 28, 'Chủ đề kênh và lợi ích người xem nhận được', TRUE), (96, 28, 'Mật khẩu tài khoản', FALSE), (97, 28, 'Danh sách bạn bè', FALSE), (98, 28, 'Số serial điện thoại', FALSE),
+(99, 29, 'Đúng', FALSE), (100, 29, 'Sai', TRUE),
+(101, 30, 'Sản phẩm, lời hứa giá trị và cách liên hệ', TRUE), (102, 30, 'Mã OTP cá nhân', FALSE), (103, 30, 'Lịch sử chat riêng tư', FALSE), (104, 30, 'Mật khẩu ngân hàng', FALSE),
+(105, 31, 'Nhu cầu hoặc vấn đề người xem muốn giải quyết', TRUE), (106, 31, 'Tên màu yêu thích của người bán', FALSE), (107, 31, 'Số lượt đổi avatar', FALSE), (108, 31, 'Số lượng thiết bị quay', FALSE),
+(109, 32, 'Liên quan trực tiếp tới nội dung', TRUE), (110, 32, 'Có lượng tìm kiếm phù hợp', TRUE), (111, 32, 'Có thể kết hợp từ khóa ngách', TRUE), (112, 32, 'Chọn hashtag bất kỳ', FALSE),
+(113, 33, 'Đúng', FALSE), (114, 33, 'Sai', TRUE),
+(115, 34, 'Sản phẩm, giá, tồn kho và thông tin vận chuyển', TRUE), (116, 34, 'Chỉ cần một video bất kỳ', FALSE), (117, 34, 'Mật khẩu khách hàng', FALSE), (118, 34, 'Danh sách bạn bè', FALSE),
+(119, 35, 'Demo sản phẩm', TRUE), (120, 35, 'Voucher có thời hạn', TRUE), (121, 35, 'Trả lời bình luận', TRUE), (122, 35, 'Ẩn giá sản phẩm', FALSE),
+(123, 36, 'Đúng', TRUE), (124, 36, 'Sai', FALSE),
+(125, 37, 'Một video tự nhiên đã có tín hiệu tốt', TRUE), (126, 37, 'Một bản nháp chưa quay', FALSE), (127, 37, 'Một trang tính trống', FALSE), (128, 37, 'Một tin nhắn riêng tư', FALSE),
+(129, 38, 'Chi phí trên kết quả', TRUE), (130, 38, 'Tỷ lệ nhấp', TRUE), (131, 38, 'Tỷ lệ chuyển đổi', TRUE), (132, 38, 'Số lần đổi tên kênh', FALSE),
+(133, 39, 'Đúng', FALSE), (134, 39, 'Sai', TRUE),
+(135, 40, 'Khách hoàn tất đặt hàng hoặc thanh toán', TRUE), (136, 40, 'Khách chỉ lướt qua', FALSE), (137, 40, 'Khách đổi ảnh đại diện', FALSE), (138, 40, 'Khách tắt âm thanh', FALSE),
+(139, 41, 'Video giới thiệu sản phẩm', TRUE), (140, 41, 'Trang sản phẩm', TRUE), (141, 41, 'Livestream', TRUE), (142, 41, 'Màn hình cài đặt điện thoại', FALSE),
+(143, 42, 'Đúng', TRUE), (144, 42, 'Sai', FALSE),
+(145, 43, 'Hook và tỷ lệ giữ chân ở những giây đầu', TRUE), (146, 43, 'Màu nền của trình soạn thảo', FALSE), (147, 43, 'Số người trong danh bạ', FALSE), (148, 43, 'Tên thiết bị quay', FALSE),
+(149, 44, 'Thời gian xem trung bình', TRUE), (150, 44, 'Tỷ lệ xem hết', TRUE), (151, 44, 'Tỷ lệ nhấp sản phẩm', TRUE), (152, 44, 'Số lần đổi avatar', FALSE),
+(153, 45, 'Đúng', FALSE), (154, 45, 'Sai', TRUE),
+(155, 46, 'Mục tiêu, đối tượng và kết quả cần đạt', TRUE), (156, 46, 'Mật khẩu đăng nhập', FALSE), (157, 46, 'Danh sách liên hệ cá nhân', FALSE), (158, 46, 'Màu nền ứng dụng', FALSE),
+(159, 47, 'Thông điệp chính', TRUE), (160, 47, 'Kênh triển khai', TRUE), (161, 47, 'Tiêu chí đo lường', TRUE), (162, 47, 'Mật khẩu tài khoản', FALSE),
+(163, 48, 'Đúng', FALSE), (164, 48, 'Sai', TRUE),
+(165, 49, 'Kịch bản, sản phẩm, ánh sáng và âm thanh', TRUE), (166, 49, 'Chỉ cần mở camera', FALSE), (167, 49, 'Mật khẩu khách hàng', FALSE), (168, 49, 'Danh sách bạn bè', FALSE),
+(169, 50, 'Ánh sáng ổn định', TRUE), (170, 50, 'Âm thanh rõ', TRUE), (171, 50, 'Khung hình và lời kêu gọi hành động', TRUE), (172, 50, 'Số lượng ứng dụng cài đặt', FALSE),
+(173, 51, 'Đúng', TRUE), (174, 51, 'Sai', FALSE),
+(175, 52, 'Mục tiêu và kết quả tổng quan', TRUE), (176, 52, 'Danh sách mật khẩu', FALSE), (177, 52, 'Lịch sử tin nhắn riêng', FALSE), (178, 52, 'Tên thiết bị cá nhân', FALSE),
+(179, 53, 'Lượt xem và thời gian xem', TRUE), (180, 53, 'Chi phí và tỷ lệ chuyển đổi', TRUE), (181, 53, 'Số đơn hàng', TRUE), (182, 53, 'Số lần đổi avatar', FALSE),
+(183, 54, 'Đúng', FALSE), (184, 54, 'Sai', TRUE);
+
 -- 5) Lịch học cho cả batch cũ và học viên đang demo.
 INSERT IGNORE INTO class_sessions
     (session_id, batch_id, teacher_id, session_title, session_description,
