@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#c55500",
+              "on-primary": "#ffffff",
+              "surface-variant": "#e1e3e4",
+              "primary": "#005bbf",
+              "secondary-fixed-dim": "#bfc7d4",
+              "on-primary-fixed": "#001a41",
+              "on-primary-fixed-variant": "#004493",
+              "error": "#ba1a1a",
+              "surface-container": "#edeeef",
+              "on-background": "#191c1d",
+              "inverse-primary": "#adc7ff",
+              "on-secondary-fixed": "#141c26",
+              "surface-container-lowest": "#ffffff",
+              "secondary": "#575f6b",
+              "on-tertiary-fixed-variant": "#783100",
+              "tertiary-fixed": "#ffdbcb",
+              "outline-variant": "#c1c6d6",
+              "outline": "#727785",
+              "inverse-surface": "#2e3132",
+              "on-error-container": "#93000a",
+              "tertiary-fixed-dim": "#ffb691",
+              "on-secondary-container": "#5d6571",
+              "surface-tint": "#005bc0",
+              "on-error": "#ffffff",
+              "background": "#f8f9fa",
+              "primary-fixed": "#d8e2ff",
+              "secondary-fixed": "#dbe3f1",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#3f4752",
+              "surface-container-high": "#e7e8e9",
+              "primary-fixed-dim": "#adc7ff",
+              "on-tertiary-fixed": "#341100",
+              "on-tertiary-container": "#0e0200",
+              "surface-container-low": "#f3f4f5",
+              "on-surface-variant": "#414754",
+              "surface-dim": "#d9dadb",
+              "tertiary": "#9e4300",
+              "on-secondary": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "surface-container-highest": "#e1e3e4",
+              "inverse-on-surface": "#f0f1f2",
+              "surface": "#f8f9fa",
+              "secondary-container": "#dbe3f1",
+              "primary-container": "#1a73e8",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#ffffff",
+              "on-surface": "#191c1d"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-blue-800 dark:text-blue-200">Scholar</span>
+<nav class="hidden md:flex items-center gap-6 font-manrope tracking-tight font-semibold">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Courses</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Categories</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Cart</a>
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1" href="#">Interaction</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-slate-600">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-slate-600">shopping_cart</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden ml-2 border-2 border-primary-fixed">
+<img alt="User profile avatar with dropdown" data-alt="close up portrait of a smiling professional woman with neutral background and soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuzM_BCHA1RFLCJzhWeOf7cPmWk-KJOD1t_-7ULHg4GYKyP2T7TOyU7po7lZFbrTzjscpxwiFVXT_FS4Cs60rnu9tbAkQ11rFPDACXb2gB0FC17qfX-r8EbAH5JkAIYfmJMLZEm-VeNQhGQxhIGqnUipfrVKsDlJ0EjygGvGkMhZg4HRWnPa-QZfAQQ6Z3cG5kYjpAsbalKHLFJmwZpjgwnqw-3c0Tyt6twfO_eDTOzwjyoEWd_a8JUtkWEbK-m9Hc_UmlQy_xzvca"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-20 px-6 max-w-7xl mx-auto">
+<!-- Hero Header -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<span class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Community Hub</span>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-4">
+                        Advanced Typography &amp; <br/>Editorial Design
+                    </h1>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                        Join the conversation. Ask questions, share insights, and connect with fellow scholars in this course community.
+                    </p>
+</div>
+<!-- Course Rating Compact -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 min-w-[240px]">
+<div class="flex items-center justify-between mb-2">
+<span class="font-bold text-2xl text-on-surface">4.8</span>
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant font-medium">1,240 global ratings</p>
+<button class="mt-4 w-full py-2 bg-secondary-container text-on-secondary-container rounded-lg font-semibold text-sm hover:bg-surface-container-high transition-colors">
+                        Rate this course
+                    </button>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Sidebar: Navigation & Filters -->
+<aside class="lg:col-span-3 space-y-8">
+<div class="bg-surface-container-low rounded-xl p-2">
+<button class="w-full flex items-center gap-3 px-4 py-3 bg-surface-container-lowest text-primary font-bold rounded-lg shadow-sm">
+<span class="material-symbols-outlined">forum</span>
+                        All Discussions
+                    </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined">help_center</span>
+                        Q&amp;A Only
+                    </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined">history</span>
+                        My Questions
+                    </button>
+</div>
+<div class="px-4">
+<h3 class="font-bold text-xs uppercase tracking-widest text-on-surface-variant mb-4">Lesson Context</h3>
+<ul class="space-y-3">
+<li class="flex items-center gap-2 text-sm text-primary font-semibold">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            Module 04: Visual Hierarchy
+                        </li>
+<li class="flex items-center gap-2 text-sm text-on-surface-variant hover:text-on-surface cursor-pointer">
+<span class="w-1.5 h-1.5 bg-outline-variant rounded-full"></span>
+                            Module 03: Color Theory
+                        </li>
+<li class="flex items-center gap-2 text-sm text-on-surface-variant hover:text-on-surface cursor-pointer">
+<span class="w-1.5 h-1.5 bg-outline-variant rounded-full"></span>
+                            Module 05: Grid Systems
+                        </li>
+</ul>
+</div>
+</aside>
+<!-- Main Discussion Area -->
+<div class="lg:col-span-9 space-y-8">
+<!-- Search and Post -->
+<div class="flex flex-col sm:flex-row gap-4">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-on-surface" placeholder="Search for questions or topics..." type="text"/>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/10 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add_comment</span>
+                        Post Question
+                    </button>
+</div>
+<!-- Discussion Feed -->
+<div class="space-y-6">
+<!-- Discussion Item 1: Pinned/Featured -->
+<article class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border-l-4 border-primary">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Instructor Profile" data-alt="professional portrait of a creative director in his 40s wearing glasses and a minimalist black sweater" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdPdnGTFC6jYRgIkv1Fk-DQ_VfWlMa3KSVg6MIQhGFRpN17tIEnxDdi8BhQVeqWmBmAmPayzSwpUW6Cj1ewoTdd2oyWWzZFdOnfmPgJKe3YxLTfSvKJ8XeXeiSVjqnjWhpSfZFd18Lb04zsugPu2_eKdMde-ZhgcRtAFTnHZcNpC5nf3u_jJ6r8r_Tn055twt__xN8yCrAdLH5YLKOi4Keg6TrlVYOfx7y-MwWd4SOkRIhyIRPFa17aYIJXXlLvkVCHX3cYBv7lbfl"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-bold text-on-surface">Julian Aris</span>
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-tighter">Instructor</span>
+<span class="text-xs text-on-surface-variant ml-auto">2 hours ago</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface mb-2">Welcome to the Editorial Scholar Discussion Forum</h2>
+<p class="text-on-surface-variant leading-relaxed mb-4">
+                                    Feel free to share your works-in-progress or ask technical questions regarding the baseline grids we discussed in Module 04. I'll be reviewing submissions every Tuesday.
+                                </p>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-1.5 text-xs font-bold text-primary">
+<span class="material-symbols-outlined text-lg">thumb_up</span> 42 Likes
+                                    </button>
+<button class="flex items-center gap-1.5 text-xs font-bold text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">chat_bubble</span> 18 Comments
+                                    </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Discussion Item 2: Student Question -->
+<article class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/5">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Student Profile" data-alt="candid portrait of a young male student in a modern library setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-YzMZJnMKoIZ0p6JU5i6izP4l7SF6Baxzw18dBKLOh01sUp4p_k_v9XXrwLLbE1qv0LZhnLaua-nGV4ULmxP9FiUbBVnIDYIB0mHg71HnTbNZS95xvmOXL5xneL93pdDA_GEPLB8MAI4LSWQJezvDcyvUP1ZPu2CA4ogoCDb35YA7dzwkzo0D8_5kbm6Tz2rmSpCf4Ka44nS7iH_5mxJjpcEodUrHvuHhbw0AV1TxDf0geUlV8jhTqIA47gUfVDYrBqquG2qbhw5l"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-bold text-on-surface">Marcus Chen</span>
+<span class="text-xs text-on-surface-variant ml-auto">5 hours ago</span>
+</div>
+<h2 class="text-lg font-bold text-on-surface mb-2">Struggling with asymmetrical layouts in the final project</h2>
+<p class="text-on-surface-variant leading-relaxed mb-4">
+                                    I'm finding it hard to balance white space when I remove the center-aligned containers. Does anyone have tips on maintaining visual weight without using heavy imagery?
+                                </p>
+<!-- Threaded Comment -->
+<div class="mt-6 bg-surface-container-low p-4 rounded-lg space-y-4">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Student Profile" data-alt="vibrant portrait of a female designer with colorful studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkCmNb0wXCXHbA8Nr_QwSqUDlja2IamFRSJSP0Te7RfUiKi9tnbMCxb2tYuJtTKHO7Nyp6_iLvYRBc1nM8DeDaa9Ub2sc8lzpk_9PTEebv6JN1LOBQM67OnSIonrA-ZVNtL5HrqZdmXcATxJLqV4c0jgXNAM5A0MU7PJZTXu8qUxs0r1moTshAA9VChPtXbdeWI4t2q18RaDkiL-qTAEc122GThy_uZBgCZyOLG5M6w8dG2wxRavJMh1BPZbduWBRhw5Ifas4v19Gc"/>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-bold text-sm text-on-surface">Sarah Lopez</span>
+<span class="text-[10px] text-on-surface-variant">3 hours ago</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-snug">
+                                                Try focusing on the typography scale first. Sometimes a very large display heading can act as the anchor point for all that empty space!
+                                            </p>
+</div>
+</div>
+<div class="pl-11">
+<button class="text-xs font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">reply</span> Reply to Sarah
+                                        </button>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-6">
+<button class="flex items-center gap-1.5 text-xs font-bold text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">thumb_up</span> 12
+                                    </button>
+<button class="flex items-center gap-1.5 text-xs font-bold text-primary">
+<span class="material-symbols-outlined text-lg">chat_bubble</span> 3 Comments
+                                    </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Discussion Item 3: Quick Tip / Community -->
+<article class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/5">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Student Profile" data-alt="modern close up portrait of a young woman with creative styling and clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH6zKI7alWp1rCAZFzLEWVD8n7zBU3gtjh1IQTOyEht4_v2A7tvTYU1ugB3H3eMHYSBvj7PpobJmUleVxBHwt2mgvKSIoiIVVrw3KaHZkoo2WzJlm7mHx1gk7cjYm_BWlwmMlS1bbAeWKvjPT8GO3ZFiZ-2DrOW_sChoQUFuOgwRannH3FvRydGTg9Bi3p6h-sPODWNdLNF5ohTyt5lgsJIR9ywhas-rsCcRPOs_TTl6W8pf5H8YLhS2qzrknXSN_rL8-LFjGG2SZL"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-bold text-on-surface">Elena Rossi</span>
+<span class="text-xs text-on-surface-variant ml-auto">Yesterday</span>
+</div>
+<h2 class="text-lg font-bold text-on-surface mb-2">Best resources for Manrope font pairings?</h2>
+<p class="text-on-surface-variant leading-relaxed mb-4">
+                                    Besides Inter, what are you guys using for sub-headers when Manrope feels too heavy?
+                                </p>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-1.5 text-xs font-bold text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">thumb_up</span> 5
+                                    </button>
+<button class="flex items-center gap-1.5 text-xs font-bold text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">chat_bubble</span> 0 Comments
+                                    </button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Load More / Pagination -->
+<div class="pt-8 flex justify-center">
+<button class="px-8 py-3 bg-white text-on-surface border border-outline-variant/20 rounded-full font-bold hover:bg-surface-container-low transition-colors shadow-sm">
+                        Load older discussions
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 md:hidden bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg shadow-[0_-4px_12px_rgba(0,0,0,0.05)] border-t border-slate-100 dark:border-slate-800 z-50">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 font-inter text-[10px] font-medium uppercase tracking-widest active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+            Home
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 font-inter text-[10px] font-medium uppercase tracking-widest active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+            My Learning
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 font-inter text-[10px] font-medium uppercase tracking-widest active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">search</span>
+            Search
+        </a>
+<a class="flex flex-col items-center justify-center bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-xl px-4 py-1 font-inter text-[10px] font-medium uppercase tracking-widest active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">person</span>
+            Profile
+        </a>
+</nav>
+</body></html>

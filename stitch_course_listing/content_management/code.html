@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-container": "#996100",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface": "#f9f9f9",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary-container": "#ffeedd",
+                        "inverse-surface": "#2f3131",
+                        "outline": "#737686",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "secondary-fixed": "#d5e3fc",
+                        "surface-container-low": "#f3f3f3",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "primary-fixed": "#dbe1ff",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-bright": "#f9f9f9",
+                        "secondary": "#515f74",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "on-surface-variant": "#434655",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary": "#784b00",
+                        "surface-variant": "#e2e2e2",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "on-background": "#1a1c1c",
+                        "secondary-container": "#d5e3fc",
+                        "surface-container": "#eeeeee",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "surface-container-high": "#e8e8e8",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-secondary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed": "#ffddb8",
+                        "primary-container": "#2563eb",
+                        "outline-variant": "#c3c6d7",
+                        "primary": "#004ac6",
+                        "on-secondary-container": "#57657a",
+                        "surface-dim": "#dadada"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+        .glass-header { backdrop-filter: blur(20px); }
+    </style>
+</head>
+<body class="bg-surface text-on-background min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 bottom-0 w-64 border-r-0 bg-slate-50 dark:bg-slate-950 flex flex-col py-6 px-4 gap-2 z-50">
+<div class="mb-10 px-4">
+<h1 class="text-lg font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Editorial Scholar</h1>
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest">Admin Console</p>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Student Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-sm font-medium">Course Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">System Configuration</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-900 rounded-lg shadow-sm font-bold ease-in-out duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">General Content</span>
+</a>
+</nav>
+<div class="mt-auto px-4">
+<div class="flex items-center gap-3 p-2 bg-surface-container-low rounded-xl">
+<img alt="Admin Avatar" class="w-8 h-8 rounded-full bg-slate-200" data-alt="close-up portrait of a professional male administrator in a modern office with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhipc94VfRc5Axk1wc45o_V5I0zap3NEB3GLjELN-X5_AOjc0oRwTU9y4u7O--LndUcNP15gvCk_zmVQ6hYM8Dg5EyvMmdaKt-OMkXRDNkX5rnjJ9U-TSYTUicV6KDMhmtmArYNflbiSp2A_tbMBKEPlghsiYl0oNKugrCUUeAuMfIn8oRbFlytO2_YT8dI0wJ5X6Eu9SIwtzWM1PXUj8VXOyUxF5eASS9TpuU5dHSMzykebbCKxSIoXzC7ATlmvfMn1isH2kVgNpS"/>
+<div>
+<p class="text-xs font-bold text-on-surface">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant">Super Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 z-40 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl flex items-center justify-between px-8 h-16 w-full ml-64 shadow-[0_8px_32px_rgba(26,28,28,0.06)]">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all text-sm" placeholder="Search resources, posts, or FAQs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-white"></span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/30 mx-2"></div>
+<span class="text-slate-900 dark:text-slate-100 font-bold tracking-tight text-xl">Scholar Admin</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-12 px-12 max-w-[1600px] mx-auto">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-4xl font-extrabold text-on-background tracking-tight mb-2">General Content</h2>
+<p class="text-on-surface-variant text-lg max-w-2xl">Curate the editorial experience. Manage blog publications, platform FAQs, and visual banner communication.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high text-on-surface font-semibold rounded-lg hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">view_agenda</span>
+                    Preview Site
+                </button>
+<button class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-br from-primary to-primary-container text-white font-semibold rounded-lg shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Create New Post
+                </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Blog Management Section (Main Content) -->
+<section class="col-span-12 lg:col-span-8 space-y-6">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-2xl font-bold text-on-surface">Recent Blog Posts</h3>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium text-on-surface-variant">All (24)</span>
+<span class="px-3 py-1 text-xs font-medium text-slate-400">Published (18)</span>
+<span class="px-3 py-1 text-xs font-medium text-slate-400">Drafts (6)</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-separate border-spacing-y-4">
+<thead>
+<tr class="text-label text-on-surface-variant text-xs font-bold uppercase tracking-widest">
+<th class="pb-2 pl-4">Post Details</th>
+<th class="pb-2">Author</th>
+<th class="pb-2">Status</th>
+<th class="pb-2">Date</th>
+<th class="pb-2 pr-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="bg-surface-container-low/50 hover:bg-surface-container-low transition-colors rounded-xl overflow-hidden group">
+<td class="py-4 pl-4 rounded-l-xl">
+<div class="flex items-center gap-4">
+<div class="w-16 h-12 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img alt="Post Thumbnail" class="w-full h-full object-cover" data-alt="modern minimalist office with laptop and educational books on a wooden desk with bright morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0ozqzRYo811HQhFTM9sa7Oid_VsoEmjt3kYqpZtM11H_8R9bcLd0eXFwsYnW95_LtSFscMy5rqgNE-C1HA6ltnes6cKn5cCswgE3L3uLq94lp5zfTTPODjFHVM8epdK211eJhfJhM-OZ3V04g442ZkU7k3xjMRvBJf-dwBoMf7Nj1kkzP7uVExz3F6AlFFABaBJwxSROYjb9ueJfEn8PGO_wvmNkY-s5g25SLYTHgNEB8HTSHhGoproWQzLi2xQ1BcOBDsGue7htS"/>
+</div>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Future of Adaptive Learning</p>
+<p class="text-xs text-on-surface-variant">Education Technology</p>
+</div>
+</div>
+</td>
+<td class="py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-fixed text-[10px] flex items-center justify-center font-bold text-primary">JD</div>
+<span class="text-sm font-medium">Jane Doe</span>
+</div>
+</td>
+<td class="py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Published
+                                        </span>
+</td>
+<td class="py-4">
+<p class="text-sm text-on-surface-variant">Oct 24, 2023</p>
+</td>
+<td class="py-4 pr-4 rounded-r-xl text-right">
+<div class="flex justify-end gap-1">
+<button class="p-2 hover:bg-white rounded-lg transition-colors text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-sm">visibility</span></button>
+<button class="p-2 hover:bg-white rounded-lg transition-colors text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-2 hover:bg-white rounded-lg transition-colors text-slate-400 hover:text-error"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="bg-surface-container-low/50 hover:bg-surface-container-low transition-colors rounded-xl group">
+<td class="py-4 pl-4 rounded-l-xl">
+<div class="flex items-center gap-4">
+<div class="w-16 h-12 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img alt="Post Thumbnail" class="w-full h-full object-cover" data-alt="overhead view of a student writing in a journal surrounded by artistic pens and a cup of coffee in a library" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRRh0Yr_KZFDn-b8CA09MFG9pn4Gr4lo5Ob1E2AC-1wF2BX4H7VJcIog2fLwr5MFx4F8KAu7CkyvQyjn0va7OJ_i1B9BechJ6sIiFA7n_-9jhjF0043FAgWz1gRFGFR3JZH8wtvuie00u_z9ejsFcO-gms-KbAr4-x3aSMEHr3pg3i0lHI_sJ_Cu9JWN-MovBf1ghl_-hxwdXP5lh6RiezzobUOhhpEWGWzNbjrx1pfM-V_T1bL1zYMGl-hrWRyAq0Ahr2fYT6Ikih"/>
+</div>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Designing Your Study Habit</p>
+<p class="text-xs text-on-surface-variant">Personal Growth</p>
+</div>
+</div>
+</td>
+<td class="py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed text-[10px] flex items-center justify-center font-bold text-secondary">MS</div>
+<span class="text-sm font-medium">Mark Smith</span>
+</div>
+</td>
+<td class="py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-200 text-slate-600">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Draft
+                                        </span>
+</td>
+<td class="py-4">
+<p class="text-sm text-on-surface-variant">Nov 12, 2023</p>
+</td>
+<td class="py-4 pr-4 rounded-r-xl text-right">
+<div class="flex justify-end gap-1">
+<button class="p-2 hover:bg-white rounded-lg transition-colors text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-sm">visibility</span></button>
+<button class="p-2 hover:bg-white rounded-lg transition-colors text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-2 hover:bg-white rounded-lg transition-colors text-slate-400 hover:text-error"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- FAQ Management Section -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-2xl font-bold text-on-surface">Platform FAQs</h3>
+<p class="text-sm text-on-surface-variant">Manage common student inquiries</p>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface text-primary border border-primary/20 font-bold rounded-lg hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+                            Add FAQ
+                        </button>
+</div>
+<div class="space-y-4">
+<div class="p-5 bg-surface rounded-xl border-l-4 border-primary shadow-sm">
+<div class="flex justify-between items-start">
+<div class="space-y-2">
+<p class="font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">help_outline</span>
+                                        How do I request a refund for a course?
+                                    </p>
+<p class="text-sm text-on-surface-variant pl-7 leading-relaxed">Students can request a full refund within 30 days of purchase if they have completed less than 20% of the content. Requests are processed via the billing dashboard.</p>
+</div>
+<div class="flex gap-1 ml-4">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-1.5 text-slate-400 hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+</div>
+<div class="p-5 bg-surface-container-low/50 rounded-xl hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start">
+<p class="font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">help_outline</span>
+                                    Can I download videos for offline viewing?
+                                </p>
+<div class="flex gap-1 ml-4">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-1.5 text-slate-400 hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+<button class="p-1.5 text-slate-400 hover:text-on-surface"><span class="material-symbols-outlined text-sm">expand_more</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar Content -->
+<section class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Banner Management -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<h3 class="text-xl font-bold text-on-surface mb-6">Promotional Banners</h3>
+<div class="space-y-6">
+<!-- Banner Card -->
+<div class="group">
+<div class="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-3">
+<img alt="Banner Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="abstract flowing silk textures in shades of primary blue and deep navy with elegant soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClFUF7OKoa5VKGvdf3tpxlGQCJVLLU-KGgwUE6zvmZJeE0uvAqVKQd6qlNn7urwGtzXhlzZQqsURV2QzNqBzhB4AhjfexHteh9xbyvBAJBQtRLkx9UN4huj-c1ZfnCfpJaV-4GaiigGu2bVW0IPrffIyX3ayobea44o12wP0xOCpjcbuvKTTzsoW46JuIe8zUauCZAzyaSloRSnE_4Tc0VgBbcLfOzldlIUGa-zQObRvR1o5_ABNECzWYDogNwDCzB-ys18vWeAbxB"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute top-3 right-3 flex gap-2">
+<button class="bg-white/90 backdrop-blur p-2 rounded-lg text-primary shadow-lg hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-bold text-on-surface">Summer Sale 2024</p>
+<p class="text-xs text-on-surface-variant italic">Ends in 12 days</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Banner Card 2 -->
+<div class="group opacity-70 hover:opacity-100 transition-opacity">
+<div class="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-3 bg-surface-container">
+<img alt="Banner Preview" class="w-full h-full object-cover" data-alt="vibrant educational graphic with 3D floating icons representing science math and literature in bright colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU9B6-seY0X0yDkIOnyZE2D5eAZHRKSRSjfrDdNG1tGymHQNccp-QB8AhBFH7zd_oJKgrNPfB8eO5qCjgOVVUk8jePf4ddruN_ZMlhl5hXcBNTTVhUFfEgHXniJDmhS6CwxqqEPkQudmZuEArtXvoTGxCdDVcnY6qTrT0FpEUfP5ztxE2KTt15NpTdBYH0DDmy3U7p9yITKVwnk3UraVJSrG1J6vO8rHcn8PJ1BDVUfCny4z6W64AKuQAIp90TLcPdhmmEXs9Q3VHd"/>
+<div class="absolute inset-0 flex items-center justify-center bg-surface/40 backdrop-grayscale">
+<span class="px-3 py-1 bg-on-surface text-white text-[10px] font-bold uppercase tracking-widest rounded">Inactive</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-bold text-on-surface">Holiday Scholarship</p>
+<p class="text-xs text-on-surface-variant italic">Scheduled for Dec 01</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Rich Text Editor Preview Widget -->
+<div class="bg-white rounded-xl shadow-[0_8px_32px_rgba(26,28,28,0.06)] overflow-hidden border border-outline-variant/10">
+<div class="p-4 bg-slate-50 border-b border-outline-variant/10 flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface uppercase tracking-tighter">Draft Preview</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-sm text-slate-400">format_bold</span>
+<span class="material-symbols-outlined text-sm text-slate-400">format_italic</span>
+<span class="material-symbols-outlined text-sm text-slate-400">link</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-lg mb-2">The Rise of Digital Nomads...</h4>
+<div class="h-2 w-3/4 bg-slate-100 rounded-full mb-3"></div>
+<div class="h-2 w-full bg-slate-100 rounded-full mb-3"></div>
+<div class="h-2 w-5/6 bg-slate-100 rounded-full mb-6"></div>
+<div class="flex items-center gap-4">
+<button class="flex-1 py-2 text-xs font-bold text-primary bg-primary-fixed hover:bg-primary hover:text-white transition-colors rounded-lg">Open Editor</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">fullscreen</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Global Stats Card -->
+<div class="bg-gradient-to-br from-on-surface to-slate-800 rounded-xl p-8 text-white">
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">Engagement Insights</p>
+<div class="space-y-6">
+<div>
+<p class="text-4xl font-extrabold font-headline">12.4k</p>
+<p class="text-xs text-slate-400">Monthly Blog Readers</p>
+</div>
+<div class="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full w-[72%] bg-primary shadow-[0_0_12px_rgba(0,74,198,0.5)]"></div>
+</div>
+<p class="text-[10px] font-medium text-primary-fixed-dim">+14% Growth from last month</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB - Restricted to Management Views -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-primary to-primary-container text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</body></html>

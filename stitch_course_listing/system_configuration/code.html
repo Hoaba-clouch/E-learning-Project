@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Configuration | Scholar Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#996100",
+              "primary-fixed-dim": "#b4c5ff",
+              "surface": "#f9f9f9",
+              "on-primary-container": "#eeefff",
+              "on-tertiary-container": "#ffeedd",
+              "inverse-surface": "#2f3131",
+              "outline": "#737686",
+              "error-container": "#ffdad6",
+              "on-surface": "#1a1c1c",
+              "surface-container-highest": "#e2e2e2",
+              "secondary-fixed-dim": "#b9c7df",
+              "secondary-fixed": "#d5e3fc",
+              "surface-container-low": "#f3f3f3",
+              "on-tertiary-fixed-variant": "#653e00",
+              "primary-fixed": "#dbe1ff",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#ffb95f",
+              "surface-bright": "#f9f9f9",
+              "secondary": "#515f74",
+              "on-secondary-fixed-variant": "#3a485b",
+              "on-surface-variant": "#434655",
+              "inverse-primary": "#b4c5ff",
+              "on-primary-fixed": "#00174b",
+              "tertiary": "#784b00",
+              "surface-variant": "#e2e2e2",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed": "#2a1700",
+              "on-secondary-fixed": "#0d1c2e",
+              "on-background": "#1a1c1c",
+              "secondary-container": "#d5e3fc",
+              "surface-container": "#eeeeee",
+              "on-primary": "#ffffff",
+              "surface-tint": "#0053db",
+              "surface-container-high": "#e8e8e8",
+              "on-primary-fixed-variant": "#003ea8",
+              "inverse-on-surface": "#f1f1f1",
+              "on-secondary": "#ffffff",
+              "background": "#f9f9f9",
+              "tertiary-fixed": "#ffddb8",
+              "primary-container": "#2563eb",
+              "outline-variant": "#c3c6d7",
+              "primary": "#004ac6",
+              "on-secondary-container": "#57657a",
+              "surface-dim": "#dadada"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+        }
+        h1, h2, h3 {
+            font-family: 'Manrope', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        /* Custom Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #e2e2e2;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px; width: 18px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider { background-color: #004ac6; }
+        input:checked + .slider:before { transform: translateX(20px); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 bottom-0 w-64 bg-slate-50 flex flex-col py-6 px-4 gap-2 z-50">
+<div class="mb-8 px-2">
+<h1 class="text-lg font-extrabold text-slate-900 font-headline">Editorial Scholar</h1>
+<p class="text-xs text-on-surface-variant tracking-wider uppercase font-bold opacity-70">Admin Console</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:text-slate-900 hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium font-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:text-slate-900 hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium font-body">Student Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:text-slate-900 hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-sm font-medium font-body">Course Management</span>
+</a>
+<!-- ACTIVE TAB -->
+<a class="flex items-center gap-3 px-3 py-2.5 text-blue-600 bg-white rounded-lg shadow-sm font-bold transition-all group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-sm font-body">System Configuration</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:text-slate-900 hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium font-body">General Content</span>
+</a>
+</nav>
+<div class="mt-auto px-2">
+<div class="p-4 bg-surface-container rounded-xl flex items-center gap-3">
+<img alt="Admin Avatar" class="w-8 h-8 rounded-full bg-primary-fixed-dim" data-alt="professional portrait of a senior academic administrator in a clean office setting, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2ApxkWwmciRJil5aE1HL5NxwxUjR7p3cjbbqC9y_mZ-Zk-UCEwh-ymRP1aFRQ8Zz1T7egdQvd3OlebxxhJoo5yp5aZGXcm5BK_S7xtwvyAUYuvo0aefjSZqDD6m2P9YU9UifW-GIBruLk8AXRf-bK1rVaSVNrLbZPubJ6eC6eFDlnh1YkbQUpeH0iJVr3k50J-z7Hb1egJobSEMPP5eahv_q3i9FwPIwVKNAMExGaAVVe1C7ee5FdVdwHhSnfACwY2LNw0PINWvzI"/>
+<div>
+<p class="text-xs font-bold text-on-surface">Dr. Aris Thorne</p>
+<p class="text-[10px] text-on-surface-variant">System Root</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 z-40 flex items-center justify-between px-8 h-16 w-full ml-64 bg-white/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(26,28,28,0.06)]">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search configurations..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<p class="text-sm font-bold font-headline text-slate-900">Scholar Admin</p>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-32 px-12 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<header class="mb-10">
+<h2 class="text-4xl font-extrabold text-on-background tracking-tight font-headline mb-2">System Configuration</h2>
+<p class="text-on-surface-variant font-body">Master control panel for platform identity, security protocols, and integration logic.</p>
+</header>
+<div class="flex flex-col lg:flex-row gap-12">
+<!-- Vertical Navigation Tabs -->
+<nav class="w-full lg:w-64 flex flex-row lg:flex-col gap-2 sticky top-24 h-fit overflow-x-auto lg:overflow-visible pb-4 lg:pb-0">
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20 transition-all text-left whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">language</span>
+<span class="text-sm font-semibold">General Settings</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container transition-all text-left whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">mail</span>
+<span class="text-sm font-medium">Email Config</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container transition-all text-left whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">payments</span>
+<span class="text-sm font-medium">Payment Gateways</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container transition-all text-left whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span class="text-sm font-medium">Security Settings</span>
+</button>
+</nav>
+<!-- Configuration Sections -->
+<div class="flex-1 space-y-12">
+<!-- Section: General Content -->
+<div class="space-y-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-xl font-bold font-headline">General Platform Identity</h3>
+<span class="text-[10px] bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded-full uppercase font-black tracking-widest">Global</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Platform Name -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Platform Name</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-primary transition-all" type="text" value="Editorial Scholar Pro"/>
+<p class="mt-2 text-[11px] text-on-surface-variant opacity-60">This name appears in browser tabs and system emails.</p>
+</div>
+<!-- Default Language -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Default Language</label>
+<select class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-primary transition-all appearance-none">
+<option>English (United States)</option>
+<option>Spanish (Latin America)</option>
+<option>French (Standard)</option>
+<option>German (Modern)</option>
+</select>
+</div>
+<!-- Asset Management (Bento Style Card) -->
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div>
+<h4 class="font-bold text-lg mb-2">Brand Assets</h4>
+<p class="text-sm text-on-surface-variant mb-6">Upload your high-resolution vector logos and favicons for a white-labeled experience.</p>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 p-3 rounded-lg border-2 border-dashed border-outline-variant/50 hover:border-primary/50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">upload_file</span>
+<div>
+<p class="text-xs font-bold">Main Platform Logo</p>
+<p class="text-[10px] text-on-surface-variant">SVG or PNG, max 2MB</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg border-2 border-dashed border-outline-variant/50 hover:border-primary/50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">filter_vintage</span>
+<div>
+<p class="text-xs font-bold">System Favicon</p>
+<p class="text-[10px] text-on-surface-variant">ICO or PNG, 32x32px</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high aspect-video rounded-xl flex items-center justify-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+<div class="z-10 text-center">
+<div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">school</span>
+</div>
+<p class="text-xs font-bold opacity-40 uppercase tracking-tighter">Current Platform Brand</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Email Config -->
+<div class="space-y-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-xl font-bold font-headline">Communications Architecture</h3>
+<span class="material-symbols-outlined text-primary-fixed-dim">alternate_email</span>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">SMTP Host Address</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-primary transition-all" placeholder="smtp.provider.com" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Port Number</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-primary transition-all" placeholder="587" type="text"/>
+</div>
+<div class="md:col-span-3">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Verified Sender Email</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 text-sm focus:ring-1 focus:ring-primary transition-all" placeholder="notifications@editorialscholar.edu" type="email"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Security -->
+<div class="space-y-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-xl font-bold font-headline">Security &amp; Encryption</h3>
+<span class="material-symbols-outlined text-error">lock</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 2FA Toggle -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 flex items-center justify-between">
+<div>
+<h4 class="font-bold text-sm">Two-Factor Authentication</h4>
+<p class="text-xs text-on-surface-variant">Require mobile verification for all admin logins.</p>
+</div>
+<label class="switch">
+<input checked="" type="checkbox"/>
+<span class="slider"></span>
+</label>
+</div>
+<!-- Sessions -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 flex items-center justify-between">
+<div>
+<h4 class="font-bold text-sm">Session Timeout</h4>
+<p class="text-xs text-on-surface-variant">Auto logout after 30 minutes of inactivity.</p>
+</div>
+<label class="switch">
+<input checked="" type="checkbox"/>
+<span class="slider"></span>
+</label>
+</div>
+<!-- Password Rules -->
+<div class="md:col-span-2 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-4">Complexity Protocols</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-medium">Uppercase</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-medium">Symbols (@#$)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-medium">Numbers</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-medium">12+ Chars</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer Actions -->
+<div class="fixed bottom-0 left-64 right-0 h-20 glass-nav flex items-center justify-end px-12 z-40 border-t border-outline-variant/10">
+<div class="flex items-center gap-4">
+<button class="px-6 py-2.5 text-sm font-bold text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all">
+                Cancel Changes
+            </button>
+<button class="px-8 py-2.5 bg-gradient-to-br from-primary to-primary-container text-white text-sm font-bold rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                Save Configurations
+            </button>
+</div>
+</div>
+</body></html>

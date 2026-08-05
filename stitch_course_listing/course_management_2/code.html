@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Course Management | Scholar Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#b4c5ff",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#434655",
+              "on-primary-fixed-variant": "#003ea8",
+              "surface": "#f9f9f9",
+              "on-error": "#ffffff",
+              "inverse-surface": "#2f3131",
+              "surface-container": "#eeeeee",
+              "primary-fixed": "#dbe1ff",
+              "inverse-on-surface": "#f1f1f1",
+              "primary": "#004ac6",
+              "tertiary-fixed-dim": "#ffb95f",
+              "tertiary-container": "#996100",
+              "on-secondary-fixed": "#0d1c2e",
+              "secondary-container": "#d5e3fc",
+              "background": "#f9f9f9",
+              "on-tertiary": "#ffffff",
+              "outline": "#737686",
+              "on-secondary-fixed-variant": "#3a485b",
+              "secondary-fixed-dim": "#b9c7df",
+              "surface-dim": "#dadada",
+              "primary-fixed-dim": "#b4c5ff",
+              "surface-tint": "#0053db",
+              "on-primary-container": "#eeefff",
+              "on-secondary-container": "#57657a",
+              "surface-bright": "#f9f9f9",
+              "tertiary-fixed": "#ffddb8",
+              "secondary": "#515f74",
+              "on-primary-fixed": "#00174b",
+              "on-background": "#1a1c1c",
+              "tertiary": "#784b00",
+              "on-tertiary-container": "#ffeedd",
+              "error": "#ba1a1a",
+              "outline-variant": "#c3c6d7",
+              "primary-container": "#2563eb",
+              "on-tertiary-fixed": "#2a1700",
+              "secondary-fixed": "#d5e3fc",
+              "surface-container-high": "#e8e8e8",
+              "surface-container-low": "#f3f3f3",
+              "error-container": "#ffdad6",
+              "on-surface": "#1a1c1c",
+              "surface-container-highest": "#e2e2e2",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed-variant": "#653e00",
+              "on-error-container": "#93000a",
+              "surface-variant": "#e2e2e2"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 bottom-0 w-64 bg-slate-50 dark:bg-slate-950 flex flex-col py-6 px-4 gap-2 z-50">
+<div class="mb-8 px-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+</div>
+<div>
+<h1 class="font-headline font-extrabold text-lg text-slate-900 leading-tight">Editorial Scholar</h1>
+<p class="text-xs text-slate-500 font-medium">Admin Console</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label text-sm font-medium">User Management</span>
+</a>
+<!-- Active State: Course Management -->
+<a class="flex items-center gap-3 px-3 py-2.5 text-blue-600 bg-white rounded-lg shadow-sm font-bold transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="font-label text-sm">Course Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label text-sm font-medium">System Configuration</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label text-sm font-medium">General Content</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container-low rounded-xl">
+<p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Storage Usage</p>
+<div class="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+<p class="text-xs text-slate-600 mt-2">6.5 GB of 10 GB used</p>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar Component -->
+<header class="fixed top-0 right-0 left-0 ml-64 h-16 glass-effect z-40 flex items-center justify-between px-8 shadow-[0_8px_32px_rgba(26,28,28,0.06)]">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all text-sm outline-none" placeholder="Search courses, instructors, or tags..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100/50 transition-colors text-slate-500">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-slate-900 leading-none">Alex Rivera</p>
+<p class="text-[10px] text-slate-500 font-medium">Senior Editor</p>
+</div>
+<img alt="Admin Avatar" class="w-9 h-9 rounded-full object-cover border-2 border-white shadow-sm" data-alt="close-up portrait of a professional man in a minimal workspace with soft natural lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDydlIGG4Af0SQ1zIUdIiLVKUExQjdKzyurLMWSU6FrPendwoN1CDIuVXMv3yd84okSq5ApIcrWYOz0J00pIyzGWsCrh3-5wu0fxHfh4J4UX_zGlPG6hRv5pUuwdYS0vUnAQi9ZmvSDjrBj7BoO6zLiC1MSRu19_qVjg1aND6ZWsVo1YgBIuW1o-ISsD6Ow5PvlB7NzzPWGgfIj9Q13_bJIOM0PWNaL67Z6vFIxYFhOUSKUZmIz1nIKNJus8z8Xmtqa0GQ0seKakVkg"/>
+</div>
+</div>
+</header>
+<!-- Canvas Content -->
+<div class="pt-24 px-8 pb-12">
+<!-- Page Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="max-w-2xl">
+<h2 class="font-headline font-bold text-4xl text-on-background tracking-tight mb-2">Course Management</h2>
+<p class="text-on-surface-variant text-lg">Curate and review the intellectual assets of the Editorial Scholar ecosystem.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2.5 rounded-lg font-medium text-sm text-on-surface-variant bg-surface-container-high hover:bg-surface-container-highest transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+                        Filter
+                    </button>
+<button class="px-6 py-2.5 rounded-lg font-bold text-sm text-white bg-gradient-to-br from-primary to-primary-container shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+                        New Publication
+                    </button>
+</div>
+</div>
+<!-- Stats Overview - Subtle Bento-ish -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+<p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Total Courses</p>
+<p class="text-3xl font-headline font-bold text-primary">1,284</p>
+<p class="text-xs text-green-600 mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+                        12% from last month
+                    </p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+<p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Pending Review</p>
+<p class="text-3xl font-headline font-bold text-tertiary">42</p>
+<p class="text-xs text-slate-500 mt-2 italic">Requires immediate attention</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+<p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Active Students</p>
+<p class="text-3xl font-headline font-bold text-on-background">18.5k</p>
+<p class="text-xs text-green-600 mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="groups">groups</span>
+                        Global reach
+                    </p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] border-2 border-primary/5">
+<p class="text-xs font-bold uppercase tracking-wider text-primary mb-1">Monthly Revenue</p>
+<p class="text-3xl font-headline font-bold text-on-background">$92.4k</p>
+<p class="text-xs text-slate-500 mt-2">Projection: +$14k</p>
+</div>
+</div>
+<!-- Category Filter Pills -->
+<div class="flex items-center gap-3 mb-8 overflow-x-auto pb-2">
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-primary text-white text-sm font-bold shadow-md shadow-primary/20">All Categories</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-medium hover:bg-surface-container-high transition-colors">Philosophy</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-medium hover:bg-surface-container-high transition-colors">Digital Arts</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-medium hover:bg-surface-container-high transition-colors">Architecture</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-medium hover:bg-surface-container-high transition-colors">Literature</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-medium hover:bg-surface-container-high transition-colors">Data Science</button>
+</div>
+<!-- Courses Grid (Asymmetric & High-End) -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+<!-- Course Item 1 -->
+<div class="group relative bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 ease-out border border-transparent hover:border-primary/10">
+<div class="flex flex-col sm:flex-row h-full">
+<div class="sm:w-48 h-48 sm:h-auto overflow-hidden relative">
+<img alt="Course Thumbnail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="minimalist overhead shot of a clean notebook, fountain pen and spectacles on a white desk with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc6ZgpSKX0zEAWXody2ylmzpmn84V0aVV2KDzvZ-D-FTM8QLFfA7k_pK7VXDVrKatL54V6qo81thBsa4EnczfyMj9BuiYT-jWwMdXW438Ftu1uYjRGk2Ku92UCW1RUKUgqc2ES5VbSYisdczU2oa4ejfg3u9x3jkLIR5LjG2W7edpdlgTdTit5wuSfkImpxCW-y3hF-YR9kZVQmIyyKDm0PMIKb5lvnuMdFCFpwM9agi9rf-Hz0lr05U12WjDEmlrtQD5XApPiLWJR"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="visibility">visibility</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex items-start justify-between mb-2">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest px-2 py-1 bg-primary/5 rounded">Philosophy</span>
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.9</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-background mb-1 group-hover:text-primary transition-colors">The Stoic Mindset in Modern Chaos</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">Navigating the complexities of 21st-century life using ancient Hellenistic wisdom and practical ethics.</p>
+<div class="flex items-center gap-3 mb-6">
+<img alt="Instructor" class="w-6 h-6 rounded-full" data-alt="portrait of a middle-aged academic man with beard and glasses wearing a tweed blazer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2aD3su04yRp2yg37SBZDeGM5p_FWvlJGpm8Uf7L9lV1dykW35FW-v40zXSjHISk4ZqZFbgFP5Lr3GSwcb51DPR6u7eqR1r8bUHsbs2D59-mgdrZhGqZc1eVV-UBkj4P5kiIWKLwgHy-UJpVWMXTX6Sv6H-xfLRkGpLCuxeROUf_d4nF18HMv7I8cLet2RhkG7m3sY3oPbCye7AJysAoCUiTaFfpC84sblB4QUhWhg8BJzhHr2YHptKdWmlBFimFDIZpcialJu1EPH"/>
+<span class="text-xs font-medium text-slate-600">Dr. Marcus Aurelius Jr.</span>
+<span class="text-xs text-slate-300">•</span>
+<span class="text-xs font-bold text-on-background">$89.00</span>
+</div>
+<div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="text-xs font-bold text-on-surface-variant">Pending Review</span>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-colors" title="Approve">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container/20 rounded-lg transition-colors" title="Reject">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-slate-100 rounded-lg transition-colors" title="Edit">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Item 2 -->
+<div class="group relative bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 ease-out border border-transparent hover:border-primary/10">
+<div class="flex flex-col sm:flex-row h-full">
+<div class="sm:w-48 h-48 sm:h-auto overflow-hidden relative">
+<img alt="Course Thumbnail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="professional culinary composition of fresh basil, tomatoes, and olive oil on a rustic wooden table with moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwdk3GN1MV3hjL6lxEiesj-cptIwzFrq8NJV10wdHWC8cS58Bc6LipP7ofcRSHx2hihK2w1XABMKuYYUWunPACFxGMoQdFHD-bqtYGBUSKx2KhL6NXb4XugGhrS-S21AkrqpD6-CcOHpDjFAU7TcEzmyen5Ikp9PsF48L8-klTmKBUU_C2atMxQOAEfzWSvlIW5fRS44pEwAYHvUQRc7ZgRLcqerKBf4A8rpyjKXPMYHcGKOZ_Dy8FHIu15shoQvZE5P0tD1UZfW6d"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="visibility">visibility</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex items-start justify-between mb-2">
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-widest px-2 py-1 bg-tertiary/5 rounded">Gastronomy</span>
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.7</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-background mb-1 group-hover:text-primary transition-colors">The Molecular Kitchen</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">A deep dive into the chemistry of flavor and the science of modern culinary techniques.</p>
+<div class="flex items-center gap-3 mb-6">
+<img alt="Instructor" class="w-6 h-6 rounded-full" data-alt="close-up portrait of a woman chef in whites smiling warmly against a bright kitchen background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF13qPgTVjZJFcbl3ERYgwMCBi8bNHFTZzDA1ig4F9-c37AROUp2CcPKdiWBI79niKBbvE8bGRc2PI-KeScL7X07SfmpnFl5obf7o4Lu7tH5Qx0wdT7tyy66sjsbY31i4zNV0KujiyliCdYR7p-fLDmNPxKw-oAmdwQ_SesjpCrDD19YwBiBeZ_UTi68EvFckJb87yxjaZ2HCArQCpymkdfBg25HfM2Xtm4XSrYHUJ9lzIqa9-YntOH7OPH_zRQkinMn3xGGqR09oO"/>
+<span class="text-xs font-medium text-slate-600">Chef Elena Rossi</span>
+<span class="text-xs text-slate-300">•</span>
+<span class="text-xs font-bold text-on-background">$145.00</span>
+</div>
+<div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-xs font-bold text-on-surface-variant">Approved</span>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="p-2 text-slate-400 hover:bg-slate-100 rounded-lg transition-colors" title="View Analytics">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-slate-100 rounded-lg transition-colors" title="Edit">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container/20 rounded-lg transition-colors" title="Delete">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Item 3 -->
+<div class="group relative bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 ease-out border border-transparent hover:border-primary/10">
+<div class="flex flex-col sm:flex-row h-full">
+<div class="sm:w-48 h-48 sm:h-auto overflow-hidden relative">
+<img alt="Course Thumbnail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="futuristic architectural model made of clean white lines on a drafting table with digital blueprints visible" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPfSLANZm_ZD4qzBq4AmFq1D9gJ-jtazIhTbbp1YM6cF2-Cpll6e9YhGVcWykZSou7T5xORZDH0Mrd8dxr_QV11ZXpZsan8zk_ZSk2FkwZmCdwEzUdrfuUZmgHGRpbtvIVxH90ezUu7h4SK-IEjybmqDFyqgFOSZfexCFn7obKztICkCuftviTa5dM1jXeqmz3jDKoVbjL2cXoTsEu5_oVoAyMg8bAZrCWlchIg7YG3QjENM4JQ_cTr_5fVKxtUodHvRnHyEcTPvoQ"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="visibility">visibility</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex items-start justify-between mb-2">
+<span class="text-[10px] font-bold text-on-secondary-container uppercase tracking-widest px-2 py-1 bg-secondary-container/30 rounded">Architecture</span>
+<div class="flex items-center gap-1 text-slate-300">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">New</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-background mb-1 group-hover:text-primary transition-colors">Sustainable Urbanism 2030</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">Designing resilient cities that balance technological growth with biological harmony.</p>
+<div class="flex items-center gap-3 mb-6">
+<img alt="Instructor" class="w-6 h-6 rounded-full" data-alt="headshot of a young professional woman architect with creative glasses in a modern studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX5tYotRm34LolWVhdxNxh16AnWth4hXIwUm2H3WNxxd4jBmeVs9nyX9XA37pOP__8bTmqN2nGrburmtgriC_VP8Q8FcDJ7iCu-SWIHIQqeGIEHNoQiyS57sq1W8HKXob3P5-2mUZ_el1-Yqz11lIN5zKU3CHJvtokce3rW3fcHTjbeHG3wG_u1v0oPe_DHjZoH1feEZ4sUc_fA4yQQh2njJTXhZNehLlwCSYquy_OVQXQyeoXAB2snZQ4i9ufnhuDbnMceizLdWFz"/>
+<span class="text-xs font-medium text-slate-600">Sarah Jenkins, RIBA</span>
+<span class="text-xs text-slate-300">•</span>
+<span class="text-xs font-bold text-on-background">$210.00</span>
+</div>
+<div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="text-xs font-bold text-on-surface-variant">Rejected</span>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="text-xs font-bold text-primary hover:underline px-2">View Feedback</button>
+<button class="p-2 text-slate-400 hover:bg-slate-100 rounded-lg transition-colors" title="Edit">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Item 4 -->
+<div class="group relative bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 ease-out border border-transparent hover:border-primary/10">
+<div class="flex flex-col sm:flex-row h-full">
+<div class="sm:w-48 h-48 sm:h-auto overflow-hidden relative">
+<img alt="Course Thumbnail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="vintage film camera on a dark textured background with focused studio lighting highlighting its metallic details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqC9OZaKEuuDClsW2iCJvg2dQ4huTD-ukIZrGVEulONfNtzqGosdnRbujs7AZqFldiojk3q2Ofdkl_ZS01GeRUXiHBVritUDCmrVsbopSvUA8RJzPAhOHYTJwkqcCHiJmcMSyD5Vu8Gjz73u_c67F5IQ4PgsSRaftKYyEOz0b08yKYtpGqKO8K5J-6sS0BWrFzhVpGNPd0tZ4hV3n0chWepwMC8xVyDAArKE6Z0vGdciSeNv94dQwarEFvw2DictGHgy_wK2sT3Aqn"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="visibility">visibility</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex items-start justify-between mb-2">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest px-2 py-1 bg-primary/5 rounded">Digital Arts</span>
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">5.0</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-background mb-1 group-hover:text-primary transition-colors">Visual Storytelling Masterclass</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">Mastering the art of cinematic composition and emotional lighting in digital photography.</p>
+<div class="flex items-center gap-3 mb-6">
+<img alt="Instructor" class="w-6 h-6 rounded-full" data-alt="vibrant portrait of a creative woman with artistic flair in a studio with colorful background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfkaP_wg-XpnsSFTEdFK3BELkPVjXeQ9Fv7rCm93Zt6TpSEpsIOx6viC_M09ipotoQkhl_c80l0kgQr6Z1A3z-T7kBi9swwIDM1YXiK4z2u3FKzMZTLvj5ybExpKFV1PPXP8qkQnGtSSDoYokb9bZdNemJaY3v_EchUQbdwxhtb97voklvMQqVYas7hz7e2UTOqs4CVNN4vcDySxPCACHopo-ydpKLWIK0ziLT2YyvAkq_EpCOY_LSxaFZ-3_9pkDW5lkue7o5ntTG"/>
+<span class="text-xs font-medium text-slate-600">Jordan Vane</span>
+<span class="text-xs text-slate-300">•</span>
+<span class="text-xs font-bold text-on-background">$65.00</span>
+</div>
+<div class="mt-auto pt-4 flex items-center justify-between border-t border-slate-50">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-xs font-bold text-on-surface-variant">Approved</span>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="p-2 text-slate-400 hover:bg-slate-100 rounded-lg transition-colors" title="Edit">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container/20 rounded-lg transition-colors" title="Delete">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination Section -->
+<div class="mt-16 flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing 1 to 4 of 1,284 entries</p>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:bg-white transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-sm shadow-md shadow-primary/20">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white text-slate-600 font-medium text-sm transition-colors">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white text-slate-600 font-medium text-sm transition-colors">3</button>
+<span class="px-2 text-slate-400">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white text-slate-600 font-medium text-sm transition-colors">321</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:bg-white transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button - Supressed on this page as per rules, but showing context for "Course Creation" which is the primary action -->
+<!-- Rule says suppress on Details/Settings/Transactional, but Home/Dashboard can have it. This being a Management screen, we follow the UI trend of a prominent "New" button in the header instead of a FAB to avoid blocking the large content cards. -->
+</body></html>

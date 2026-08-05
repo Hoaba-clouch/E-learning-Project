@@ -1,0 +1,15 @@
+{
+  "language": {
+    "label": "Language",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "actions": {
+    "close": "Close",
+    "continue": "Continue",
+    "understood": "Got it"
+  },
+  "statusModal": {
+    "closeLabel": "Close notification"
+  }
+}

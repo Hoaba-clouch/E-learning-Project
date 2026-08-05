@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS admin_user_permissions (
+    user_id BIGINT PRIMARY KEY,
+    can_manage_users BOOLEAN NOT NULL DEFAULT FALSE,
+    can_manage_courses BOOLEAN NOT NULL DEFAULT FALSE,
+    can_manage_finance BOOLEAN NOT NULL DEFAULT FALSE,
+    can_manage_system BOOLEAN NOT NULL DEFAULT FALSE,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);

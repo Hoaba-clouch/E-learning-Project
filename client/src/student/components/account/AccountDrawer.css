@@ -1,0 +1,171 @@
+.sp-account-drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.sp-account-drawer-root.open {
+  pointer-events: auto;
+}
+
+.sp-account-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(17, 22, 29, 0.2);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.sp-account-drawer-root.open .sp-account-drawer-backdrop {
+  opacity: 1;
+}
+
+.sp-account-drawer {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: min(360px, calc(100vw - 28px));
+  display: grid;
+  gap: 18px;
+  border-radius: 24px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 30px 70px rgba(18, 34, 58, 0.18);
+  transform: translateY(-10px) scale(0.98);
+  opacity: 0;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.sp-account-drawer-root.open .sp-account-drawer {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.sp-account-drawer-top,
+.sp-account-drawer-profile,
+.sp-account-drawer-summary,
+.sp-account-drawer-nav button,
+.sp-account-drawer-logout {
+  display: flex;
+  align-items: center;
+}
+
+.sp-account-drawer-top,
+.sp-account-drawer-summary {
+  justify-content: space-between;
+}
+
+.sp-account-drawer-top h2,
+.sp-account-drawer-top p {
+  margin: 0;
+}
+
+.sp-account-drawer-top h2 {
+  color: #11161d;
+  font-size: 1.3rem;
+}
+
+.sp-account-drawer-top p,
+.sp-account-drawer-profile span,
+.sp-account-drawer-summary span {
+  color: #647084;
+}
+
+.sp-account-drawer-top button {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: #eef0f3;
+  cursor: pointer;
+}
+
+.sp-account-drawer-profile {
+  gap: 14px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #f8fafc;
+}
+
+.sp-account-drawer-profile img {
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.sp-account-drawer-profile strong,
+.sp-account-drawer-profile span {
+  display: block;
+}
+
+.sp-account-drawer-profile strong {
+  color: #11161d;
+}
+
+.sp-account-drawer-profile span {
+  margin-top: 4px;
+  font-size: 0.9rem;
+}
+
+.sp-account-drawer-nav {
+  display: grid;
+  gap: 8px;
+}
+
+.sp-account-drawer-nav button,
+.sp-account-drawer-logout {
+  gap: 12px;
+  width: 100%;
+  min-height: 50px;
+  border: 0;
+  border-radius: 16px;
+  padding: 0 16px;
+  background: transparent;
+  color: #516072;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.sp-account-drawer-nav button.active {
+  background: #eaf2ff;
+  color: #005bcc;
+}
+
+.sp-account-drawer-summary {
+  gap: 14px;
+}
+
+.sp-account-drawer-summary > div {
+  flex: 1;
+  border-radius: 18px;
+  padding: 16px;
+  background: #f8fafc;
+}
+
+.sp-account-drawer-summary strong {
+  display: block;
+  margin-top: 8px;
+  color: #005bcc;
+  font-size: 1.4rem;
+}
+
+.sp-account-drawer-logout {
+  justify-content: center;
+  background: #fef2f2;
+  color: #c81e1e;
+}
+
+@media (max-width: 760px) {
+  .sp-account-drawer {
+    top: 10px;
+    right: 10px;
+    padding: 18px;
+  }
+}

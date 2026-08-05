@@ -1,0 +1,569 @@
+.sp-account-page {
+  width: min(1320px, calc(100% - 56px));
+  margin: 0 auto;
+  padding: 36px 0 88px;
+}
+
+.sp-account-hero,
+.sp-account-grid,
+.sp-account-page-head,
+.sp-account-certificate-grid,
+.sp-account-hero-card,
+.sp-account-hero-main,
+.sp-account-hero-stats,
+.sp-account-side-stack,
+.sp-account-activity-list,
+.sp-account-certificate-card {
+  display: grid;
+  gap: 20px;
+}
+
+.sp-account-hero,
+.sp-account-page-head {
+  margin-bottom: 28px;
+}
+
+.sp-account-hero-card,
+.sp-account-panel,
+.sp-account-metric-card,
+.sp-account-certificate-card {
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 56px rgba(15, 23, 42, 0.08);
+}
+
+.sp-account-hero-card,
+.sp-account-panel,
+.sp-account-certificate-card {
+  padding: 26px;
+}
+
+.sp-account-hero-main {
+  grid-template-columns: 140px minmax(0, 1fr);
+  align-items: center;
+}
+
+.sp-account-avatar-shell {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.sp-account-avatar-block {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  border: 1px solid #d9e0ea;
+  border-radius: 34px;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+}
+
+.sp-account-avatar-block img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.sp-account-avatar-upload {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 0 14px;
+  background: #eef4ff;
+  color: #005bcc;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.sp-account-avatar-upload input {
+  display: none;
+}
+
+.sp-account-hero-copy {
+  min-width: 0;
+}
+
+.sp-account-hero h1,
+.sp-account-page-head h1 {
+  margin: 8px 0 10px;
+  color: #11161d;
+  font-size: clamp(2.3rem, 4vw, 3.8rem);
+  line-height: 1.02;
+}
+
+.sp-account-hero p:last-child,
+.sp-account-page-head p:last-child,
+.sp-account-panel-head p,
+.sp-account-certificate-copy p,
+.sp-account-empty-state p,
+.sp-account-empty-inline,
+.sp-account-activity-item p,
+.sp-account-activity-item small {
+  color: #647084;
+}
+
+.sp-account-hero-stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sp-account-hero-stats article,
+.sp-account-metric-card {
+  min-height: 126px;
+  display: grid;
+  align-content: space-between;
+  gap: 14px;
+  border-radius: 24px;
+  padding: 20px 22px;
+  background: #f8fafc;
+}
+
+.sp-account-hero-stats span,
+.sp-account-metric-card span,
+.sp-account-info-grid label,
+.sp-account-summary-list span,
+.sp-account-certificate-meta span,
+.sp-account-field span {
+  display: block;
+  color: #647084;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.sp-account-hero-stats strong,
+.sp-account-metric-card strong,
+.sp-account-summary-list strong {
+  display: block;
+  color: #005bcc;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.sp-account-grid {
+  grid-template-columns: minmax(0, 1.5fr) 340px;
+  align-items: start;
+}
+
+.sp-account-main-panel {
+  min-height: 100%;
+}
+
+.sp-account-panel.accent {
+  background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+}
+
+.sp-account-panel-head h2,
+.sp-account-panel-head p,
+.sp-account-empty-state h2,
+.sp-account-empty-state p {
+  margin: 0;
+}
+
+.sp-account-panel-head-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.sp-account-panel-head h2 {
+  color: #11161d;
+  font-size: 1.6rem;
+  line-height: 1.15;
+}
+
+.sp-account-panel-head p {
+  margin-top: 8px;
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.sp-account-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sp-account-panel-actions button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 14px;
+  padding: 0 16px;
+  background: #005bcc;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.sp-account-panel-actions button.secondary {
+  background: #eef0f3;
+  color: #17243a;
+}
+
+.sp-account-panel-actions button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.sp-account-info-grid,
+.sp-account-form-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+}
+
+.sp-account-info-grid > div,
+.sp-account-field {
+  min-width: 0;
+}
+
+.sp-account-info-grid strong {
+  display: block;
+  min-height: 62px;
+  margin-top: 10px;
+  border-radius: 18px;
+  padding: 16px 18px;
+  background: #f8fafc;
+  color: #17243a;
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.sp-account-field {
+  display: grid;
+  gap: 10px;
+}
+
+.sp-account-field.span-2 {
+  grid-column: 1 / -1;
+}
+
+.sp-account-field input,
+.sp-account-field select,
+.sp-account-field textarea {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid #d9e0ea;
+  border-radius: 16px;
+  padding: 0 16px;
+  background: #f8fafc;
+  color: #17243a;
+  outline: none;
+}
+
+.sp-account-field textarea {
+  min-height: 128px;
+  padding: 14px 16px;
+  resize: vertical;
+}
+
+.sp-account-field.readonly input {
+  color: #647084;
+  cursor: not-allowed;
+  background: #f2f5f8;
+}
+
+.sp-account-field input:focus,
+.sp-account-field select:focus,
+.sp-account-field textarea:focus {
+  border-color: #7cb2ff;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 91, 204, 0.08);
+}
+
+.sp-account-field small,
+.sp-account-inline-error {
+  color: #b91c1c;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.sp-account-inline-error {
+  margin: 0;
+}
+
+.sp-account-summary-list {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sp-account-summary-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #e8edf3;
+  padding: 14px 0;
+}
+
+.sp-account-summary-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sp-account-summary-list strong {
+  font-size: 1.05rem;
+}
+
+.sp-account-activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  border-radius: 18px;
+  padding: 14px;
+  background: #f8fafc;
+}
+
+.sp-account-activity-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #eaf2ff;
+  color: #005bcc;
+  flex: 0 0 auto;
+}
+
+.sp-account-activity-item strong,
+.sp-account-certificate-copy h3 {
+  color: #11161d;
+}
+
+.sp-account-activity-item p,
+.sp-account-activity-item small {
+  margin: 4px 0 0;
+  line-height: 1.55;
+}
+
+.sp-account-page-head {
+  grid-template-columns: minmax(0, 1fr) 280px;
+  align-items: stretch;
+}
+
+.sp-account-certificate-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sp-account-certificate-card {
+  align-content: start;
+}
+
+.sp-account-certificate-top,
+.sp-account-certificate-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sp-account-badge {
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: #dbeafe;
+  color: #005bcc;
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.sp-account-certificate-top button {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 14px;
+  background: #f8fafc;
+  color: #005bcc;
+}
+
+.sp-account-certificate-copy h3,
+.sp-account-certificate-copy p,
+.sp-account-certificate-meta strong,
+.sp-account-certificate-meta small {
+  margin: 0;
+}
+
+.sp-account-certificate-copy p,
+.sp-account-certificate-meta {
+  margin-top: 12px;
+}
+
+.sp-account-certificate-meta strong {
+  display: block;
+  margin-top: 8px;
+  color: #17243a;
+}
+
+.sp-account-certificate-meta small {
+  display: block;
+  margin-top: 6px;
+  color: #647084;
+}
+
+.sp-account-certificate-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  margin-top: 16px;
+  border-radius: 14px;
+  padding: 0 16px;
+  background: #005bcc;
+  color: #ffffff;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.sp-account-empty-state,
+.sp-account-empty-inline {
+  border-radius: 20px;
+  background: #f8fafc;
+}
+
+.sp-account-empty-state {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 42px 24px;
+  text-align: center;
+}
+
+.sp-account-empty-state.compact {
+  padding: 24px;
+}
+
+.sp-account-empty-state span {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #eaf2ff;
+  color: #005bcc;
+}
+
+.sp-account-empty-inline {
+  padding: 18px;
+}
+
+.sp-account-payment-table-wrap {
+  overflow-x: auto;
+}
+
+.sp-account-payment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sp-account-payment-table th,
+.sp-account-payment-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid #eef0f3;
+  text-align: left;
+}
+
+.sp-account-payment-table th {
+  color: #647084;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.sp-account-payment-table td strong,
+.sp-account-payment-table td small {
+  display: block;
+}
+
+.sp-account-payment-table td strong {
+  color: #11161d;
+}
+
+.sp-account-payment-table td small {
+  margin-top: 6px;
+  color: #647084;
+}
+
+.sp-account-status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.sp-account-status-pill.success {
+  background: #dcfce7;
+  color: #047857;
+}
+
+.sp-account-status-pill.error {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.sp-account-status-pill.warning {
+  background: #fef3c7;
+  color: #a16207;
+}
+
+.sp-account-status-pill.muted {
+  background: #eef0f3;
+  color: #516072;
+}
+
+@media (max-width: 1180px) {
+  .sp-account-grid,
+  .sp-account-page-head,
+  .sp-account-certificate-grid,
+  .sp-account-hero-main,
+  .sp-account-hero-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .sp-account-info-grid,
+  .sp-account-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sp-account-field.span-2 {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .sp-account-page {
+    width: min(100% - 24px, 1320px);
+    padding-top: 24px;
+  }
+
+  .sp-account-panel-head-row,
+  .sp-account-panel-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .sp-account-avatar-block {
+    width: 112px;
+    height: 112px;
+    border-radius: 28px;
+  }
+
+  .sp-account-hero-card,
+  .sp-account-panel,
+  .sp-account-certificate-card {
+    padding: 20px;
+  }
+}

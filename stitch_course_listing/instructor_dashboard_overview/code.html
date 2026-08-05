@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina Academy | Instructor Portal</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#b4c5ff",
+              "on-tertiary-fixed-variant": "#653e00",
+              "surface-container-low": "#f3f3f3",
+              "secondary-fixed": "#d5e3fc",
+              "primary": "#004ac6",
+              "on-error-container": "#93000a",
+              "tertiary": "#784b00",
+              "surface-variant": "#e2e2e2",
+              "on-primary-fixed": "#00174b",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#ffb95f",
+              "outline": "#737686",
+              "surface-container-highest": "#e2e2e2",
+              "primary-container": "#2563eb",
+              "secondary-container": "#d5e3fc",
+              "secondary": "#515f74",
+              "on-tertiary-container": "#ffeedd",
+              "surface-bright": "#f9f9f9",
+              "on-primary-container": "#eeefff",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed": "#2a1700",
+              "secondary-fixed-dim": "#b9c7df",
+              "on-surface": "#1a1c1c",
+              "background": "#f9f9f9",
+              "surface-tint": "#0053db",
+              "on-secondary-container": "#57657a",
+              "inverse-surface": "#2f3131",
+              "surface-dim": "#dadada",
+              "outline-variant": "#c3c6d7",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#3a485b",
+              "on-secondary-fixed": "#0d1c2e",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e8e8e8",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#ffddb8",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-surface-variant": "#434655",
+              "inverse-on-surface": "#f1f1f1",
+              "surface-container": "#eeeeee",
+              "on-background": "#1a1c1c",
+              "inverse-primary": "#b4c5ff",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-container": "#996100",
+              "surface-container-lowest": "#ffffff",
+              "surface": "#f9f9f9",
+              "on-primary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 flex flex-col py-6">
+<div class="px-6 mb-10">
+<h1 class="text-xl font-bold tracking-tight text-slate-900">Lumina Academy</h1>
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest mt-1">Instructor Portal</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 bg-white text-blue-600 rounded-lg mx-2 shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 mx-2 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="text-sm font-medium">Course Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 mx-2 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span class="text-sm font-medium">Quiz &amp; Tests</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 mx-2 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-sm font-medium">Students</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 mx-2 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="text-sm font-medium">Interaction</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 mx-2 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<div class="p-4 bg-primary/5 rounded-xl border border-primary/10">
+<p class="text-xs font-semibold text-primary mb-1">Upgrade to Pro</p>
+<p class="text-[10px] text-slate-500 leading-tight">Unlock advanced student analytics and unlimited courses.</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-white/70 backdrop-blur-xl border-b border-slate-100 flex justify-between items-center h-16 px-8">
+<div class="flex items-center flex-1 max-w-md">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search lessons, students, or data..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-semibold text-slate-900 leading-none">Dr. Julian Voss</p>
+<p class="text-[10px] text-slate-500 font-medium mt-1">Senior Instructor</p>
+</div>
+<img alt="Instructor Avatar" class="h-10 w-10 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Portrait of a professional man in a dark blazer with a friendly smile, clean studio background, professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyxtQHXs_8GwwEtqMqZiDhk90o6IfweK7Fzxub4gGIDCo_CerFkiqClh306xFMTvoqKAk0B8nPqHkHFqC22m9-BGxin05taK9ojEE9dUgJnEpa_xodGPyVJRXrguB-Z2KEfdERh4TTyAE44oYfq1uSNpoaYRJPre9pV7URtxfYK9vSEuacO3mr3hJPjwT8ELHwyQBE9cfNOPobAsuFDV0L5niGbDRtBraSfhGmuPcxLYoGxkfREZa8Lk2lCu47WOYupXYjDxR4qSxh"/>
+</div>
+</div>
+</header>
+<!-- Canvas Content -->
+<div class="pt-24 pb-12 px-12">
+<!-- Welcome Header -->
+<section class="mb-10">
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface mb-2">Instructor Dashboard</h2>
+<p class="text-on-surface-variant max-w-2xl leading-relaxed">Good morning, Julian. Your students have been particularly active in the "Advanced UI Design" course today. Here is your overview for the last 30 days.</p>
+</section>
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<!-- Total Courses -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-50 rounded-lg">
+<span class="material-symbols-outlined text-blue-600" data-icon="book">book</span>
+</div>
+<span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">+12%</span>
+</div>
+<p class="text-on-surface-variant text-xs font-semibold tracking-wider uppercase">Total Courses</p>
+<h3 class="text-3xl font-extrabold text-on-surface mt-1">8</h3>
+</div>
+<!-- Total Students -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-50 rounded-lg">
+<span class="material-symbols-outlined text-purple-600" data-icon="group">group</span>
+</div>
+<span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">+5.4%</span>
+</div>
+<p class="text-on-surface-variant text-xs font-semibold tracking-wider uppercase">Total Students</p>
+<h3 class="text-3xl font-extrabold text-on-surface mt-1">1.2k</h3>
+</div>
+<!-- Total Revenue -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-amber-50 rounded-lg">
+<span class="material-symbols-outlined text-amber-600" data-icon="payments">payments</span>
+</div>
+<span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">+18%</span>
+</div>
+<p class="text-on-surface-variant text-xs font-semibold tracking-wider uppercase">Total Revenue</p>
+<h3 class="text-3xl font-extrabold text-on-surface mt-1">$15.4k</h3>
+</div>
+<!-- Avg. Completion -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-rose-50 rounded-lg">
+<span class="material-symbols-outlined text-rose-600" data-icon="task_alt">task_alt</span>
+</div>
+<span class="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded-full">-2.1%</span>
+</div>
+<p class="text-on-surface-variant text-xs font-semibold tracking-wider uppercase">Avg. Completion</p>
+<h3 class="text-3xl font-extrabold text-on-surface mt-1">78%</h3>
+</div>
+</div>
+<!-- Analytics Visualizer -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+<!-- Revenue Line Chart -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/15">
+<div class="flex justify-between items-center mb-10">
+<div>
+<h4 class="text-xl font-bold text-on-surface">Revenue Growth</h4>
+<p class="text-sm text-on-surface-variant">Earnings trajectory over the last 6 months</p>
+</div>
+<select class="text-xs font-medium border-none bg-surface-container-low rounded-lg focus:ring-0">
+<option>Last 6 Months</option>
+<option>Last Year</option>
+</select>
+</div>
+<!-- Mock Line Chart Visualization -->
+<div class="h-64 flex items-end justify-between gap-4 relative">
+<div class="absolute inset-0 flex flex-col justify-between py-2">
+<div class="border-b border-slate-100 w-full h-0"></div>
+<div class="border-b border-slate-100 w-full h-0"></div>
+<div class="border-b border-slate-100 w-full h-0"></div>
+<div class="border-b border-slate-100 w-full h-0"></div>
+</div>
+<div class="w-full h-full relative z-10">
+<!-- SVG for Line -->
+<svg class="w-full h-full drop-shadow-xl" viewbox="0 0 600 200">
+<path d="M0,180 Q100,160 150,140 T300,80 T450,100 T600,40" fill="none" stroke="#004ac6" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0,180 Q100,160 150,140 T300,80 T450,100 T600,40 V200 H0 Z" fill="url(#gradient)" opacity="0.1"></path>
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#004ac6;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#004ac6;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<circle cx="150" cy="140" fill="#004ac6" r="6" stroke="white" stroke-width="2"></circle>
+<circle cx="450" cy="100" fill="#004ac6" r="6" stroke="white" stroke-width="2"></circle>
+<circle cx="600" cy="40" fill="#004ac6" r="6" stroke="white" stroke-width="2"></circle>
+</svg>
+</div>
+</div>
+<div class="flex justify-between mt-4 px-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+<span>Jan</span>
+<span>Feb</span>
+<span>Mar</span>
+<span>Apr</span>
+<span>May</span>
+<span>Jun</span>
+</div>
+</div>
+<!-- Student Enrollment Bar Chart -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/15">
+<h4 class="text-xl font-bold text-on-surface mb-2">Student Trends</h4>
+<p class="text-sm text-on-surface-variant mb-10">New enrollments per month</p>
+<div class="h-64 flex items-end justify-between px-4">
+<div class="w-4 bg-slate-100 rounded-t-full h-1/2"></div>
+<div class="w-4 bg-slate-100 rounded-t-full h-2/3"></div>
+<div class="w-4 bg-primary rounded-t-full h-[85%]"></div>
+<div class="w-4 bg-slate-100 rounded-t-full h-1/3"></div>
+<div class="w-4 bg-primary rounded-t-full h-[60%]"></div>
+<div class="w-4 bg-slate-100 rounded-t-full h-[75%]"></div>
+</div>
+<div class="flex justify-between mt-4 px-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+<span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span><span>M6</span>
+</div>
+<div class="mt-10 p-4 bg-surface rounded-xl flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">trending_up</span>
+</div>
+<div>
+<p class="text-xs font-semibold text-on-surface">Highest Activity</p>
+<p class="text-[10px] text-on-surface-variant">Month 3 saw a 40% surge</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Lower Section: Activity and Top Courses -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Recent Activities -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/15">
+<div class="flex justify-between items-center mb-8">
+<h4 class="text-xl font-bold text-on-surface">Recent Activity</h4>
+<button class="text-primary text-xs font-bold uppercase tracking-wide hover:underline">View All</button>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4 group">
+<img alt="Student" class="h-10 w-10 rounded-full object-cover" data-alt="Young woman with curly hair smiling, casual outdoor setting, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfDwpRCO9X48fgQOXF5BJeV7eZrk5hWMwjdSMbd0PiiID4oVPNLhzWyNAEFkqwgQcasxpVFhavzgRYEHRcZJT5XVx5qdLcJOC5LiDXqP0BPzrwHJiKuKogGx7LzZNaavu2eBUQCTWKxoxqktTc0AC4yoQlTWXoug_mcV1wL0O3lWP1vKKuQa3e-dYOZ2zxoF1yn5O-Ld95zbIdjIA5QoU1iWf2BP_hKN8LOBf3xdJ-5E0a_aVhCVohStrm94HtkDiQPMyhCC7zd4h_"/>
+<div class="flex-1">
+<p class="text-sm font-semibold text-on-surface">Sarah Jenkins <span class="font-normal text-on-surface-variant">enrolled in</span> Advanced UI Design</p>
+<p class="text-[10px] text-slate-400 mt-0.5">2 minutes ago</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 group">
+<img alt="Student" class="h-10 w-10 rounded-full object-cover" data-alt="Close-up portrait of a young man with glasses, neutral expression, clean indoor office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgXxWkpHLpHIVZyk6fBigQjDZc9Uv5S81CU4ClmXWdvL_EZm2x6s91jYUXffuPojG2Y4G4thpKjETfqRJjevdLbsz9wts8Glh_jCv88XQw6b2cQJtLFq8l3ONS9MixFnNsSBXUIJqv5AjhoLn9W5eydDOKBwsfDI_vAdKgtSX2r5v05kmZi9AJn_p6_AAMFdleC12rHScwNl0dxLmxSvvMS4S5qGJMtXaBMh31zZIdxcA8DB9h9QK2vBnb39QO7CASCuBEBie2I7K_"/>
+<div class="flex-1">
+<p class="text-sm font-semibold text-on-surface">Marcus Thorne <span class="font-normal text-on-surface-variant">completed quiz</span> Branding Fundamentals</p>
+<p class="text-[10px] text-slate-400 mt-0.5">14 minutes ago</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-on-surface">Elena Rodriguez <span class="font-normal text-on-surface-variant">left a comment on</span> Lesson 4: Grids</p>
+<p class="text-[10px] text-slate-400 mt-0.5">1 hour ago</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 group">
+<img alt="Student" class="h-10 w-10 rounded-full object-cover" data-alt="Smiling teenage boy in a simple white t-shirt, bright daytime lighting, minimalist wall background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzesEgwU-OXBNIk48out7AoXdGZMBVSorPDp3hbGGnKiz-v8yXn3cqMo6d-DmtEq8LiH8Y9gXDNTXgfOQoEYKkTtEI3i1g_22HO0qslzVe7fJcsAkeZama6K-rqWaWUiGGBSzrTlef2ll3HTJGSeJ7b9U7dOMeUC3ggkWE-ghYphe-Ygh_RKo0-sGS1WfxhFIUjqArHFCYjQnGMmi7pD1Vg-MSmKvlZ6QD-CyJLyWFbLtJdaqGgyOlVhN6IhCJnYOqLXUXKAaZK-Zm"/>
+<div class="flex-1">
+<p class="text-sm font-semibold text-on-surface">Kevin Park <span class="font-normal text-on-surface-variant">purchased</span> Masterclass Bundle</p>
+<p class="text-[10px] text-slate-400 mt-0.5">3 hours ago</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Top Performing Courses -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/15">
+<div class="flex justify-between items-center mb-8">
+<h4 class="text-xl font-bold text-on-surface">Top Performing</h4>
+<span class="text-xs font-semibold text-slate-500">By Revenue</span>
+</div>
+<div class="space-y-4">
+<!-- Course Item -->
+<div class="flex items-center gap-4 p-3 hover:bg-slate-50 rounded-xl transition-colors">
+<img alt="Course Thumbnail" class="h-16 w-24 rounded-lg object-cover" data-alt="Modern minimalist aesthetic mockup of a smartphone and laptop on a clean desk, neutral tones, soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwyU_KhaUVF3YUYw4AacQ4NKFykWDSPv1vPMUKRKXJXSHmLT20IUHjJgHj1hGKhmeBYT-rYlC1X-9ZVOkGesTXMJHxeSVd1JViR72r8LAVYEw7tCn4cFwOGYIV7d13XbEmrMvEP7Q_gKXFLeGaZx1pap5UeBEkKU4bZRRkkEBB9KCJnYW4ie9RjfwFmwXIrApKo_t_btun2MT1kWOLmSzzQpoYXJ5JfwQbhaEmg1UigAn0oehIToqPSDCSb_E4tTDiNDdB1Zco_KDN"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-on-surface truncate">Advanced UI Design Mastery</p>
+<div class="flex items-center gap-3 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-amber-500" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">4.9</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">428 Students</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-extrabold text-primary">$8,420</p>
+<p class="text-[10px] font-semibold text-emerald-600">↑ 14%</p>
+</div>
+</div>
+<!-- Course Item -->
+<div class="flex items-center gap-4 p-3 hover:bg-slate-50 rounded-xl transition-colors">
+<img alt="Course Thumbnail" class="h-16 w-24 rounded-lg object-cover" data-alt="High-tech aesthetic with glowing blue hardware components and wires, cinematic perspective, futuristic feel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSBZsjNG8wjd7FQIomUVKf03hPw-IBM0Gg24r5FS_Z9P1XN2M3GTU-TjLAqKe05EU4LtqAmO4tu-webW0WNB_79WptQgRISp54RO_rGitbQBkns5sfddcYQLVUO8Nma-VxIXUQd7iu0lDBke0yqMXElRJYMsC1js_XPWCxUvHEMPiiRmF5RqpeRUX1PGE3lJKVf8E83retlFUk5Vl7gHBltNjCLfuSWV0An0iVyfXoJt63C-1SKn6KSQx2SA5m5DIXbPvaPCVjC8no"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-on-surface truncate">Motion Graphics with Figma</p>
+<div class="flex items-center gap-3 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-amber-500" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">4.7</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">312 Students</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-extrabold text-primary">$4,150</p>
+<p class="text-[10px] font-semibold text-emerald-600">↑ 8%</p>
+</div>
+</div>
+<!-- Course Item -->
+<div class="flex items-center gap-4 p-3 hover:bg-slate-50 rounded-xl transition-colors">
+<img alt="Course Thumbnail" class="h-16 w-24 rounded-lg object-cover" data-alt="Creative workspace with scattered design tools, sketches, and a bright tablet screen, vibrant colors, artistic overhead shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoreNlAwnO0M6Xgr8y8O9l7rX-hgJPlSWjsZFJ1PXzi2T1i9-roJxUhJ9Uj9KRkRGvil0uepcR_cbGXTON17TFlgQgz4vVBcqupMLuxMl0PckVAtHp9C68Zd79caQxLFO8F3AVpGU-cYjGc0tj03IAEDYwgWM4tKs7j0qAJH2apdEfHqLv2kg19tY5pIJN6_yqQYunvouf6SZ8guoalxqrZkuUHUxltniwvCrrFgkEa2NQHRiZN3lYTmVa9vWd9Qh3UuIl1Yl5QK09"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-on-surface truncate">Branding Fundamentals</p>
+<div class="flex items-center gap-3 mt-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-amber-500" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">4.8</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">195 Students</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-extrabold text-primary">$2,830</p>
+<p class="text-[10px] font-semibold text-on-surface-variant">Stable</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB -->
+<button class="fixed bottom-8 right-8 bg-primary text-white h-14 w-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:opacity-80 transition-all z-50">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+</body></html>

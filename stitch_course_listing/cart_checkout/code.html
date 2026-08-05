@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholar - Course Enrollment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-container": "#c55500",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "primary": "#005bbf",
+                        "secondary-fixed-dim": "#bfc7d4",
+                        "on-primary-fixed": "#001a41",
+                        "on-primary-fixed-variant": "#004493",
+                        "error": "#ba1a1a",
+                        "surface-container": "#edeeef",
+                        "on-background": "#191c1d",
+                        "inverse-primary": "#adc7ff",
+                        "on-secondary-fixed": "#141c26",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#575f6b",
+                        "on-tertiary-fixed-variant": "#783100",
+                        "tertiary-fixed": "#ffdbcb",
+                        "outline-variant": "#c1c6d6",
+                        "outline": "#727785",
+                        "inverse-surface": "#2e3132",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "on-secondary-container": "#5d6571",
+                        "surface-tint": "#005bc0",
+                        "on-error": "#ffffff",
+                        "background": "#f8f9fa",
+                        "primary-fixed": "#d8e2ff",
+                        "secondary-fixed": "#dbe3f1",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#3f4752",
+                        "surface-container-high": "#e7e8e9",
+                        "primary-fixed-dim": "#adc7ff",
+                        "on-tertiary-fixed": "#341100",
+                        "on-tertiary-container": "#0e0200",
+                        "surface-container-low": "#f3f4f5",
+                        "on-surface-variant": "#414754",
+                        "surface-dim": "#d9dadb",
+                        "tertiary": "#9e4300",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface": "#f8f9fa",
+                        "secondary-container": "#dbe3f1",
+                        "primary-container": "#1a73e8",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#ffffff",
+                        "on-surface": "#191c1d"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .editorial-shadow {
+            box-shadow: 0 40px 80px -20px rgba(25, 28, 29, 0.06);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm">
+<div class="flex items-center justify-between px-6 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-blue-800">Scholar</span>
+<nav class="hidden md:flex gap-8 items-center font-manrope tracking-tight font-semibold">
+<a class="text-slate-600 hover:text-blue-600 transition-colors" href="#">Courses</a>
+<a class="text-slate-600 hover:text-blue-600 transition-colors" href="#">Categories</a>
+<a class="text-blue-700 border-b-2 border-blue-700 pb-1" href="#">Cart</a>
+<a class="text-slate-600 hover:text-blue-600 transition-colors" href="#">Interaction</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-50 rounded-lg transition-all active:scale-95 duration-200 ease-in-out text-slate-600">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-50 rounded-lg transition-all active:scale-95 duration-200 ease-in-out text-blue-700 relative">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden ml-2 border border-outline-variant">
+<img alt="User profile avatar with dropdown" data-alt="professional portrait of a smiling young male academic in a modern workspace with natural soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiXQi51Ugd-zDI4MWj5ZIUjedJ5QMrrDJOuVOs2fBPlNEk0QEQ34ytULUyQ8w6Qpbasn0eBW9kQr7tvbRs0-Vn3XIsGg6XTLznZhp3PzwcTLABsD9NxR3E9vflYhJivAdtr27ZDeXz5o2b8gf_CVmLHczRmVMJYUlw1miYDtk9H9SHqgFrEW6y2axAnqFj5YaoGXVq_zyekmgELCPlwgQFWVTy3gUsSgu8Ezk92h0Yhi_5HP0Bf5ql_hPFcWKwL7euk3KMTQDAalm0"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-6 max-w-screen-2xl mx-auto">
+<div class="flex flex-col lg:flex-row gap-16">
+<!-- Cart Section -->
+<div class="flex-1">
+<h1 class="font-headline text-4xl font-extrabold tracking-tight mb-2 text-on-background">Your Learning Cart</h1>
+<p class="font-body text-on-surface-variant mb-12">2 courses selected for your intellectual growth.</p>
+<div class="space-y-10">
+<!-- Course Item 1 -->
+<div class="group flex flex-col md:flex-row gap-8 items-start md:items-center bg-surface-container-lowest p-6 rounded-xl transition-all duration-300 hover:bg-white editorial-shadow">
+<div class="w-full md:w-48 h-32 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Cybersecurity Fundamentals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="clean high-tech visual of glowing blue circuits and digital lock icon with futuristic bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIuhhTyxK2wA2Au-uNK9bbJHkt7nMGLZxyU6T8gxQxZn5J0_u8umzmvrcwXmGNqQOhGf8mE6roa4_Yuxxx_1-0GMs3z5CmW5cZE01jAMMW6CmOJEZEjtfdHHNnAwTXAo9PE2rt9GdWXr1KUWYhFTJd7rGvUFAIBROmjljfAj_6UBDKP6d8fl1X-kS6gMMf63wms6atp81EIsY8ZW1EysW8YLhUJgN5J0DM1CF2wst-dWfZp2xZyjkq2TMXj-nxU2wFtdeqstVPr2TP"/>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between items-start">
+<div>
+<span class="inline-flex px-3 py-1 bg-primary-fixed text-on-primary-fixed text-xs font-bold rounded-full uppercase tracking-wider mb-2">Technology</span>
+<h3 class="font-headline text-xl font-bold text-on-surface leading-tight">Advanced Cybersecurity Architectures</h3>
+<p class="font-body text-sm text-on-surface-variant">by Dr. Marcus Thorne • 12 Weeks</p>
+</div>
+<div class="text-right">
+<p class="font-headline text-xl font-bold text-primary">$124.00</p>
+<p class="font-body text-sm text-outline line-through">$189.00</p>
+</div>
+</div>
+<div class="flex gap-4 pt-4">
+<button class="text-primary text-sm font-semibold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span> Remove
+                                </button>
+<button class="text-on-surface-variant text-sm font-semibold hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="favorite">favorite</span> Save for later
+                                </button>
+</div>
+</div>
+</div>
+<!-- Course Item 2 -->
+<div class="group flex flex-col md:flex-row gap-8 items-start md:items-center bg-surface-container-lowest p-6 rounded-xl transition-all duration-300 hover:bg-white editorial-shadow">
+<div class="w-full md:w-48 h-32 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Data Analytics Masterclass" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="modern minimalist office desk with professional charts on a laptop screen and a cup of coffee at sunrise" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4X5iFk6afOsozK26YuC-4C6cvREgHzgR5byTpgrOwrY-1-wu4Cb25flzgreAW1eNB_7XXe3lALJdbsgMI29lcfh-iJZX-5iFXbR-_v1MAPCmmj7Zka_jh28_yG5RwCLj4Z43NkRS-QaJSfY3yQwsQaLJZrTqHxlnybaVlQsxEcIs38doXgXq27EA6idW7Ssv7GU98t-fn94-_m5v1yhjpQPEQgLd2sCAaipCRFq-Wabw1MxRxMQ802v3eUi5zyrXLx6poPwLTSu0u"/>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between items-start">
+<div>
+<span class="inline-flex px-3 py-1 bg-primary-fixed text-on-primary-fixed text-xs font-bold rounded-full uppercase tracking-wider mb-2">Business</span>
+<h3 class="font-headline text-xl font-bold text-on-surface leading-tight">Data Analytics: The Strategic Narrative</h3>
+<p class="font-body text-sm text-on-surface-variant">by Sarah Jenkins • 8 Weeks</p>
+</div>
+<div class="text-right">
+<p class="font-headline text-xl font-bold text-primary">$89.00</p>
+</div>
+</div>
+<div class="flex gap-4 pt-4">
+<button class="text-primary text-sm font-semibold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span> Remove
+                                </button>
+<button class="text-on-surface-variant text-sm font-semibold hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="favorite">favorite</span> Save for later
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Wishlist Preview -->
+<section class="mt-24">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline text-2xl font-bold text-on-surface">From Your Wishlist</h2>
+<button class="text-primary font-semibold hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-surface-container-low p-5 rounded-xl flex gap-6 items-center">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="UI Design" class="w-full h-full object-cover" data-alt="macro close-up of a digital design tablet with vibrant purple and orange color swatches and clean interface design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXHmxz3MQCHcyOIqs1lewfk0QAi4iEvIJQ-inIJup6GmvyfyVgFnxlyKkQEpxTnxDH_npDFz58sqgj3Q27HO258ujBOH286wcqiio1uwLboXJidejhKk9J8ipXDsftYayvcWMg-jF_XMOWe2E_LL_IzrAOh7-xutTX46BJzXnyCEnJ6hsOOFf8qMnzxE9QXPiwhrqNynwMhGcTI-SsGGRLE2VZTan7lUWFCWYhPsUg6SlmKsGZkYW_jpmitirTYkHxhZFK9IZSfa63"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">Interface Psychology</h4>
+<p class="text-primary font-bold">$45.00</p>
+<button class="mt-2 text-xs font-bold uppercase tracking-widest text-on-secondary-fixed-variant hover:text-primary transition-colors">Add to Cart</button>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl flex gap-6 items-center">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Economics" class="w-full h-full object-cover" data-alt="architectural shot of a modern library atrium with high ceilings and sunlight streaming through geometric glass windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAShGune1uueOio2e21r7TZWxENG90qOzyAxDB6Of882bH7S1PWuYtNd6nf9SRysrT7WFE3IftgHQse4PL6CaBP03ldPi4joK2ig6pZkx0M6kSlbS6Jafgd_1W2S9aNWXw-sJFMBHM1ik0fHFPUWla4vEu7mW8HS7DHa7fY9Xi3Iq7sX-gI5usm1AA7sRTR7EMGQOJ0HbFjJ0ruEwhWSyAIUy_xnu2lPOf9ifs8b50Vc_9V57ujFAyvOD4xrxemEpEnjVJ6XLB2j3MV"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">Global Economics 101</h4>
+<p class="text-primary font-bold">$62.00</p>
+<button class="mt-2 text-xs font-bold uppercase tracking-widest text-on-secondary-fixed-variant hover:text-primary transition-colors">Add to Cart</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Price Summary Sidebar -->
+<aside class="w-full lg:w-96">
+<div class="sticky top-32 space-y-8">
+<div class="bg-surface-container-lowest p-8 rounded-2xl editorial-shadow">
+<h3 class="font-headline text-xl font-bold mb-6">Order Summary</h3>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between font-body text-on-surface-variant">
+<span>Original Price</span>
+<span>$278.00</span>
+</div>
+<div class="flex justify-between font-body text-tertiary">
+<span>Discounts</span>
+<span>-$65.00</span>
+</div>
+<div class="flex justify-between font-body text-on-surface-variant">
+<span>Tax (5%)</span>
+<span>$10.65</span>
+</div>
+<div class="pt-4 border-t border-outline-variant flex justify-between items-baseline">
+<span class="font-headline font-bold text-lg">Total</span>
+<span class="font-headline font-extrabold text-3xl text-primary">$223.65</span>
+</div>
+</div>
+<!-- Coupon Code -->
+<div class="mb-8">
+<label class="block text-xs font-bold uppercase tracking-widest text-outline mb-2" for="coupon">Coupon Code</label>
+<div class="flex gap-2">
+<input class="flex-1 bg-surface-container-low border-none border-b border-outline-variant focus:ring-0 focus:border-primary text-sm font-medium py-3 px-4" id="coupon" placeholder="SCHOLAR20" type="text"/>
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg font-bold text-sm hover:bg-slate-200 transition-colors">Apply</button>
+</div>
+</div>
+<!-- Checkout Button -->
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-200">
+                            Proceed to Checkout
+                        </button>
+<p class="text-center text-xs text-outline mt-6 font-medium">30-Day Money Back Guarantee</p>
+</div>
+<!-- Trust Badges -->
+<div class="grid grid-cols-2 gap-4 px-4">
+<div class="flex flex-col items-center text-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="verified_user">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">Secure Payment</span>
+</div>
+<div class="flex flex-col items-center text-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="history_edu">history_edu</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">Official Certificate</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-white/80 backdrop-blur-lg border-t border-slate-100 z-50">
+<button class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">My Learning</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-blue-50 text-blue-700 rounded-xl px-4 py-1">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Cart</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Profile</span>
+</button>
+</nav>
+<!-- Footer Space -->
+<footer class="bg-surface-container py-12 px-6">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-xl font-bold tracking-tighter text-blue-800/50">Scholar</div>
+<div class="flex gap-8 text-sm font-medium text-outline">
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+<div class="text-sm text-outline">© 2024 Scholar Academy. All rights reserved.</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management | Scholar Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-primary": "#b4c5ff",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "surface-container": "#eeeeee",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "primary": "#004ac6",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary-container": "#996100",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "secondary-container": "#d5e3fc",
+                        "background": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#737686",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "surface-dim": "#dadada",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-tint": "#0053db",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-container": "#57657a",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary": "#515f74",
+                        "on-primary-fixed": "#00174b",
+                        "on-background": "#1a1c1c",
+                        "tertiary": "#784b00",
+                        "on-tertiary-container": "#ffeedd",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c3c6d7",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed": "#2a1700",
+                        "secondary-fixed": "#d5e3fc",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container-low": "#f3f3f3",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e2e2e2"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 bottom-0 w-64 bg-slate-50 dark:bg-slate-950 flex flex-col py-6 px-4 gap-2 z-50">
+<div class="px-4 mb-8">
+<h1 class="text-lg font-extrabold text-slate-900 dark:text-slate-100 font-headline">Editorial Scholar</h1>
+<p class="text-xs text-slate-500 font-medium">Admin Console</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-900 rounded-lg shadow-sm font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-sm font-medium">User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="text-sm font-medium">Course Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-medium">System Configuration</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-sm font-medium">General Content</span>
+</a>
+</nav>
+<div class="px-4 pt-4 mt-auto border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<img alt="Admin Avatar" class="w-8 h-8 rounded-full object-cover" data-alt="Professional portrait of a male educator with short dark hair and a warm smile, neutral grey background, corporate headshot style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNkwG4ERFbp6vc_eIZO8L2Y6zH2nyqR-fbL8_4JvMHIwGf0Uy_-M7gIJ6j9Mu7TbHE57H8WqQjRrQB1XreGAvkv6dW17D4tpvM542olk5U40ZZ8elA2sIvlOfM4I96O9Ksg1cpusuGLskC3YK4NnFjrM5HZEyv9fjdqz-_CsFNBlWw2ViB58X2iXBSWagYovW_TNL45Q5HpMPPcm_ut1lZ6TIzWeJwTJHnYiFwmUDq2AFrzPTbpxj0JwaOJxj7xn3eCmdm8sZHhNac"/>
+<div>
+<p class="text-xs font-bold text-on-surface">Alex Thompson</p>
+<p class="text-[10px] text-slate-500">Super Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 h-16 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl z-40 ml-64 flex items-center justify-between px-8 shadow-[0_8px_32px_rgba(26,28,28,0.06)]">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg" data-icon="search">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-lg py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-slate-400" placeholder="Search scholars, emails, or IDs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                Add User
+            </button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-24 pb-12 px-12 min-h-screen">
+<div class="max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-10">
+<h2 class="text-3xl font-extrabold text-on-surface tracking-tight font-headline mb-2">User Management</h2>
+<p class="text-on-surface-variant font-body">Review, manage, and curate the academic community across all disciplines.</p>
+</div>
+<!-- Stats & Filter Row (Asymmetric Bento Style) -->
+<div class="grid grid-cols-12 gap-6 mb-8">
+<!-- Quick Stats -->
+<div class="col-span-8 grid grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/15">
+<p class="text-label-md text-slate-500 font-bold uppercase tracking-wider text-[10px] mb-1">Total Users</p>
+<h3 class="text-4xl font-extrabold text-primary font-headline">12,482</h3>
+<div class="flex items-center gap-1 mt-2 text-xs text-green-600 font-medium">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+<span>+12% this month</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/15">
+<p class="text-label-md text-slate-500 font-bold uppercase tracking-wider text-[10px] mb-1">Active Now</p>
+<h3 class="text-4xl font-extrabold text-tertiary font-headline">842</h3>
+<div class="flex items-center gap-1 mt-2 text-xs text-slate-400">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+<span>Live academic sessions</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/15">
+<p class="text-label-md text-slate-500 font-bold uppercase tracking-wider text-[10px] mb-1">New Enrollment</p>
+<h3 class="text-4xl font-extrabold text-secondary font-headline">156</h3>
+<p class="mt-2 text-xs text-slate-400">Past 24 hours</p>
+</div>
+</div>
+<!-- Filters -->
+<div class="col-span-4 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/15">
+<h4 class="text-sm font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="tune">tune</span>
+                        Refine Directory
+                    </h4>
+<div class="space-y-3">
+<select class="w-full bg-surface-container-low border-none rounded-lg text-sm text-on-surface-variant py-2 focus:ring-primary/20">
+<option>All Roles</option>
+<option>Admin</option>
+<option>Teacher</option>
+<option>Student</option>
+</select>
+<select class="w-full bg-surface-container-low border-none rounded-lg text-sm text-on-surface-variant py-2 focus:ring-primary/20">
+<option>All Status</option>
+<option>Active</option>
+<option>Inactive</option>
+<option>Suspended</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Users Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden border border-outline-variant/15">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant/10">
+<tr>
+<th class="px-6 py-4 text-[11px] font-extrabold text-slate-500 uppercase tracking-widest">Scholar Details</th>
+<th class="px-6 py-4 text-[11px] font-extrabold text-slate-500 uppercase tracking-widest">Academic Role</th>
+<th class="px-6 py-4 text-[11px] font-extrabold text-slate-500 uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-[11px] font-extrabold text-slate-500 uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<img alt="User Avatar" class="w-10 h-10 rounded-lg object-cover" data-alt="Portrait of a professional woman with a bright smile, wearing a modern blazer, high-end photography with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMSqPnmPNROO8azO6CWcbUoiJsiqwuuErNVpIecr9uaG_JGhOBRTLpNgLAQhz4J1H-b6giHS49-plG3prlVQR5Y20K3vGEKy1rvGdFqVgCJJ9F237AYNjawHmYqXFnmLRgW3n2S-0vk5pGhwExudxlRC_uHUch2o80LusHdQn50pXQajETopGSDsxfNYwNIykiUSXSMNxVuipOHrlTVRTOvMUwOyfY0SHXNfrUD0pVpURjncxm0nzW5vUtWo-tJSf8rjZE-WnMZsAt"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Elena Rodriguez</p>
+<p class="text-xs text-slate-500">elena.r@scholared.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-secondary-container text-on-secondary-container">Teacher</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-xs font-semibold text-green-700">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="lock_open">lock_open</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<img alt="User Avatar" class="w-10 h-10 rounded-lg object-cover" data-alt="Close up of a young man with glasses and creative style, studio lighting, high resolution portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR-3dyDh9qIC2Nz1Tf_eEvnzP8MrS7h6oyeij-lQ9yrl3_RsbhT42KV45YlJ5QejtVWzO1n4b2ArfidYzaOyRT-CjUGR4ISaSmKY2NFD3BwuPoZLCPq9dc0oxMA7mGSWw934UrYx-spgnEqqNd3TTfK1gWxUnH5vSCh3_FDW9_ev3IlsQzsvXz2UL6T5nzue7wTt5FC0UdV7trEi9QIfxVDQhKjni5OY1dP_OB3UwcGbRv3dt4ZYgJs1BU4-Nuv6vLFWU--e-HVq74"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Marcus Chen</p>
+<p class="text-xs text-slate-500">m.chen@academy.org</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-tertiary-fixed text-on-tertiary-fixed-variant">Student</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>
+<span class="text-xs font-semibold text-slate-500">Inactive</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="lock">lock</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-white flex items-center justify-center font-bold text-sm">
+                                        SJ
+                                    </div>
+<div>
+<p class="text-sm font-bold text-on-surface">Sarah Jenkins</p>
+<p class="text-xs text-slate-500">s.jenkins@scholar.admin</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-primary-fixed text-on-primary-fixed-variant">Admin</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-xs font-semibold text-green-700">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="lock_open">lock_open</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-400 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-surface-container-low flex items-center justify-between">
+<p class="text-xs text-slate-500">Showing 1 to 10 of 12,482 scholars</p>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container-lowest border border-outline-variant/20 text-slate-400 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container-lowest border border-outline-variant/20 text-slate-600 text-xs font-bold hover:bg-slate-100">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container-lowest border border-outline-variant/20 text-slate-600 text-xs font-bold hover:bg-slate-100">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container-lowest border border-outline-variant/20 text-slate-400 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Add User Modal (Simulated overlay) -->
+<div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[60] flex items-center justify-center">
+<div class="bg-surface-container-lowest w-full max-w-xl rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] overflow-hidden">
+<div class="p-8 pb-0 flex items-center justify-between">
+<div>
+<h3 class="text-2xl font-extrabold text-on-surface font-headline tracking-tight">Onboard New Scholar</h3>
+<p class="text-sm text-on-surface-variant mt-1">Initialize credentials and assign academic access levels.</p>
+</div>
+<button class="p-2 hover:bg-slate-100 rounded-full text-slate-400 transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<form class="p-8 space-y-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-slate-500 uppercase tracking-widest px-1">Full Name</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-slate-400" placeholder="e.g. Julian Velt" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-slate-500 uppercase tracking-widest px-1">Institutional Email</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-slate-400" placeholder="j.velt@scholar.edu" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-slate-500 uppercase tracking-widest px-1">Academic Role</label>
+<select class="w-full bg-surface-container-high border-none rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary/20">
+<option>Student</option>
+<option>Teacher</option>
+<option>Guest Lecturer</option>
+<option>Curriculum Admin</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-slate-500 uppercase tracking-widest px-1">Initial Status</label>
+<div class="flex items-center gap-4 h-[44px]">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-primary focus:ring-primary" name="status" type="radio"/>
+<span class="text-xs font-semibold">Active</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-primary focus:ring-primary" name="status" type="radio"/>
+<span class="text-xs font-semibold">Pending</span>
+</label>
+</div>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-slate-500 uppercase tracking-widest px-1">Temporary Password</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all" type="password" value="Scho1arP@ssword"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg cursor-pointer" data-icon="visibility">visibility</span>
+</div>
+<p class="text-[10px] text-slate-400 mt-1">User will be prompted to change this upon first login.</p>
+</div>
+<div class="pt-4 flex items-center justify-end gap-3">
+<button class="px-6 py-2.5 rounded-lg text-sm font-bold text-slate-600 hover:bg-slate-100 transition-colors" type="button">Discard</button>
+<button class="px-8 py-2.5 rounded-lg text-sm font-bold bg-gradient-to-br from-primary to-primary-container text-white shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95" type="submit">Complete Onboarding</button>
+</div>
+</form>
+</div>
+</div>
+</body></html>

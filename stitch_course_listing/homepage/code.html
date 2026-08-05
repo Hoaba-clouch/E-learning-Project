@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Atelier | The Editorial Scholar Experience</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#2e3132",
+              "on-secondary-fixed": "#141c26",
+              "on-background": "#191c1d",
+              "surface-container-high": "#e7e8e9",
+              "on-primary-container": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-secondary-container": "#5d6571",
+              "primary": "#005bbf",
+              "surface-container-highest": "#e1e3e4",
+              "surface-container-lowest": "#ffffff",
+              "background": "#f8f9fa",
+              "error-container": "#ffdad6",
+              "on-tertiary-container": "#0e0200",
+              "secondary-fixed": "#dbe3f1",
+              "on-error": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface": "#f8f9fa",
+              "on-tertiary-fixed": "#341100",
+              "secondary-fixed-dim": "#bfc7d4",
+              "primary-fixed": "#d8e2ff",
+              "secondary": "#575f6b",
+              "error": "#ba1a1a",
+              "on-tertiary": "#ffffff",
+              "secondary-container": "#dbe3f1",
+              "outline": "#727785",
+              "surface-bright": "#f8f9fa",
+              "outline-variant": "#c1c6d6",
+              "on-surface": "#191c1d",
+              "inverse-primary": "#adc7ff",
+              "surface-container": "#edeeef",
+              "tertiary": "#9e4300",
+              "tertiary-container": "#c55500",
+              "surface-dim": "#d9dadb",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#001a41",
+              "on-surface-variant": "#414754",
+              "inverse-on-surface": "#f0f1f2",
+              "tertiary-fixed": "#ffdbcb",
+              "on-secondary-fixed-variant": "#3f4752",
+              "primary-container": "#1a73e8",
+              "on-primary-fixed-variant": "#004493",
+              "surface-variant": "#e1e3e4",
+              "tertiary-fixed-dim": "#ffb691",
+              "primary-fixed-dim": "#adc7ff",
+              "surface-tint": "#005bc0",
+              "surface-container-low": "#f3f4f5",
+              "on-tertiary-fixed-variant": "#783100"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .editorial-shadow {
+            box-shadow: 0 20px 40px -15px rgba(25, 28, 29, 0.06);
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #005bbf 0%, #1a73e8 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar Implementation from JSON -->
+<header class="fixed top-0 w-full z-50 glass-header shadow-sm dark:shadow-none">
+<nav class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-12">
+<a class="text-xl font-extrabold text-blue-800 dark:text-blue-300 tracking-tighter font-headline" href="#">Academic Atelier</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-manrope font-bold tracking-tight text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 pb-1" href="#">Home</a>
+<a class="font-manrope font-bold tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors duration-300" href="#">Courses</a>
+<a class="font-manrope font-bold tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors duration-300" href="#">About</a>
+<a class="font-manrope font-bold tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors duration-300" href="#">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border-none rounded-full px-6 py-2 text-sm w-64 focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Search courses..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-2 text-outline-variant">search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man with friendly expression in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtRTQ-fmTvyrMadMPGPglacPF08oozu_R1EmLy4vGwpvyAvrWdwwMw3c9ZLLuMNlk_oVdJmvewmgVuPWIOmMtR0xgEKtXElSdNhU1HAvQUgxqFNCTY7XdAVMBFJuDHhCGfvpKQWf_o6CBRzziHKD4Cj4YOj8TVW8oGQTRa1c1z9LhlyAH-6P0MmwVwKNd1YbxerBEuiEh03R44eWG4RAFeDM9zjNTz5TUL0nQqllYra2TSz8FAjsYM44W-NsaBNuQ8nG_JjFp7pf-w"/>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative px-6 py-20 lg:py-32 max-w-7xl mx-auto overflow-hidden">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="z-10">
+<h1 class="font-headline text-5xl lg:text-7xl font-extrabold tracking-tight text-on-surface mb-8 leading-[1.1]">
+                        Master your craft with <span class="text-primary">expert precision.</span>
+</h1>
+<p class="text-lg text-on-surface-variant mb-10 max-w-xl leading-relaxed">
+                        Academic Atelier provides a curated gallery of knowledge for the modern scholar. Access high-level instruction from global leaders in technology, design, and business.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="primary-gradient text-on-primary px-8 py-4 rounded-xl font-semibold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+                            Start Learning
+                        </button>
+<button class="bg-surface-container-highest text-on-surface px-8 py-4 rounded-xl font-semibold hover:bg-surface-container-high transition-colors">
+                            Browse Catalog
+                        </button>
+</div>
+<div class="mt-12 flex items-center gap-6">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-surface object-cover" data-alt="portrait of a smiling woman with glasses in a professional studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgU0_rAnQ1mUCTW9A_liboDqzTfEuU_SUYXe5usDoyFkYz2h187aH1ngQ17Reo36t5sXLZY1Ip6ckUpHd-VdOnCm6hslSRolKq4fJZgfD1q8BPlSMLly8xJe_UOjlGvRkhy61pEkix3EsKmvzAOt54ZiH2-vqnx5UZwF4_ZOuacOHz4Vb8_U78bXBCzTi5RSynVSeRi-svpqOq-tihhOVNDX8rFf8HQS2IKEVPkpg7zSzsB2S0N8truPunUpJNRWKbsEuI3OILy7DG"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface object-cover" data-alt="portrait of a young professional man with a friendly gaze outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQyWZ6TjOO-c3l4-IdQVxVBqxjO8fCpCrAx4Eikb_Fcn5PtTyK1sgja1sW0Fc2_EUGwLS03yQTbAh1t4HjonR-SdnvSEohDEfzf6o9DumC2vVdetYlRbhpyIYnMSopONzEgpH-pkND8YL13njc11G1qkQd0KxS86GfkK-fKK39440sxiSxWnj-OxIeCIm4six4oZpZ08vDS6stmbC7oRkZeJ5z3EzlZGkUyGNbsAYEZsbmn0RgqnLerRjwTaPMWKglhmqX9sFVHJ9D"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface object-cover" data-alt="portrait of a confident female educator with a warm smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAauQOFurVoSaFnD_aaFHuVJ-WVS0DxbZSzWU7Dvey6-JT-OXaHslWrwcgAufm7jMOHwQnuRpzzgv6xyOu0Sv7gJC4uTL3DqS_e_Vhp_R1hYny2KfOdFlzG2ytLb-kGn22RpW03BOD6s_cMrCqreRyXKUf8DRN9o8IYwEYrljlscP05-CmA0qWidCKJZp4RpKmHkWZPxrVoN00If5etQuf0kKdKnZOlAabqioH-u9aU7m7tGQGyp7oX-GeQq8PBs0hzVjooswZ51YO0"/>
+</div>
+<p class="text-sm text-on-surface-variant font-medium">Joined by <span class="text-on-surface font-bold">12k+</span> students this month</p>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square bg-primary-fixed rounded-[2rem] overflow-hidden rotate-3 editorial-shadow">
+<img class="w-full h-full object-cover -rotate-3 scale-110" data-alt="group of young diverse students collaborating around a laptop in a bright sunlit library environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHfBLIAm6zwd5c2qM-TDaVqTwKD2fXL3ul9HID3HPf-C0lT_TL5Cd03XvOX8vb5w__V1E34Rqdm2Irygk-ihsO5Zp5tJVKjj1HEw1ScxcxHHqaCn6R8dAGS4I-GVqh7rvnQaq80LtvnmTL12sUnDzTwe334qFzIA1cDmLkJ8LV2OrWC8x6VTz7Ts06YWPnE0CTArubC-wma9FPg97kTwEx6eL0hzcBODIbx6OoRnD1_xsWJe8Y2kH78Azs1WT8otDHPUzwbUNCWJhR"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-surface-container-lowest p-6 rounded-2xl shadow-xl editorial-shadow max-w-[240px]">
+<div class="flex items-center gap-4 mb-3">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary">Accredited</span>
+</div>
+<p class="text-sm font-medium text-on-surface">Official certificates from world-class institutions.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Section (Bento Style) -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div>
+<h2 class="font-headline text-3xl lg:text-4xl font-extrabold text-on-surface mb-4">Explore Disciplines</h2>
+<p class="text-on-surface-variant max-w-md">Our curriculum is curated into specialized ateliers designed for depth and mastery.</p>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        View all categories <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 md:row-span-2 bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col justify-between editorial-shadow min-h-[400px]">
+<div>
+<span class="material-symbols-outlined text-4xl text-primary mb-6">code</span>
+<h3 class="text-2xl font-bold mb-4">Engineering &amp; Architecture</h3>
+<p class="text-on-surface-variant">Master modern software engineering, AI, and systems design.</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-on-surface-variant">142 Courses</span>
+<button class="h-12 w-12 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">north_east</span>
+</button>
+</div>
+</div>
+<div class="bg-primary text-on-primary p-8 rounded-[2rem] flex flex-col justify-between editorial-shadow">
+<span class="material-symbols-outlined text-3xl mb-4">palette</span>
+<h3 class="text-xl font-bold">Visual Design</h3>
+<span class="text-sm opacity-80">84 Courses</span>
+</div>
+<div class="bg-surface-container-highest p-8 rounded-[2rem] flex flex-col justify-between editorial-shadow">
+<span class="material-symbols-outlined text-3xl text-on-surface mb-4">analytics</span>
+<h3 class="text-xl font-bold">Business Strategy</h3>
+<span class="text-sm text-on-surface-variant">56 Courses</span>
+</div>
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-[2rem] flex items-center justify-between editorial-shadow">
+<div class="flex items-center gap-6">
+<div class="h-16 w-16 bg-tertiary-fixed rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant text-3xl">psychology</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">Humanities &amp; Ethics</h3>
+<p class="text-sm text-on-surface-variant">Exploring the core of human thought.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Courses Section -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="mb-16">
+<span class="text-primary font-bold uppercase tracking-[0.2em] text-xs block mb-4">Academic Selection</span>
+<h2 class="font-headline text-4xl font-extrabold text-on-surface">Recommended Courses</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<!-- Course Card 1 -->
+<div class="group">
+<div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden editorial-shadow transition-all duration-300 group-hover:-translate-y-2">
+<div class="h-56 w-full relative">
+<img class="w-full h-full object-cover" data-alt="close-up of advanced computer hardware with glowing blue server lights and intricate tech details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrsdVJuNGA8kQNDEr_d9902Wkx3154ETvucNPJfvu_h_9dNLupbp9OuwJzrtmYpVokI6TsQsLQhD6e3h0BlcuOnaBfegGnH2Ed_283vMm_WkvFPDSnjwhrI9_xVHPGhyjDG0PkqrBru-6WV4KXitslxfO0DY047vy34GjAy8L5jJT3-ajkXjWawyfrUxTy4cIbm9iO_mDMALFe2J-dz0mrunD1fwr9y2mCe0FLyh_xOwyb1PeBhcbf579B6QBdvOKx_sM7shU9Kmd3"/>
+<div class="absolute top-4 left-4">
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary uppercase">Technology</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-xs font-medium text-on-surface-variant">(4,821 reviews)</span>
+</div>
+<h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">Advanced Cyber Security &amp; Ethical Defense</h3>
+<div class="flex items-center gap-3 mb-8">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="headshot of a young professional expert instructor with a confident smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChovwuDzBUayPg7gZOK-yWZZEJpIlarZdlkH-lTgz1I08R1VeF8OSdTzWT0Ijvp-In_4ZZhkbZ4P4NiOb2vnE2yMOMegS8D9TuigUIWmhG3-HvvBInHdZ73RZxEJpX78uyxhr55NepGYvVb0r7NAiHcR4Dhsk08M3uLbuX651us480Q4l3PIWif1uLrDdYuvDfMuFLXmEbjCeOH7JxqYXy9bJaBBpZFw6WV07ThColirwNIh3i1ejczw0US4b3BY8OJWOFfyC9rIXP"/>
+<span class="text-sm text-on-surface-variant">Prof. Marcus Thorne</span>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant/10 pt-6">
+<span class="text-2xl font-bold text-on-surface">$89.00</span>
+<button class="text-primary font-bold flex items-center gap-1">
+                                    Enroll <span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="group">
+<div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden editorial-shadow transition-all duration-300 group-hover:-translate-y-2">
+<div class="h-56 w-full relative">
+<img class="w-full h-full object-cover" data-alt="modern minimalist office desk with high-end designer tools and clean workspace aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgZqE5a5FOSN8jHrJ-nF-ifZO8Dhi-qY40NqslVkVnZ6J3ocU2SMz5w-MvV6Tjd5ZlwXe_6AmijEPcbC2kthIG-XUvFYesmSiCS0Z3jHkt5u1513i25VsJqT7RJuLng6rjvGU2nz5aYen8DBGAP4ST5xDK49mGXgba_QrUPAFWXSFiXMqqk9ifHk3L6AyL7-gXchWqvRUpFwlJUnJqfCO9irGsJY_XB2Np34gQfI8XL-Jopk1H076-_j15ohZkJMK2TH8gKxgRR-pf"/>
+<div class="absolute top-4 left-4">
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary uppercase">Design</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+<span class="text-xs font-medium text-on-surface-variant">(1,209 reviews)</span>
+</div>
+<h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">UX Architecture: The Science of Interaction</h3>
+<div class="flex items-center gap-3 mb-8">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="portrait of an experienced female designer in a creative studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJKWbBGtOZwMBeuZKn-PtJiUniMwElcsBRDWLo8UIxgT82wh1xpdSmEJnuIIVv_qeZ5yS731WDkZfD_yz6UyVCAfsJKJP6sLjO1U3IjV95Ee4sC83P6UhKZHfY626_wy46EkmMRoVhcNjkPMeaCS6w29VICZIkjYGHVvC0KZM4koUhLZWAWpq0dpJPkAS1BnSuLbkTlkM2O4TIX3EeitdAED6B-iYm4MCChHmNlMVqKesm8-j9Fk6T8Y0-5mvBtMMUxye4QScgZlgy"/>
+<span class="text-sm text-on-surface-variant">Elena Vance</span>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant/10 pt-6">
+<span class="text-2xl font-bold text-on-surface">$124.00</span>
+<button class="text-primary font-bold flex items-center gap-1">
+                                    Enroll <span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="group">
+<div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden editorial-shadow transition-all duration-300 group-hover:-translate-y-2">
+<div class="h-56 w-full relative">
+<img class="w-full h-full object-cover" data-alt="abstract business data visualization with clean lines and a soft blue color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB02JOI9HSY9tErQByURtC1sczXHZQSeB85lJ8vgDHa5yvGPOKSySmXbYs60SNnm0kvzoOtRlL5cB8AzpUwqJDixI1yLjqULiG13XiyhdeRKW6Mm3E1pKpApNo9I460uusMw2aCYaY1IU0ux2hORLTcdEu1EBeWoCNUBYV1IJ-WB6iGSxaPwzUW_mVEAZrI7yHumNqJXa_n8xN1RhZf6qak306BizhWQ9XC-ApyRAc3JnqGmewYl1qzLNGvDf3g1CVBcBeJvQQqvQEs"/>
+<div class="absolute top-4 left-4">
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary uppercase">Business</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<span class="text-xs font-medium text-on-surface-variant">(942 reviews)</span>
+</div>
+<h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">Quantitative Market Dynamics &amp; Forecasting</h3>
+<div class="flex items-center gap-3 mb-8">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="portrait of a professional financial analyst with a serious yet approachable expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb8PKscwyekbdxabkRCwf0maCO_W2Lvx9TT1v08GdYbcWxNRw-YReCaICdV8keenCVcXeD1VrtLZwWoQd89jNJLHW4TDipohOv8Y7NAACB9syYFiTFpK8ELjLCTVyT8uZ30twUgffAxuRCA38c9Orwcgz5X6DNfn8K3USFQlUQQNzddjK42oxwX8bjJ_8A14qqJJ3zTlpsPlBEfwpeZ7VjLRBQvHNGrwDe2XyAwVu1PkT7snl7nejIanQW750U9ItVlwP6v4-6P8jy"/>
+<span class="text-sm text-on-surface-variant">Dr. Julian Gray</span>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant/10 pt-6">
+<span class="text-2xl font-bold text-on-surface">$159.00</span>
+<button class="text-primary font-bold flex items-center gap-1">
+                                    Enroll <span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="max-w-7xl mx-auto px-6 mb-24">
+<div class="primary-gradient p-12 lg:p-20 rounded-[3rem] text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 p-20 opacity-10">
+<span class="material-symbols-outlined text-[300px]" style="font-variation-settings: 'wght' 700;">history_edu</span>
+</div>
+<div class="relative z-10">
+<h2 class="font-headline text-3xl lg:text-5xl font-extrabold text-white mb-6">Join our editorial newsletter</h2>
+<p class="text-on-primary/80 max-w-xl mx-auto mb-10 text-lg">Curated articles, course drops, and academic insights delivered once a week. No noise, just knowledge.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
+<input class="w-full bg-white/10 border-white/20 text-white placeholder:text-white/50 rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-white/30 backdrop-blur-md" placeholder="Enter your academic email" type="email"/>
+<button class="w-full sm:w-auto bg-white text-primary px-8 py-4 rounded-xl font-bold whitespace-nowrap hover:bg-white/90 transition-colors">
+                            Subscribe
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Implementation from JSON -->
+<footer class="bg-white dark:bg-slate-900 w-full py-12 border-t-0 bg-slate-50 dark:bg-slate-800/50">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-8">
+<div class="flex flex-col gap-4">
+<span class="text-lg font-bold text-slate-900 dark:text-white">Academic Atelier</span>
+<p class="font-inter text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400">© 2024 Academic Atelier. The Editorial Scholar Experience.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-inter text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors" href="#">Privacy Policy</a>
+<a class="font-inter text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors" href="#">Terms of Service</a>
+<a class="font-inter text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors" href="#">Cookie Policy</a>
+<a class="font-inter text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors" href="#">Sitemap</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">language</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">help</span>
+</div>
+</div>
+</footer>
+</body></html>

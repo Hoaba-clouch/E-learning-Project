@@ -1,0 +1,221 @@
+.sp-exam-review-page {
+  width: min(1400px, calc(100% - 56px));
+  margin: 0 auto;
+  padding: 42px 0 88px;
+}
+
+.sp-exam-review-head,
+.sp-exam-review-summary {
+  display: grid;
+  gap: 22px;
+}
+
+.sp-exam-review-head {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.sp-exam-review-head h1 {
+  margin: 10px 0 12px;
+  color: #11161d;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+}
+
+.sp-exam-review-head p:last-child {
+  margin: 0;
+  color: #647084;
+}
+
+.sp-exam-review-head button {
+  min-height: 46px;
+  border: 0;
+  border-radius: 14px;
+  padding: 0 18px;
+  background: #005bcc;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.sp-exam-review-summary {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 28px;
+}
+
+.sp-exam-review-summary-card,
+.sp-exam-review-list,
+.sp-exam-review-question {
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 14px 45px rgba(25, 34, 58, 0.06);
+}
+
+.sp-exam-review-summary-card {
+  padding: 22px;
+}
+
+.sp-exam-review-summary-card.hero {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+}
+
+.sp-exam-review-summary-card span,
+.sp-exam-review-summary-card p,
+.sp-exam-review-list-head p,
+.sp-exam-review-question-head span,
+.sp-exam-review-option small,
+.sp-exam-review-essay small {
+  color: #647084;
+}
+
+.sp-exam-review-summary-card strong {
+  display: block;
+  margin: 10px 0 8px;
+  color: #11161d;
+  font-size: 1.8rem;
+}
+
+.sp-exam-review-summary-card p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.sp-exam-review-list {
+  padding: 24px;
+}
+
+.sp-exam-review-list-head {
+  margin-bottom: 18px;
+}
+
+.sp-exam-review-list-head h2 {
+  margin: 0;
+  color: #11161d;
+}
+
+.sp-exam-review-list-head p {
+  margin: 8px 0 0;
+}
+
+.sp-exam-review-question-list {
+  display: grid;
+  gap: 18px;
+}
+
+.sp-exam-review-question {
+  padding: 24px;
+  border-left: 5px solid #cbd5e1;
+}
+
+.sp-exam-review-question.correct {
+  border-left-color: #16a34a;
+}
+
+.sp-exam-review-question.incorrect {
+  border-left-color: #dc2626;
+}
+
+.sp-exam-review-question.pending {
+  border-left-color: #eab308;
+}
+
+.sp-exam-review-question-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.sp-exam-review-question-head h3 {
+  margin: 10px 0 0;
+  color: #11161d;
+  line-height: 1.6;
+}
+
+.sp-exam-review-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: #f8fafc;
+}
+
+.sp-exam-review-badge .material-symbols-outlined {
+  color: #005bcc;
+}
+
+.sp-exam-review-options {
+  display: grid;
+  gap: 12px;
+}
+
+.sp-exam-review-option,
+.sp-exam-review-essay {
+  border-radius: 18px;
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.sp-exam-review-option strong,
+.sp-exam-review-option small {
+  display: block;
+}
+
+.sp-exam-review-option small {
+  margin-top: 6px;
+}
+
+.sp-exam-review-option.selected {
+  border-color: #fca5a5;
+  background: #fff1f2;
+}
+
+.sp-exam-review-option.correct {
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.sp-exam-review-essay p {
+  margin: 0;
+  color: #17243a;
+  line-height: 1.8;
+}
+
+.sp-exam-review-essay small {
+  display: block;
+  margin-top: 14px;
+}
+
+@media (max-width: 1024px) {
+  .sp-exam-review-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sp-exam-review-summary-card.hero {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .sp-exam-review-page {
+    width: min(100% - 28px, 1400px);
+  }
+
+  .sp-exam-review-head,
+  .sp-exam-review-question-head {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .sp-exam-review-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .sp-exam-review-summary-card.hero {
+    grid-column: span 1;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "profile": {
+    "fullNameMin": "Họ và tên cần ít nhất 3 ký tự.",
+    "phoneInvalid": "Số điện thoại không đúng định dạng.",
+    "dateOfBirthInvalid": "Ngày sinh không hợp lệ.",
+    "genderInvalid": "Giới tính không hợp lệ.",
+    "addressMax": "Địa chỉ không được vượt quá 255 ký tự.",
+    "avatarMax": "Ảnh đại diện không được vượt quá 5MB."
+  }
+}

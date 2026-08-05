@@ -1,0 +1,15 @@
+{
+  "language": {
+    "label": "Ngôn ngữ",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "actions": {
+    "close": "Đóng",
+    "continue": "Tiếp tục",
+    "understood": "Đã hiểu"
+  },
+  "statusModal": {
+    "closeLabel": "Đóng thông báo"
+  }
+}

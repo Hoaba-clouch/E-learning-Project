@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholar - Student Progress &amp; Certification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#c55500",
+              "on-primary": "#ffffff",
+              "surface-variant": "#e1e3e4",
+              "primary": "#005bbf",
+              "secondary-fixed-dim": "#bfc7d4",
+              "on-primary-fixed": "#001a41",
+              "on-primary-fixed-variant": "#004493",
+              "error": "#ba1a1a",
+              "surface-container": "#edeeef",
+              "on-background": "#191c1d",
+              "inverse-primary": "#adc7ff",
+              "on-secondary-fixed": "#141c26",
+              "surface-container-lowest": "#ffffff",
+              "secondary": "#575f6b",
+              "on-tertiary-fixed-variant": "#783100",
+              "tertiary-fixed": "#ffdbcb",
+              "outline-variant": "#c1c6d6",
+              "outline": "#727785",
+              "inverse-surface": "#2e3132",
+              "on-error-container": "#93000a",
+              "tertiary-fixed-dim": "#ffb691",
+              "on-secondary-container": "#5d6571",
+              "surface-tint": "#005bc0",
+              "on-error": "#ffffff",
+              "background": "#f8f9fa",
+              "primary-fixed": "#d8e2ff",
+              "secondary-fixed": "#dbe3f1",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#3f4752",
+              "surface-container-high": "#e7e8e9",
+              "primary-fixed-dim": "#adc7ff",
+              "on-tertiary-fixed": "#341100",
+              "on-tertiary-container": "#0e0200",
+              "surface-container-low": "#f3f4f5",
+              "on-surface-variant": "#414754",
+              "surface-dim": "#d9dadb",
+              "tertiary": "#9e4300",
+              "on-secondary": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "surface-container-highest": "#e1e3e4",
+              "inverse-on-surface": "#f0f1f2",
+              "surface": "#f8f9fa",
+              "secondary-container": "#dbe3f1",
+              "primary-container": "#1a73e8",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#ffffff",
+              "on-surface": "#191c1d"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+      }
+      .editorial-shadow {
+        box-shadow: 0 40px 60px -15px rgba(25, 28, 29, 0.06);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm">
+<div class="flex items-center justify-between px-6 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-blue-800">Scholar</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-manrope tracking-tight font-semibold text-slate-600 hover:text-blue-600 transition-colors" href="#">Courses</a>
+<a class="font-manrope tracking-tight font-semibold text-slate-600 hover:text-blue-600 transition-colors" href="#">Categories</a>
+<a class="font-manrope tracking-tight font-semibold text-slate-600 hover:text-blue-600 transition-colors text-blue-700 border-b-2 border-blue-700 pb-1" href="#">My Learning</a>
+<a class="font-manrope tracking-tight font-semibold text-slate-600 hover:text-blue-600 transition-colors" href="#">Interaction</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="User profile avatar with dropdown" data-alt="close-up portrait of a professional woman with a warm smile in a brightly lit modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPl27SHA8INocJgoqi9zSz3fAB2wJSInnd-qI_gK_Tsdgj3jjHJlWuiq4kv827qqS9z7w31OSMpdxY4n6dQ7UiqDtmWx01z5AcOjQWXT8b56Bvxf3JLk3GQ0d7GSm2as67HmhAKA1DbPpP0a_no7jU1qNuctJocX1UPD0LkKPtARxwj2Lx6S6aO9BoUUbGBy-QvRC1gsOYwS6KaTCxjZKeYuVE-NKdS3R63TA9d7hIm1itO03itnGWyeaZqsgiMZ7_NVg_0QecVOTO"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-28 pb-24 md:pb-12 px-6 max-w-screen-2xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-on-surface mb-2">Academic Achievement</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl">Visualizing your intellectual growth. Track your milestones, manage your credentials, and plan your next scholarly pursuit.</p>
+</header>
+<!-- Bento Grid Dashboard -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Active Progress Section (Left/Top) -->
+<section class="lg:col-span-8 space-y-8">
+<div class="bg-surface-container-low p-8 rounded-xl">
+<h2 class="font-headline text-xl font-bold text-primary mb-8">Active Curriculums</h2>
+<div class="grid gap-6">
+<!-- Course Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl editorial-shadow group transition-all hover:-translate-y-1">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-primary-fixed text-on-primary-fixed text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Intermediate</span>
+<span class="text-on-surface-variant text-sm font-medium">8 / 12 Lessons Complete</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-4">Advanced Architectural Typography</h3>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-1000" style="width: 66.6%"></div>
+</div>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all hover:brightness-110 active:scale-95">
+<span>Continue</span>
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl editorial-shadow group transition-all hover:-translate-y-1">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Advanced</span>
+<span class="text-on-surface-variant text-sm font-medium">14 / 42 Lessons Complete</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-4">Post-Modern UI Philosophy &amp; Practice</h3>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full transition-all duration-1000" style="width: 33.3%"></div>
+</div>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all hover:brightness-110 active:scale-95">
+<span>Continue</span>
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Learning History -->
+<div class="bg-surface-container-low p-8 rounded-xl">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline text-xl font-bold text-primary">Academic History</h2>
+<button class="text-primary font-semibold text-sm hover:underline">Export Full Transcript</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Design Systems for Scale</p>
+<p class="text-sm text-on-surface-variant">Completed Dec 14, 2023</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-primary font-bold">Grade: A+</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Human-Computer Interaction 101</p>
+<p class="text-sm text-on-surface-variant">Completed Oct 28, 2023</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-primary font-bold">Grade: A</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Certification Section (Right/Bottom) -->
+<aside class="lg:col-span-4 space-y-8">
+<!-- Certificate Preview -->
+<div class="bg-slate-900 text-white p-8 rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="minimalist abstract background with flowing deep blue and purple gradients and fine grain texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3ofTSQA6evajEtOcDlqitv41yvds0NiyGJYry7hzAURVmg21f-KgJ5VdeXZzf_gwq-UsWH1VjeFcDsiz1qb7jMB8Uux-GFZ-bjov_gIVEnGEaClog3VYoOEeJTrqMkCmEDkDs0QyEm1nHI8Ne8moJefykS-kRrOnqKdGHajbZ-YuWdyo4ioF2u_ib2FpbWHCkFc0DlEsGkFG5I4jphunVdqLnmPWmMrtjJdEBAv6TiwxQpMu9QhuG2gt1YSSmKPFPJL_eskLDPuu7"/>
+</div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl mb-4 text-blue-400" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<h2 class="font-headline text-2xl font-bold mb-2">Verified Credentials</h2>
+<p class="text-slate-400 text-sm mb-8 leading-relaxed">Your professional certification for "Full-Stack Design Engineering" is ready for validation.</p>
+<div class="aspect-[1.414/1] bg-white rounded p-4 mb-6 shadow-2xl transform transition-transform group-hover:scale-105">
+<div class="border border-slate-200 h-full w-full p-2 flex flex-col items-center justify-center text-slate-800 text-center">
+<div class="text-[8px] uppercase tracking-tighter mb-1 font-bold">The Scholar Institute</div>
+<div class="w-12 h-px bg-blue-600 mb-2"></div>
+<div class="text-[10px] font-headline font-extrabold leading-none mb-1">CERTIFICATE OF EXCELLENCE</div>
+<div class="text-[6px] italic mb-2">awarded to</div>
+<div class="text-[12px] font-bold text-blue-800 mb-1">Jane Doe</div>
+<div class="text-[5px] text-slate-500 max-w-[100px]">Successfully completing the advanced curriculum in modern interface systems.</div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                                Download PDF
+                            </button>
+<button class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="share">share</span>
+                                Share to LinkedIn
+                            </button>
+</div>
+</div>
+</div>
+<!-- Motivation/Stats Widget -->
+<div class="bg-white p-8 rounded-xl editorial-shadow">
+<h3 class="font-headline text-lg font-bold text-on-surface mb-6">Learning Velocity</h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Daily Streak</span>
+<div class="flex items-center gap-1 text-tertiary font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                14 Days
+                            </div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Total Hours</span>
+<span class="text-primary font-bold">128.5 hrs</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Global Rank</span>
+<span class="text-primary font-bold">Top 5%</span>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-slate-100">
+<p class="text-sm italic text-on-surface-variant leading-relaxed">"The beautiful thing about learning is that no one can take it away from you."</p>
+<p class="text-xs font-bold text-on-surface mt-2">— B.B. King</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 md:hidden bg-white/80 backdrop-blur-lg shadow-[0_-4px_12px_rgba(0,0,0,0.05)] z-50">
+<a class="flex flex-col items-center justify-center text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-blue-50 text-blue-700 rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">My Learning</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

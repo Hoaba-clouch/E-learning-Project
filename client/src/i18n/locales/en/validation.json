@@ -1,0 +1,10 @@
+{
+  "profile": {
+    "fullNameMin": "Full name must contain at least 3 characters.",
+    "phoneInvalid": "The phone number format is invalid.",
+    "dateOfBirthInvalid": "The date of birth is invalid.",
+    "genderInvalid": "The selected gender is invalid.",
+    "addressMax": "Address cannot exceed 255 characters.",
+    "avatarMax": "The profile image cannot exceed 5MB."
+  }
+}

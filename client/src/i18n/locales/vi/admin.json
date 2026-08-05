@@ -1,0 +1,41 @@
+{
+  "brand": {
+    "title": "LearnX E-Learning",
+    "subtitle": "Trang quản trị"
+  },
+  "nav": {
+    "dashboard": "Tổng quan",
+    "teachers": "Quản lý giảng viên",
+    "students": "Quản lý học viên",
+    "courses": "Quản lý khóa học",
+    "system": "Cấu hình hệ thống",
+    "content": "Nội dung chung"
+  },
+  "topbar": {
+    "searchLabel": "Tìm kiếm",
+    "defaultSearch": "Tìm kiếm trong hệ thống...",
+    "adminName": "Quản trị viên",
+    "adminRole": "Quản trị hệ thống",
+    "logout": "Đăng xuất"
+  },
+  "sidebar": {
+    "proLabel": "Quản trị thông minh",
+    "defaultDescription": "Theo dõi dữ liệu, vận hành người dùng và cấu hình nền tảng LearnX."
+  },
+  "descriptions": {
+    "dashboard": "Dashboard đang kết nối với dữ liệu quản trị thực tế.",
+    "teachers": "Theo dõi chuyên môn, khóa học và trạng thái tài khoản giảng viên.",
+    "students": "Theo dõi tiến độ và quản lý học viên trên toàn hệ thống.",
+    "courses": "Biên tập, theo dõi và đánh giá các khóa học trong hệ sinh thái.",
+    "system": "Bảng điều khiển tổng cho nhận diện nền tảng và giao thức bảo mật.",
+    "content": "Quản lý blog, FAQ và banner truyền thông cho nền tảng."
+  },
+  "search": {
+    "dashboard": "Tìm thống kê, khóa học hoặc người dùng...",
+    "teachers": "Tìm giảng viên, chuyên môn hoặc email...",
+    "students": "Tìm học viên, hồ sơ hoặc nhật ký...",
+    "courses": "Tìm khóa học, giảng viên hoặc thẻ...",
+    "system": "Tìm cấu hình hệ thống...",
+    "content": "Tìm bài viết, FAQ hoặc banner..."
+  }
+}

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholar - Explore Courses</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#c55500",
+              "on-primary": "#ffffff",
+              "surface-variant": "#e1e3e4",
+              "primary": "#005bbf",
+              "secondary-fixed-dim": "#bfc7d4",
+              "on-primary-fixed": "#001a41",
+              "on-primary-fixed-variant": "#004493",
+              "error": "#ba1a1a",
+              "surface-container": "#edeeef",
+              "on-background": "#191c1d",
+              "inverse-primary": "#adc7ff",
+              "on-secondary-fixed": "#141c26",
+              "surface-container-lowest": "#ffffff",
+              "secondary": "#575f6b",
+              "on-tertiary-fixed-variant": "#783100",
+              "tertiary-fixed": "#ffdbcb",
+              "outline-variant": "#c1c6d6",
+              "outline": "#727785",
+              "inverse-surface": "#2e3132",
+              "on-error-container": "#93000a",
+              "tertiary-fixed-dim": "#ffb691",
+              "on-secondary-container": "#5d6571",
+              "surface-tint": "#005bc0",
+              "on-error": "#ffffff",
+              "background": "#f8f9fa",
+              "primary-fixed": "#d8e2ff",
+              "secondary-fixed": "#dbe3f1",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#3f4752",
+              "surface-container-high": "#e7e8e9",
+              "primary-fixed-dim": "#adc7ff",
+              "on-tertiary-fixed": "#341100",
+              "on-tertiary-container": "#0e0200",
+              "surface-container-low": "#f3f4f5",
+              "on-surface-variant": "#414754",
+              "surface-dim": "#d9dadb",
+              "tertiary": "#9e4300",
+              "on-secondary": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "surface-container-highest": "#e1e3e4",
+              "inverse-on-surface": "#f0f1f2",
+              "surface": "#f8f9fa",
+              "secondary-container": "#dbe3f1",
+              "primary-container": "#1a73e8",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#ffffff",
+              "on-surface": "#191c1d"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background antialiased">
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm flex items-center justify-between px-6 py-4 max-w-screen-2xl mx-auto left-0 right-0">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-blue-800">Scholar</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-manrope tracking-tight font-semibold text-slate-600 hover:text-blue-600 transition-colors" href="#">Courses</a>
+<a class="font-manrope tracking-tight font-semibold text-blue-700 border-b-2 border-blue-700 pb-1" href="#">Categories</a>
+<a class="font-manrope tracking-tight font-semibold text-slate-600 hover:text-blue-600 transition-colors" href="#">Cart</a>
+<a class="font-manrope tracking-tight font-semibold text-slate-600 hover:text-blue-600 transition-colors" href="#">Interaction</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">shopping_cart</span>
+</button>
+<img alt="User Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" data-alt="professional headshot of a student with a friendly expression in a brightly lit academic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASvDKbGk8eaJ1s2BVgHU4tVgiLXPd5jc1p5j7HVOBhKkQq9BnHgQwDeezBzg7KcYFWnGTD0ZH_EguLQNs1hTl_Hzd0bnyBdw8AjNDTJSxwuP_oGEERFqbO-_6PtOyE9Syef4qzOZxHfxqWswpnrL8AKMiAq37DGwxmRnuDZeuS6H2-js0MQ8PxEfPRDpu4sQs9zeAHz9Q18FTAmPJ-dwoUjigNQQH2vcxavcxC91rP1Ajb0L0iOLQPYWQd2IqZEu1Z6cCC4PJDeWVW"/>
+</div>
+</nav>
+<main class="pt-24 pb-20 md:pb-0 px-6 max-w-screen-2xl mx-auto">
+<header class="relative overflow-hidden rounded-3xl mb-12 bg-primary-container p-8 md:p-16 text-on-primary-container">
+<div class="relative z-10 max-w-2xl">
+<h1 class="font-headline text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">Master your craft with expert precision.</h1>
+<p class="text-lg opacity-90 mb-10 font-body max-w-lg">Access a curated selection of advanced courses designed for the modern intellectual. From digital strategy to fine arts.</p>
+<div class="flex flex-col sm:flex-row gap-3 bg-white/10 backdrop-blur-md p-2 rounded-2xl border border-white/20">
+<div class="flex-1 flex items-center px-4 gap-3 bg-white rounded-xl">
+<span class="material-symbols-outlined text-primary">search</span>
+<input class="w-full py-4 border-none focus:ring-0 text-on-surface placeholder:text-outline font-medium" placeholder="Search for 'Digital Typography' or 'Data Science'..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-semibold hover:opacity-90 transition-all active:scale-95">
+                        Explore
+                    </button>
+</div>
+</div>
+<div class="absolute -right-20 -top-20 w-[600px] h-[600px] bg-gradient-to-br from-white/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+</header>
+<div class="flex flex-col md:flex-row gap-12">
+<aside class="w-full md:w-64 flex-shrink-0 space-y-10">
+<div>
+<h3 class="font-headline font-bold text-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">filter_list</span>
+                        Filters
+                    </h3>
+<div class="space-y-8">
+<section>
+<label class="block text-sm font-semibold text-on-surface-variant uppercase tracking-widest mb-4">Category</label>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-on-surface-variant group-hover:text-primary transition-colors">Design &amp; Arts</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-on-surface-variant group-hover:text-primary transition-colors">Technology</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-on-surface-variant group-hover:text-primary transition-colors">Business</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-on-surface-variant group-hover:text-primary transition-colors">Humanities</span>
+</label>
+</div>
+</section>
+<section>
+<label class="block text-sm font-semibold text-on-surface-variant uppercase tracking-widest mb-4">Price Range</label>
+<div class="px-2">
+<input class="w-full h-1.5 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+<div class="flex justify-between mt-3 text-xs font-medium text-outline">
+<span>$0</span>
+<span>$500+</span>
+</div>
+</div>
+</section>
+<section>
+<label class="block text-sm font-semibold text-on-surface-variant uppercase tracking-widest mb-4">Min. Rating</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-white border border-outline-variant text-xs font-bold hover:border-primary transition-all">4.0+</button>
+<button class="flex-1 py-2 rounded-lg bg-primary text-on-primary text-xs font-bold transition-all">4.5+</button>
+</div>
+</section>
+</div>
+</div>
+</aside>
+<section class="flex-1">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline text-2xl font-bold tracking-tight">842 results for <span class="text-primary">"Design"</span></h2>
+<div class="flex items-center gap-3">
+<span class="text-sm font-medium text-on-surface-variant">Sort by:</span>
+<select class="bg-surface-container-low border-none rounded-xl text-sm font-semibold focus:ring-primary/20 py-2 pl-4 pr-10">
+<option>Most Popular</option>
+<option>Newest First</option>
+<option>Price: Low to High</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="close-up of a high-resolution tablet showing vibrant minimalist UI designs with clean typography and soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-Iog4SfKLd3vsdwrEEZVS0XOx2lDS-H4DSY5cjW503U-X8xV9GDrC7RBK4CD7gtMsir0rUfgWv-AX7BRE-dKnybfnonqAFzkmfn3Dg1VxiFTFk6sFcnleM36rUN1K2F0Q1227iqkr9J6S81Mjr6F0UmyjQYh92hM8UL-jkghmIA-nVhY-DaDlP17kZG7LYnko_eCoz9Xlbb7c0260ngK_loJGkZTVaMFM4kHddJ2Vl8aWSUzXp2-ftgKBCB_8HlPEiTDN3Jt3nMaJ"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase text-primary">Bestseller</div>
+</div>
+<div class="p-6">
+<p class="text-[11px] font-bold text-primary tracking-widest uppercase mb-2">Design Mastery</p>
+<h3 class="font-headline font-bold text-lg mb-2 leading-snug group-hover:text-primary transition-colors">Advanced Visual Systems &amp; Information Architecture</h3>
+<div class="flex items-center gap-3 mb-6">
+<img class="w-6 h-6 rounded-full" data-alt="portrait of a senior design director with grey hair and glasses, creative and approachable look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeC2mgjeG3OBpAGUVtEqyNxx0bptTrryHGwvb5azf4wteAhjJg9NxShcDq8f0AMG_kBdC58QDHMy5XKHLaUxngm7LQuN0FQn7HPWDm18PRLOdq6DWmpm7RuGM-k-wnHntJNubxMCtWfG3vdv_gZnV0-jUyd1bNXyNY1dEX2yjek7gJ4YbS-PQD7fAi5Ur130y-dL1tMXvDfJkRoW4_D3lez5KN0sDawimR3Uu0tMxDzz3VE5o2wOJxxFGfrMItxdlNNZ0KTXDj7cIp"/>
+<span class="text-sm text-on-surface-variant font-medium">Prof. Julian Vane</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container pt-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">4.9</span>
+<span class="text-xs text-outline font-medium">(1.2k)</span>
+</div>
+<span class="font-headline font-bold text-xl text-primary">$89.00</span>
+</div>
+</div>
+</div>
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="isometric 3D rendering of abstract geometric shapes in shades of blue and white, representing digital structures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXaUjxNHChfPu8zxV9n0RoZJLT-jtjgYFSgbrjTJ4qDUpwja5rb1FfrwjXfo-v867EZkZjm_85iAcvH2DOSyjSzt3AUe7XuvC-zT0RPzpzF5eVQZV70V2MMQIgre6Nks-f3vFY2SwoQ7NMrvURp5yVx7UYuf-GonWacRgnEJjdXYqmSGm_FSfursZkS5Q6_a9VSa46RPPZQ7FcXzcFSlHmv29bQeyby7gMwZDsVUEJWQSyZmdLz2loJAevPl--V-PS47XTYt9LJUyp"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase text-on-surface">New Release</div>
+</div>
+<div class="p-6">
+<p class="text-[11px] font-bold text-primary tracking-widest uppercase mb-2">Typography</p>
+<h3 class="font-headline font-bold text-lg mb-2 leading-snug group-hover:text-primary transition-colors">The Editorial Method: Modern Type Layouts</h3>
+<div class="flex items-center gap-3 mb-6">
+<img class="w-6 h-6 rounded-full" data-alt="headshot of a young female graphic designer with a modern, stylish aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYHGAbxR4oofwx6-1pZQI5QxJaxYDKQ1U_1PSf9f_CS4wJ4lt_JtCVnatT_IXXFtu-0idRtvqCAZb9ZWPgj2ESI16zpL8YUSl_cDh8WQpvsxA2hEpQ_bZclPgdHXy7iNrQuasHEVOhS0cXs3_f7-wGHsx5H0bycPsjWJ4TB7HWTu52OInhpRa1at2QDI-bvzRyaxz9efAmZwjMq0JkfJUfmdrAfWdNEC5E5R-rA1Wa-zrJ2fqgnvEoCadSsZud8PEESL-3qFy4IV01"/>
+<span class="text-sm text-on-surface-variant font-medium">Sarah Jenkins</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container pt-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">4.7</span>
+<span class="text-xs text-outline font-medium">(842)</span>
+</div>
+<span class="font-headline font-bold text-xl text-primary">$120.00</span>
+</div>
+</div>
+</div>
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="minimalist desktop workspace with a laptop displaying complex data charts and clean code editors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4KvXAG7YDaYXiZ9_RbIaYcvz_N_0hZQT3ORXnBZJ0-RCcj1UQc6IG0qW0cYYMoKp8hiqe7p8xP5PseWtKVhus5BWkCcOHpolAdsqjr8xRfoNhtCLedb5dtmvLbr7eiNZige3obmeTw8RZ7M8JObj3Kcge_iH9fxj-XWSLCYaIxKrLcAEkJ905lYASlwkNTqT2OT9FMLTNz4tyTv__YPn8YUNFRxwr-w4USypaDsvHAvk2758RG2fwt74x0FYgVYMxkAa_dd3ctptj"/>
+</div>
+<div class="p-6">
+<p class="text-[11px] font-bold text-primary tracking-widest uppercase mb-2">Data Science</p>
+<h3 class="font-headline font-bold text-lg mb-2 leading-snug group-hover:text-primary transition-colors">Strategic Insights through Python &amp; SQL</h3>
+<div class="flex items-center gap-3 mb-6">
+<img class="w-6 h-6 rounded-full" data-alt="professional portrait of a male data scientist in a clean, modern studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHCQbzMFPl13F7m29uSgceWuXT9k4iVQKAum0g_Hr5B75HZrD8AIgu9kh07BKEvI89tLSqdEz9z1Ky3pOSPa3fi1m-SoSXJLrZ8B0It2bGp0PtwiYBtJyESnEgWbWmMJjuXB-BNW_vzTCG-0UJVlWbEy3qWBAItd0TY91Ppa78NIikVYNG98Lb7_G0tSpUXxMP1WZkTzH4PCtkqowaf54EndwMALLpVwKu8ftrfc_VXcH89CEgYBCjzxmPj0NvmGI-u5OeesAGGLl0"/>
+<span class="text-sm text-on-surface-variant font-medium">Dr. Alan Turing III</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container pt-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">4.8</span>
+<span class="text-xs text-outline font-medium">(3.1k)</span>
+</div>
+<span class="font-headline font-bold text-xl text-primary">$65.00</span>
+</div>
+</div>
+</div>
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="abstract close-up of paintbrush bristles with wet oil paint on a canvas, soft lighting and rich textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1B4GV6Zo5bsTJ_RPztiKBA7D7KL7up_WKoA6t9sRu4CKVYSXfI1svVjBV4sExKFaSsWXSEEqxoHVRh0hq0nBPu73Q0CImhpso7Rxl9xxbI_LGMbdQAyiyE5m44QaJ5WBvDhuGiQv2RZ59LFo5AZVyJqqaiT4Vyk7hjGA4Ev0dxV2FZyCwlcaxH2eKBZUqHwJESaZVaXxsPT34-Stcwwkp385a2qXercajWINmAe6s1FM1X6W0zefAfinMkokKtmr4h0PQ9haG_mCH"/>
+</div>
+<div class="p-6">
+<p class="text-[11px] font-bold text-primary tracking-widest uppercase mb-2">Fine Arts</p>
+<h3 class="font-headline font-bold text-lg mb-2 leading-snug group-hover:text-primary transition-colors">Oil Painting: Light, Shadow, and Skin Tones</h3>
+<div class="flex items-center gap-3 mb-6">
+<img class="w-6 h-6 rounded-full" data-alt="portrait of an artist in a paint-splattered studio with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBas-kFQgSE5OFDrOsQ5R6LANjdK1P7yAcnPUcjVdWd2zIVhl9CDZU2UCxEJw9Yc4BOHO0o6gwf3tDWJwd1HtrROYh1M2vBw0QeZdRP02NQGcaZCk9BhchvUYH8X8khACLk3KA5Npb4AqLByWeWS_caFPf4qS1NuQeMdeJhzRxaEyHeVkoCJYpN_aExs4s4LwCu8QXTeuR0jJfiJhJAW_zcKoDB8SkYrGUydpj1pjb5bYF5NmtD_wrAx7N1oGpw3gig4afWlezKmuZU"/>
+<span class="text-sm text-on-surface-variant font-medium">Elena Moretti</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container pt-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">5.0</span>
+<span class="text-xs text-outline font-medium">(212)</span>
+</div>
+<span class="font-headline font-bold text-xl text-primary">$145.00</span>
+</div>
+</div>
+</div>
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="group of creative professionals collaborating around a large wooden table in a bright, modern office space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ4H_KOBjsFvLIp4rG79hhC2Yh8ln6L-vztyCUmRIVwSQePBykPb__6uXPihZdbb8xcNItmY9n5SjVHyw93pjcJwQTWojJZDwLkZTzIA2hJ3XXJTo_bWSkD3WFsmEBjo7EhDtO80mhUP40DUJ5RexYkRZEzxl2gsdWSOq3wfug2mU65Z1zT0orfSotKO21Rml7fpSM89Qfk9sRdWSfNiHtgi3yb10JJuSDV93OBokBk63PYEJ-Y_0a8ooVO0KCuQKxg9LUhv7tWG0s"/>
+</div>
+<div class="p-6">
+<p class="text-[11px] font-bold text-primary tracking-widest uppercase mb-2">Business</p>
+<h3 class="font-headline font-bold text-lg mb-2 leading-snug group-hover:text-primary transition-colors">Product Management: From Vision to Launch</h3>
+<div class="flex items-center gap-3 mb-6">
+<img class="w-6 h-6 rounded-full" data-alt="headshot of a confident tech executive in a casual professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyRaYygZmEv-OhEDNSI1X8eRk09JE9kdkccS6RvC1uDSeqnKovsicf9uuC0bP2LkipK8AAiMx47VJMbkWplLAoTLWbdbG96wRPN49H9ymYcxv2vV-OGq6RheGy6YIXZarpkQRcacdENFjkF8L7bTY3dVW04Oba_jbL0OVc4xuvZSsVE1qbwp3Mh6vFEYSIaMImj18XwvP52TDIzpjz2pHFRmyLwEqGamkFewFWXx8-eMq4VsrGj1rf1kPf2p3wC3cm-DXoEcaDM8QW"/>
+<span class="text-sm text-on-surface-variant font-medium">Marcus Chen</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container pt-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">4.6</span>
+<span class="text-xs text-outline font-medium">(958)</span>
+</div>
+<span class="font-headline font-bold text-xl text-primary">$99.00</span>
+</div>
+</div>
+</div>
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="relative aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="hand-drawn architectural sketches and blueprints on a textured paper background with drafting tools" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAq3CZWUPA_2Ho1Ne9YZRoi85CWviQSDzJuZAzSyBJ4exQcHwI8U4L3xYukoDaXgPVqhEJwFrE2cUK9fkhUFO50yIPelrOuQFFesEKkpr6qQWG_RZgniKBo_sPoKVCp4SDxiXkwPdDx_8JU-_nRsWq0NyGFKdBzumJhUmErOLDAp-MYQzATAlptgnperMRLjFeb_E9iIUuqBA-pXXXCChXoBRf8gQRYWHCBLUW9Kyh_tGF4n69qbZkEwSj_MuT3aZbq30QbMlgp9HG"/>
+</div>
+<div class="p-6">
+<p class="text-[11px] font-bold text-primary tracking-widest uppercase mb-2">Architecture</p>
+<h3 class="font-headline font-bold text-lg mb-2 leading-snug group-hover:text-primary transition-colors">Sustainable Urban Planning in Modern Cities</h3>
+<div class="flex items-center gap-3 mb-6">
+<img class="w-6 h-6 rounded-full" data-alt="portrait of a focused architect looking at plans in a bright, airy office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARxs9u20iK57yiaSj7aBWNXwh9PWOrTHizV7Bbap3Mz3aMr_SjKlc8zqcJsXTPr_-hwvFLoIqBts28Fbe8NnTuiQFE6t03s5JGvTPudICZBBSRiTDZi9jKEPOrjhtMfSArI2uxZVPkj0NKcUn9RpQM5n3rNUYKI7-xjx1469V6gzWD6o5L9IYsFDNUg6KCZU3pfdKYKF8EtmCLjSilZkYooF176VIizTr2HcbxQTziD70N9bRbDFEU0BE75nXGRODqLOCCK24d1Cq0"/>
+<span class="text-sm text-on-surface-variant font-medium">David Holm</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container pt-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">4.9</span>
+<span class="text-xs text-outline font-medium">(1.4k)</span>
+</div>
+<span class="font-headline font-bold text-xl text-primary">$110.00</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16 flex justify-center pb-32">
+<button class="px-8 py-3 rounded-xl border border-outline-variant font-semibold hover:bg-surface-container transition-all active:scale-95">Load More Courses</button>
+</div>
+</section>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 md:hidden bg-white/80 backdrop-blur-lg border-t border-slate-100 z-50 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-slate-500 hover:bg-slate-50 py-2 flex-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:bg-slate-50 py-2 flex-1" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">My Learning</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-blue-50 text-blue-700 rounded-xl px-4 py-2 flex-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:bg-slate-50 py-2 flex-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

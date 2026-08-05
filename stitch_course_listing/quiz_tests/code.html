@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-fixed-dim": "#b4c5ff",
+            "on-tertiary-fixed-variant": "#653e00",
+            "surface-container-low": "#f3f3f3",
+            "secondary-fixed": "#d5e3fc",
+            "primary": "#004ac6",
+            "on-error-container": "#93000a",
+            "tertiary": "#784b00",
+            "surface-variant": "#e2e2e2",
+            "on-primary-fixed": "#00174b",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#ffb95f",
+            "outline": "#737686",
+            "surface-container-highest": "#e2e2e2",
+            "primary-container": "#2563eb",
+            "secondary-container": "#d5e3fc",
+            "secondary": "#515f74",
+            "on-tertiary-container": "#ffeedd",
+            "surface-bright": "#f9f9f9",
+            "on-primary-container": "#eeefff",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed": "#2a1700",
+            "secondary-fixed-dim": "#b9c7df",
+            "on-surface": "#1a1c1c",
+            "background": "#f9f9f9",
+            "surface-tint": "#0053db",
+            "on-secondary-container": "#57657a",
+            "inverse-surface": "#2f3131",
+            "surface-dim": "#dadada",
+            "outline-variant": "#c3c6d7",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed-variant": "#3a485b",
+            "on-secondary-fixed": "#0d1c2e",
+            "error-container": "#ffdad6",
+            "surface-container-high": "#e8e8e8",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#ffddb8",
+            "on-primary-fixed-variant": "#003ea8",
+            "on-surface-variant": "#434655",
+            "inverse-on-surface": "#f1f1f1",
+            "surface-container": "#eeeeee",
+            "on-background": "#1a1c1c",
+            "inverse-primary": "#b4c5ff",
+            "primary-fixed": "#dbe1ff",
+            "tertiary-container": "#996100",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#f9f9f9",
+            "on-primary": "#ffffff"
+          },
+          fontFamily: {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+    .glass-effect { backdrop-filter: blur(20px); background: rgba(255, 255, 255, 0.7); }
+    .editorial-shadow { box-shadow: 0 8px 32px rgba(26, 28, 28, 0.06); }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 dark:bg-slate-900 flex flex-col py-6 z-50">
+<div class="px-6 mb-10">
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Lumina Academy</h1>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-wider mt-1">Instructor Portal</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 mx-2 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 mx-2 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="font-medium text-sm">Course Management</span>
+</a>
+<!-- Active State: Quiz & Tests -->
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 rounded-lg mx-2 shadow-sm scale-98 active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-medium text-sm">Quiz &amp; Tests</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 mx-2 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium text-sm">Students</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 mx-2 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-medium text-sm">Interaction</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 mx-2 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-medium text-sm">Analytics</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<div class="p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a professional male instructor in a modern office setting with warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd1T2j7AIg6gIo20PF9CeoALNF9oQrjH7EmliqPbK5-Q6hKMmY5xvbQWTkxEQ7qyIHTIr2ngoxPuMBYy03kifqrM3Fv5DoJrca3zvu88qutZvZywnpcBTx9RXT5lnvy5zHEh9zyL5uQWEzwUKu36TNyzrRDBsP9QGORpq4S3nd9I_kxdj-KvuF6rqrOffvCgCreG0IkM8Tmj651A00qsztva68z2xsiP86HGuY9dm2tQl2AouVwhLY4W6msy_GiZqjQTkpMd-RUVQy"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Dr. Aris Thorne</p>
+<p class="text-xs text-slate-500 mt-1">Senior Lead</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800/50">
+<div class="flex justify-between items-center h-16 px-8">
+<div class="w-96">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg text-sm focus:ring-2 focus:ring-blue-500/20 transition-all outline-none" placeholder="Search assessments..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-slate-500 hover:text-blue-600 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</button>
+<button class="text-slate-500 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="p-12 max-w-7xl mx-auto">
+<!-- Editorial Header Section -->
+<section class="mb-12 flex justify-between items-end">
+<div>
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Quiz &amp; Test Management</h2>
+<p class="text-on-surface-variant text-lg max-w-xl font-body">Design and distribute intellectual assessments. Track real-time progress across your active courses.</p>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 editorial-shadow hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+          Create Quiz
+        </button>
+</section>
+<!-- Bento Layout for Stats & Main Table -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Summary Stats Bento Pieces -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
+<p class="text-label-md font-bold text-on-surface-variant uppercase tracking-widest text-xs mb-4">Total Assessments</p>
+<div class="flex items-end gap-3">
+<span class="text-5xl font-extrabold text-primary">24</span>
+<span class="text-tertiary font-bold mb-1 text-sm">+2 this week</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-8 rounded-xl editorial-shadow border-l-4 border-tertiary">
+<p class="text-label-md font-bold text-on-surface-variant uppercase tracking-widest text-xs mb-4">Live Quizzes</p>
+<div class="flex items-end gap-3">
+<span class="text-5xl font-extrabold text-on-surface">08</span>
+<div class="flex items-center gap-1 text-green-600 font-bold mb-1 text-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+              142 active students
+            </div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
+<p class="text-label-md font-bold text-on-surface-variant uppercase tracking-widest text-xs mb-4">Avg. Completion</p>
+<div class="flex items-end gap-3">
+<span class="text-5xl font-extrabold text-on-surface">87%</span>
+<span class="text-on-surface-variant font-medium mb-1 text-sm">Across all courses</span>
+</div>
+</div>
+<!-- Main Quiz List Table Container -->
+<div class="col-span-12 bg-surface-container-lowest rounded-2xl editorial-shadow overflow-hidden">
+<div class="p-8 border-b border-outline-variant/15 flex justify-between items-center">
+<h3 class="text-xl font-bold">Active Assessments</h3>
+<div class="flex gap-4">
+<button class="text-sm font-semibold text-on-surface-variant px-4 py-2 hover:bg-surface-container-high rounded-lg transition-colors">All</button>
+<button class="text-sm font-semibold text-primary px-4 py-2 bg-primary/5 rounded-lg transition-colors">Live Only</button>
+<button class="text-sm font-semibold text-on-surface-variant px-4 py-2 hover:bg-surface-container-high rounded-lg transition-colors">Drafts</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-8 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant">Assessment Title</th>
+<th class="px-8 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant">Linked Course</th>
+<th class="px-8 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant">Questions</th>
+<th class="px-8 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant">Status</th>
+<th class="px-8 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-8 py-5">
+<span class="font-bold text-on-surface">Introduction to Computational Logic</span>
+<p class="text-xs text-on-surface-variant mt-1">Modified 2 days ago</p>
+</td>
+<td class="px-8 py-5 text-sm font-medium">Computer Science 101</td>
+<td class="px-8 py-5 text-sm">20 MCQs</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
+<span class="w-1.5 h-1.5 bg-green-600 rounded-full"></span>
+                      Live
+                    </span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-primary font-bold text-sm">Edit</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-8 py-5">
+<span class="font-bold text-on-surface">Micro-Architecture Design Patterns</span>
+<p class="text-xs text-on-surface-variant mt-1">Modified 5 days ago</p>
+</td>
+<td class="px-8 py-5 text-sm font-medium">Advanced System Design</td>
+<td class="px-8 py-5 text-sm">15 MCQs, 5 T/F</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
+<span class="w-1.5 h-1.5 bg-green-600 rounded-full"></span>
+                      Live
+                    </span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-primary font-bold text-sm">Edit</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-8 py-5">
+<span class="font-bold text-on-surface">Ethics in Artificial Intelligence</span>
+<p class="text-xs text-on-surface-variant mt-1">Modified 1 week ago</p>
+</td>
+<td class="px-8 py-5 text-sm font-medium">Philosophy of Tech</td>
+<td class="px-8 py-5 text-sm">10 MCQs</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-200 text-slate-600 rounded-full text-xs font-bold">
+<span class="w-1.5 h-1.5 bg-slate-400 rounded-full"></span>
+                      Closed
+                    </span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-primary font-bold text-sm">View Analytics</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Quiz Builder Snippet / Floating Action Area -->
+<div class="col-span-12 bg-surface-container-high/50 p-12 rounded-3xl border-2 border-dashed border-outline-variant/50">
+<div class="flex flex-col lg:flex-row gap-12">
+<div class="lg:w-1/3">
+<h3 class="text-3xl font-extrabold text-on-surface mb-4 leading-tight">Quick Builder Snippet</h3>
+<p class="text-on-surface-variant font-medium mb-6">Instantly draft a question to add to your current active session. This editor supports rapid-fire question entry.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">Auto-save active</span>
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary text-xs font-bold rounded-lg uppercase tracking-wider">Rich Text Support</span>
+</div>
+</div>
+<div class="lg:w-2/3 bg-surface-container-lowest p-8 rounded-2xl editorial-shadow">
+<div class="space-y-6">
+<!-- Question Title -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Question Prompt</label>
+<textarea class="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="e.g. Which of the following best defines a singleton pattern?" rows="2"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Type -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Question Type</label>
+<select class="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20">
+<option>Multiple Choice</option>
+<option>True / False</option>
+<option>Open Ended</option>
+</select>
+</div>
+<!-- Points -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Point Value</label>
+<input class="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20" type="number" value="5"/>
+</div>
+</div>
+<!-- Answer Choices -->
+<div class="space-y-3">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Answer Alternatives</label>
+<div class="flex items-center gap-3 p-3 bg-surface-container rounded-xl">
+<div class="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center bg-primary">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<input class="flex-1 bg-transparent border-none p-0 text-sm focus:ring-0" type="text" value="A class that can only have one instance at a time."/>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant"></div>
+<input class="flex-1 bg-transparent border-none p-0 text-sm focus:ring-0" placeholder="Add distractor choice..." type="text"/>
+</div>
+<button class="text-xs font-bold text-primary flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-sm">add</span> Add Choice
+                  </button>
+</div>
+<div class="pt-4 border-t border-outline-variant/10 flex justify-end gap-4">
+<button class="text-on-surface-variant font-bold text-sm px-6 py-2">Discard</button>
+<button class="bg-primary text-white font-bold text-sm px-8 py-3 rounded-lg editorial-shadow">Save to Library</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Overlay Modal (Hidden Mockup Structure for "Create Quiz") -->
+<!-- Note: This UI represents the snippet described, integrated into the layout rather than a hidden state for visualization purposes -->
+<footer class="ml-64 p-8 text-center text-on-surface-variant text-xs opacity-50">
+    © 2024 Lumina Academy • Editorial Scholar Design System • Version 2.1
+  </footer>
+</body></html>

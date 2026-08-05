@@ -1,0 +1,41 @@
+{
+  "brand": {
+    "title": "LearnX E-Learning",
+    "subtitle": "Admin portal"
+  },
+  "nav": {
+    "dashboard": "Overview",
+    "teachers": "Instructor management",
+    "students": "Student management",
+    "courses": "Course management",
+    "system": "System configuration",
+    "content": "General content"
+  },
+  "topbar": {
+    "searchLabel": "Search",
+    "defaultSearch": "Search the system...",
+    "adminName": "Administrator",
+    "adminRole": "System administrator",
+    "logout": "Log out"
+  },
+  "sidebar": {
+    "proLabel": "Smart administration",
+    "defaultDescription": "Monitor data, operate users, and configure the LearnX platform."
+  },
+  "descriptions": {
+    "dashboard": "The dashboard is connected to live admin data.",
+    "teachers": "Track instructor expertise, courses, and account status.",
+    "students": "Track progress and manage students across the system.",
+    "courses": "Edit, monitor, and review courses in the ecosystem.",
+    "system": "Control brand identity and security protocol settings.",
+    "content": "Manage blogs, FAQs, and communication banners for the platform."
+  },
+  "search": {
+    "dashboard": "Search statistics, courses, or users...",
+    "teachers": "Search instructors, expertise, or email...",
+    "students": "Search students, profiles, or logs...",
+    "courses": "Search courses, instructors, or tags...",
+    "system": "Search system configuration...",
+    "content": "Search posts, FAQs, or banners..."
+  }
+}
