@@ -1,4 +1,24 @@
-USE elearning_system;
+-- Select the target database in the mysql command instead of hard-coding USE
+-- here.  This prevents a recovery/staging run from switching back to and
+-- resetting the live elearning_system database.
+
+-- Safety guard: this file resets every application table.  It may run on an
+-- empty schema, but an intentional reset of a populated database must opt in
+-- in the same MySQL session with:
+--   SET @ALLOW_DESTRUCTIVE_MOCK_SEED = 1;
+DROP PROCEDURE IF EXISTS assert_mock_seed_is_safe;
+DELIMITER $$
+CREATE PROCEDURE assert_mock_seed_is_safe()
+BEGIN
+    IF COALESCE(@ALLOW_DESTRUCTIVE_MOCK_SEED, 0) <> 1
+       AND EXISTS (SELECT 1 FROM users LIMIT 1) THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Refusing to reset populated database. Set @ALLOW_DESTRUCTIVE_MOCK_SEED = 1 explicitly.';
+    END IF;
+END$$
+DELIMITER ;
+CALL assert_mock_seed_is_safe();
+DROP PROCEDURE assert_mock_seed_is_safe;
 
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -58,6 +78,26 @@ VALUES
 (16, 'Học viên 09', 'hv09@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000009', NULL, 'STUDENT', 'ACTIVE'),
 (17, 'Học viên 10', 'hv10@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000010', NULL, 'STUDENT', 'ACTIVE');
 
+-- The remaining fixture rows reference student IDs through 30.  Keep those
+-- users in the seed so multi-row enrollment/payment/review inserts do not fail
+-- their foreign-key checks and leave a half-populated database.
+INSERT INTO users
+(user_id, full_name, email, password_hash, phone, avatar_url, role, status)
+VALUES
+(18, 'Học viên 11', 'hv11@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000011', NULL, 'STUDENT', 'ACTIVE'),
+(19, 'Học viên 12', 'hv12@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000012', NULL, 'STUDENT', 'ACTIVE'),
+(20, 'Học viên 13', 'hv13@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000013', NULL, 'STUDENT', 'ACTIVE'),
+(21, 'Học viên 14', 'hv14@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000014', NULL, 'STUDENT', 'ACTIVE'),
+(22, 'Học viên 15', 'hv15@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000015', NULL, 'STUDENT', 'ACTIVE'),
+(23, 'Học viên 16', 'hv16@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000016', NULL, 'STUDENT', 'ACTIVE'),
+(24, 'Học viên 17', 'hv17@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000017', NULL, 'STUDENT', 'ACTIVE'),
+(25, 'Học viên 18', 'hv18@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000018', NULL, 'STUDENT', 'ACTIVE'),
+(26, 'Học viên 19', 'hv19@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000019', NULL, 'STUDENT', 'ACTIVE'),
+(27, 'Học viên 20', 'hv20@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000020', NULL, 'STUDENT', 'ACTIVE'),
+(28, 'Học viên 21', 'hv21@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000021', NULL, 'STUDENT', 'ACTIVE'),
+(29, 'Học viên 22', 'hv22@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000022', NULL, 'STUDENT', 'ACTIVE'),
+(30, 'Học viên 23', 'hv23@elearning.vn', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', '0920000023', NULL, 'STUDENT', 'ACTIVE');
+
 INSERT INTO teacher_profiles
 (teacher_id, bio, specialization, experience_years, qualification, workplace)
 VALUES
@@ -80,6 +120,23 @@ VALUES
 (15, '2001-01-08', 'FEMALE', 'TP.HCM'),
 (16, '2001-01-09', 'MALE', 'TP.HCM'),
 (17, '2001-01-10', 'FEMALE', 'TP.HCM');
+
+INSERT INTO student_profiles
+(student_id, date_of_birth, gender, address)
+VALUES
+(18, '2001-01-11', 'MALE', 'TP.HCM'),
+(19, '2001-01-12', 'FEMALE', 'TP.HCM'),
+(20, '2001-01-13', 'MALE', 'TP.HCM'),
+(21, '2001-01-14', 'FEMALE', 'TP.HCM'),
+(22, '2001-01-15', 'MALE', 'TP.HCM'),
+(23, '2001-01-16', 'FEMALE', 'TP.HCM'),
+(24, '2001-01-17', 'MALE', 'TP.HCM'),
+(25, '2001-01-18', 'FEMALE', 'TP.HCM'),
+(26, '2001-01-19', 'MALE', 'TP.HCM'),
+(27, '2001-01-20', 'FEMALE', 'TP.HCM'),
+(28, '2001-01-21', 'MALE', 'TP.HCM'),
+(29, '2001-01-22', 'FEMALE', 'TP.HCM'),
+(30, '2001-01-23', 'MALE', 'TP.HCM');
 
 -- =========================
 -- 4. COURSE CATEGORIES
@@ -687,7 +744,8 @@ VALUES
 (8, 7, 'Có bài nộp mới', 'Học viên đã nộp bài thiết kế banner sale.', FALSE, '2026-06-25 09:00:00');
 
 -- 1. Cấu trúc: Thêm cột video giới thiệu cho Khóa học (nếu chưa có)
-ALTER TABLE courses ADD COLUMN video_url VARCHAR(255) AFTER thumbnail_url;
+-- Schema migrations create video_url. An unconditional ALTER here used to
+-- stop this data fixture halfway on an already-migrated database.
 
 -- 2. Cập nhật Thumbnail và Video Trailer cho 10 Khóa học
 UPDATE courses SET 
@@ -755,7 +813,7 @@ INSERT INTO course_modules (course_id, module_title, description, order_no) VALU
 
 -- 4. Thêm Bài học (Lessons) mẫu có video thực tế cho các chương học
 -- (Giả sử module_id từ 1 đến 20 là cũ, 21-30 là các chương mới thêm ở trên)
-INSERT INTO lessons (module_id, lesson_title, lesson_type, video_url, duration_minutes, order_no) VALUES 
+INSERT IGNORE INTO lessons (module_id, lesson_title, lesson_type, video_url, duration_minutes, order_no) VALUES 
 (1, 'Cài đặt VS Code và Extension', 'VIDEO', 'https://www.youtube.com/watch?v=QwS1r1mc888', 10, 1),
 (3, 'Cài đặt môi trường Node.js', 'VIDEO', 'https://www.youtube.com/watch?v=x0fSBAgTrH8', 15, 1),
 (21, 'Thực hành: Làm trang Portfolio cá nhân', 'VIDEO', 'https://www.youtube.com/watch?v=p_S8YV9_Osk', 30, 1),
@@ -945,3 +1003,27 @@ SET video_web_url = CASE
     WHEN MOD(lesson_id, 3) = 2 THEN 'https://www.w3schools.com/html/movie.mp4'
     ELSE 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
 END;
+
+-- Repair the three fixture courses that were accidentally assigned to
+-- STUDENT accounts.  Related ownership columns must follow the course owner so
+-- authorization checks behave consistently across course, batch and session.
+UPDATE courses
+SET teacher_id = CASE course_id
+    WHEN 8 THEN 7
+    WHEN 9 THEN 4
+    WHEN 10 THEN 5
+    ELSE teacher_id
+END
+WHERE course_id IN (8, 9, 10);
+
+UPDATE course_batches b
+INNER JOIN courses c ON c.course_id = b.course_id
+SET b.teacher_id = c.teacher_id;
+
+UPDATE class_sessions s
+INNER JOIN course_batches b ON b.batch_id = s.batch_id
+SET s.teacher_id = b.teacher_id;
+
+UPDATE course_reviews r
+INNER JOIN courses c ON c.course_id = r.course_id
+SET r.teacher_id = c.teacher_id;

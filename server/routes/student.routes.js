@@ -34,6 +34,7 @@ import {
 } from "../services/studentAssignments.service.js";
 import {
   createStudentVnpayPayment,
+  handleStudentVnpayIpn,
   verifyStudentVnpayReturn,
 } from "../services/studentPayments.service.js";
 import {
@@ -174,6 +175,22 @@ router.post("/payments/vnpay/create", requireAuth, async (req, res) => {
     });
   } catch (error) {
     handleRouteError(res, error, "Failed to create VNPAY payment.");
+  }
+});
+
+router.get("/payments/vnpay/ipn", async (req, res) => {
+  try {
+    const result = await handleStudentVnpayIpn(req.query);
+
+    // VNPAY expects its RspCode contract in the response body. Even business
+    // validation failures use HTTP 200 so the gateway can read that code.
+    res.json(result);
+  } catch (error) {
+    console.error("Failed to process VNPAY IPN.", error);
+    res.json({
+      RspCode: "99",
+      Message: "Unknown error",
+    });
   }
 });
 

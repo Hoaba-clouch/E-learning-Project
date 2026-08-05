@@ -256,6 +256,7 @@ function CourseDetailPage({
   const visibleBatches = reviewEligibility?.hasEnrollment
     ? course.batches
     : course.batches.filter((batch) => !isBatchEnrollmentExpired(batch));
+  const hasEnrolledInCourse = Boolean(reviewEligibility?.hasEnrollment);
 
   async function handleAddToCart() {
 
@@ -466,7 +467,7 @@ function CourseDetailPage({
                 <div className="sp-review-form-head">
                   <div>
                     <h3>
-                      {reviewEligibility.existingReview
+                      {reviewEligibility.existingReview && reviewEligibility.eligible
                         ? t("courseDetail.reviewForm.editTitle")
                         : t("courseDetail.reviewForm.title")}
                     </h3>
@@ -475,7 +476,7 @@ function CourseDetailPage({
                       <strong>{reviewEligibility.progressPercent.toFixed(0)}%</strong>
                     </p>
                   </div>
-                  {reviewEligibility.existingReview ? (
+                  {reviewEligibility.existingReview && reviewEligibility.eligible ? (
                     <span>{t("courseDetail.reviewForm.reviewed")}</span>
                   ) : null}
                 </div>
@@ -577,6 +578,17 @@ function CourseDetailPage({
           <div className="sp-detail-price-card">
             <strong>{formatCurrency(course.price)}</strong>
 
+            {hasEnrolledInCourse ? (
+              <>
+                <button disabled type="button">
+                  Đã ghi danh khóa học
+                </button>
+                <p className="sp-batch-selection-note">
+                  Bạn đã ghi danh khóa học này. Hãy vào mục “Khóa học của bạn” để tiếp tục học.
+                </p>
+              </>
+            ) : (
+              <>
             <button onClick={isPublic ? onRequireLogin : undefined} type="button">
               {isPublic ? t("courseDetail.loginToEnroll") : t("courseDetail.enrollNow")}
             </button>
@@ -604,6 +616,8 @@ function CourseDetailPage({
                 ? `Lớp đang chọn: ${selectedBatch.name}`
                 : "Mỗi khóa học chỉ được chọn 1 lớp trước khi thanh toán."}
             </p>
+              </>
+            )}
             {cartMessage ? <p className="sp-cart-message">{cartMessage}</p> : null}
           </div>
 

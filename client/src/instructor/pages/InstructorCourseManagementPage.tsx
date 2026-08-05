@@ -182,6 +182,28 @@ function getAutoAssignPriorityBatchId(batches: CourseDetail["batches"]) {
   })[0]?.id ?? null;
 }
 
+function validateBatchDateOrder(data: BatchFormData) {
+  const { startDate, endDate, enrollmentStartDate, enrollmentDeadline } = data;
+
+  if (startDate && endDate && endDate <= startDate) {
+    return "Ngày kết thúc phải sau ngày bắt đầu.";
+  }
+
+  if (enrollmentStartDate && enrollmentDeadline && enrollmentStartDate > enrollmentDeadline) {
+    return "Bắt đầu đăng ký phải trước hoặc bằng hạn đăng ký.";
+  }
+
+  if (enrollmentStartDate && startDate && enrollmentStartDate > startDate) {
+    return "Ngày bắt đầu đăng ký phải trước hoặc bằng ngày bắt đầu lớp.";
+  }
+
+  if (enrollmentDeadline && startDate && enrollmentDeadline > startDate) {
+    return "Hạn đăng ký phải trước hoặc bằng ngày bắt đầu lớp.";
+  }
+
+  return null;
+}
+
 const WEEKDAY_OPTIONS = [
   { value: "1", label: "Thứ 2" },
   { value: "2", label: "Thứ 3" },
@@ -1271,6 +1293,12 @@ function InstructorCourseManagementPage() {
 
     if (!batchFormData.startDate || !batchFormData.endDate) {
       setBatchFormError("Hãy chọn ngày bắt đầu và ngày kết thúc.");
+      return;
+    }
+
+    const dateOrderError = validateBatchDateOrder(batchFormData);
+    if (dateOrderError) {
+      setBatchFormError(dateOrderError);
       return;
     }
 
@@ -4621,6 +4649,7 @@ CSS cơ bản | 40 | TEXT | no | Các khái niệm nền tảng`}
                   <span>Ngày kết thúc</span>
                   <input
                     type="date"
+                    min={batchFormData.startDate || undefined}
                     value={batchFormData.endDate}
                     onChange={(event) =>
                       setBatchFormData({ ...batchFormData, endDate: event.target.value })
@@ -4631,6 +4660,7 @@ CSS cơ bản | 40 | TEXT | no | Các khái niệm nền tảng`}
                   <span>Bắt đầu đăng ký</span>
                   <input
                     type="date"
+                    max={batchFormData.enrollmentDeadline || batchFormData.startDate || undefined}
                     value={batchFormData.enrollmentStartDate}
                     onChange={(event) =>
                       setBatchFormData({
@@ -4644,6 +4674,8 @@ CSS cơ bản | 40 | TEXT | no | Các khái niệm nền tảng`}
                   <span>Hạn đăng ký</span>
                   <input
                     type="date"
+                    min={batchFormData.enrollmentStartDate || undefined}
+                    max={batchFormData.startDate || undefined}
                     value={batchFormData.enrollmentDeadline}
                     onChange={(event) =>
                       setBatchFormData({

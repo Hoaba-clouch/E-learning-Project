@@ -8,6 +8,7 @@ const {
   mockAddStudentCartItem,
   mockRemoveStudentCartItem,
   mockCreateStudentVnpayPayment,
+  mockHandleStudentVnpayIpn,
   mockVerifyStudentVnpayReturn,
   mockGetStudentCourseCategories,
   mockCreateStudentCourseReview,
@@ -18,6 +19,7 @@ const {
   mockAddStudentCartItem: vi.fn(),
   mockRemoveStudentCartItem: vi.fn(),
   mockCreateStudentVnpayPayment: vi.fn(),
+  mockHandleStudentVnpayIpn: vi.fn(),
   mockVerifyStudentVnpayReturn: vi.fn(),
   mockGetStudentCourseCategories: vi.fn(),
   mockCreateStudentCourseReview: vi.fn(),
@@ -36,6 +38,7 @@ vi.mock("../../services/studentCart.service.js", () => ({
 
 vi.mock("../../services/studentPayments.service.js", () => ({
   createStudentVnpayPayment: mockCreateStudentVnpayPayment,
+  handleStudentVnpayIpn: mockHandleStudentVnpayIpn,
   verifyStudentVnpayReturn: mockVerifyStudentVnpayReturn,
 }));
 
@@ -61,6 +64,7 @@ describe("student routes", () => {
     mockAddStudentCartItem.mockReset();
     mockRemoveStudentCartItem.mockReset();
     mockCreateStudentVnpayPayment.mockReset();
+    mockHandleStudentVnpayIpn.mockReset();
     mockVerifyStudentVnpayReturn.mockReset();
     mockGetStudentCourseCategories.mockReset();
     mockCreateStudentCourseReview.mockReset();
@@ -155,6 +159,34 @@ describe("student routes", () => {
     expect(response.body.success).toBe(true);
     expect(response.body.data).toEqual({ url: "https://vnpay.example.com" });
     expect(mockCreateStudentVnpayPayment).toHaveBeenCalled();
+  });
+
+  it("should accept a VNPAY IPN without a user access token", async () => {
+    const app = createApp();
+    mockHandleStudentVnpayIpn.mockResolvedValue({
+      RspCode: "00",
+      Message: "Confirm Success",
+    });
+
+    const response = await request(app)
+      .get("/student/payments/vnpay/ipn")
+      .query({
+        vnp_TxnRef: "CART11U7T123",
+        vnp_SecureHash: "signed-hash",
+      });
+
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      RspCode: "00",
+      Message: "Confirm Success",
+    });
+    expect(mockGetSessionUser).not.toHaveBeenCalled();
+    expect(mockHandleStudentVnpayIpn).toHaveBeenCalledWith(
+      expect.objectContaining({
+        vnp_TxnRef: "CART11U7T123",
+        vnp_SecureHash: "signed-hash",
+      }),
+    );
   });
 
   it("should return 403 when an unpaid student attempts to review a course", async () => {

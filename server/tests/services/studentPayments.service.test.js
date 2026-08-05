@@ -11,6 +11,7 @@ vi.mock("../../db.js", () => ({
 
 import {
   createStudentVnpayPayment,
+  handleStudentVnpayIpn,
   verifyStudentVnpayReturn,
 } from "../../services/studentPayments.service.js";
 
@@ -135,6 +136,23 @@ async function verifySuccessfulPayment(connection) {
   });
 }
 
+async function processSuccessfulIpn(connection, overrides = {}) {
+  getConnectionMock.mockResolvedValue(connection);
+
+  const params = {
+    vnp_TxnRef: "CART11U7T123",
+    vnp_ResponseCode: "00",
+    vnp_TransactionStatus: "00",
+    vnp_Amount: "12000000",
+    ...overrides,
+  };
+
+  return handleStudentVnpayIpn({
+    vnp_SecureHash: signVnpayParams(params),
+    ...params,
+  });
+}
+
 describe("studentPayments.service", () => {
   beforeEach(() => {
     getConnectionMock.mockReset();
@@ -166,8 +184,94 @@ describe("studentPayments.service", () => {
     expect(result).toEqual({
       ok: false,
       status: 400,
+      errorCode: "INVALID_SIGNATURE",
       message: "Chữ ký VNPAY không hợp lệ.",
     });
+  });
+
+  it("rejects an invalid IPN checksum without querying the database", async () => {
+    const result = await handleStudentVnpayIpn({
+      vnp_SecureHash: "bad-signature",
+      vnp_TxnRef: "CART11U7T123",
+      vnp_ResponseCode: "00",
+      vnp_TransactionStatus: "00",
+      vnp_Amount: "12000000",
+    });
+
+    expect(result).toEqual({
+      RspCode: "97",
+      Message: "Invalid checksum",
+    });
+    expect(getConnectionMock).not.toHaveBeenCalled();
+  });
+
+  it("processes a signed successful IPN without an authenticated user", async () => {
+    const connection = createConnection();
+    const result = await processSuccessfulIpn(connection);
+
+    expect(result).toEqual({
+      RspCode: "00",
+      Message: "Confirm Success",
+    });
+    expect(connection.commit).toHaveBeenCalledTimes(1);
+    expect(
+      connection.execute.mock.calls.some(([sql]) =>
+        sql.includes("INSERT INTO enrollments"),
+      ),
+    ).toBe(true);
+  });
+
+  it("rejects an IPN amount that differs from the current cart total", async () => {
+    const connection = createConnection();
+    const result = await processSuccessfulIpn(connection, {
+      vnp_Amount: "99900000",
+    });
+
+    expect(result).toEqual({
+      RspCode: "04",
+      Message: "Invalid amount",
+    });
+    expect(connection.rollback).toHaveBeenCalledTimes(1);
+    expect(
+      connection.execute.mock.calls.some(([sql]) =>
+        sql.includes("INSERT INTO payments"),
+      ),
+    ).toBe(false);
+  });
+
+  it("acknowledges a signed failed IPN without creating an enrollment", async () => {
+    const params = {
+      vnp_TxnRef: "CART11U7T123",
+      vnp_ResponseCode: "24",
+      vnp_TransactionStatus: "02",
+      vnp_Amount: "12000000",
+    };
+    const result = await handleStudentVnpayIpn({
+      vnp_SecureHash: signVnpayParams(params),
+      ...params,
+    });
+
+    expect(result).toEqual({
+      RspCode: "00",
+      Message: "Confirm Success",
+    });
+    expect(getConnectionMock).not.toHaveBeenCalled();
+  });
+
+  it("reports an already-confirmed order when VNPAY repeats the IPN", async () => {
+    const connection = createConnection({ cartExists: false });
+    const result = await processSuccessfulIpn(connection);
+
+    expect(result).toEqual({
+      RspCode: "02",
+      Message: "Order already confirmed",
+    });
+    expect(connection.commit).toHaveBeenCalledTimes(1);
+    expect(
+      connection.execute.mock.calls.some(([sql]) =>
+        sql.includes("INSERT INTO payments"),
+      ),
+    ).toBe(false);
   });
 
   describe("capacity boundaries with max_students = 50", () => {

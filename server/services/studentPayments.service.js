@@ -68,6 +68,28 @@ function createSecureHash(params, hashSecret) {
     .digest("hex");
 }
 
+function hasValidVnpaySignature(query, hashSecret) {
+  const receivedHash = query.vnp_SecureHash;
+  const verifyParams = { ...query };
+  delete verifyParams.vnp_SecureHash;
+  delete verifyParams.vnp_SecureHashType;
+
+  const expectedHash = createSecureHash(verifyParams, hashSecret);
+
+  return Boolean(
+    receivedHash &&
+      String(receivedHash).toLowerCase() === expectedHash.toLowerCase(),
+  );
+}
+
+function isSuccessfulVnpayResult(query) {
+  return (
+    query.vnp_ResponseCode === "00" &&
+    (query.vnp_TransactionStatus === undefined ||
+      query.vnp_TransactionStatus === "00")
+  );
+}
+
 function getClientIp(req) {
   const forwardedFor = req.headers["x-forwarded-for"];
 
@@ -367,17 +389,11 @@ export async function verifyStudentVnpayReturn(studentId, query) {
     };
   }
 
-  const receivedHash = query.vnp_SecureHash;
-  const verifyParams = { ...query };
-  delete verifyParams.vnp_SecureHash;
-  delete verifyParams.vnp_SecureHashType;
-
-  const expectedHash = createSecureHash(verifyParams, config.hashSecret);
-
-  if (!receivedHash || String(receivedHash).toLowerCase() !== expectedHash.toLowerCase()) {
+  if (!hasValidVnpaySignature(query, config.hashSecret)) {
     return {
       ok: false,
       status: 400,
+      errorCode: "INVALID_SIGNATURE",
       message: "Chữ ký VNPAY không hợp lệ.",
     };
   }
@@ -389,13 +405,12 @@ export async function verifyStudentVnpayReturn(studentId, query) {
     return {
       ok: false,
       status: 400,
+      errorCode: "ORDER_NOT_FOUND",
       message: "Mã giao dịch không khớp với học viên hiện tại.",
     };
   }
 
-  const isSuccess =
-    query.vnp_ResponseCode === "00" &&
-    (query.vnp_TransactionStatus === undefined || query.vnp_TransactionStatus === "00");
+  const isSuccess = isSuccessfulVnpayResult(query);
 
   if (!isSuccess) {
     return {
@@ -433,13 +448,25 @@ export async function verifyStudentVnpayReturn(studentId, query) {
         [studentId, `${txnRef}-%`],
       );
 
+      const processedCount = Number(existingPayments[0]?.paymentCount ?? 0);
+
       await connection.commit();
+
+      if (processedCount === 0) {
+        return {
+          ok: false,
+          status: 404,
+          errorCode: "ORDER_NOT_FOUND",
+          message: "Không tìm thấy giao dịch VNPAY trong hệ thống.",
+        };
+      }
 
       return {
         ok: true,
         data: {
           amount: Number(query.vnp_Amount ?? 0) / 100,
-          enrolledCount: Number(existingPayments[0]?.paymentCount ?? 0),
+          alreadyProcessed: true,
+          enrolledCount: processedCount,
           message: "Giao dịch đã được xử lý trước đó.",
           responseCode: query.vnp_ResponseCode,
           status: "SUCCESS",
@@ -472,6 +499,7 @@ export async function verifyStudentVnpayReturn(studentId, query) {
           ok: true,
           data: {
             amount: Number(query.vnp_Amount ?? 0) / 100,
+            alreadyProcessed: true,
             enrolledCount: processedCount,
             message: "Giao dịch đã được xử lý trước đó.",
             responseCode: query.vnp_ResponseCode,
@@ -486,7 +514,32 @@ export async function verifyStudentVnpayReturn(studentId, query) {
       return {
         ok: false,
         status: 400,
+        errorCode: "ORDER_NOT_FOUND",
         message: "Giỏ hàng không còn khóa học để ghi danh.",
+      };
+    }
+
+    const expectedAmount =
+      Math.round(
+        items.reduce(
+          (sum, item) => sum + Number(item.price_snapshot ?? 0),
+          0,
+        ),
+      ) * 100;
+    const receivedAmount = Number(query.vnp_Amount);
+
+    if (
+      !Number.isSafeInteger(receivedAmount) ||
+      receivedAmount <= 0 ||
+      receivedAmount !== expectedAmount
+    ) {
+      await connection.rollback();
+
+      return {
+        ok: false,
+        status: 400,
+        errorCode: "INVALID_AMOUNT",
+        message: "Số tiền VNPAY trả về không khớp với giỏ hàng.",
       };
     }
 
@@ -550,4 +603,75 @@ export async function verifyStudentVnpayReturn(studentId, query) {
   } finally {
     connection.release();
   }
+}
+
+export async function handleStudentVnpayIpn(query) {
+  const config = getVnpayConfig();
+
+  if (!config.hashSecret) {
+    return {
+      RspCode: "99",
+      Message: "VNPAY is not configured",
+    };
+  }
+
+  if (!hasValidVnpaySignature(query, config.hashSecret)) {
+    return {
+      RspCode: "97",
+      Message: "Invalid checksum",
+    };
+  }
+
+  const parsedRef = parseCartIdFromTxnRef(query.vnp_TxnRef);
+
+  if (!parsedRef) {
+    return {
+      RspCode: "01",
+      Message: "Order not found",
+    };
+  }
+
+  // A failed or cancelled transaction is still a valid notification. Acknowledge
+  // it so VNPAY does not retry, but never enroll the student.
+  if (!isSuccessfulVnpayResult(query)) {
+    return {
+      RspCode: "00",
+      Message: "Confirm Success",
+    };
+  }
+
+  const result = await verifyStudentVnpayReturn(parsedRef.studentId, query);
+
+  if (result.ok) {
+    if (result.data?.alreadyProcessed) {
+      return {
+        RspCode: "02",
+        Message: "Order already confirmed",
+      };
+    }
+
+    return {
+      RspCode: "00",
+      Message: "Confirm Success",
+    };
+  }
+
+  if (result.errorCode === "INVALID_AMOUNT") {
+    return {
+      RspCode: "04",
+      Message: "Invalid amount",
+    };
+  }
+
+  if (result.errorCode === "ORDER_NOT_FOUND") {
+    return {
+      RspCode: "01",
+      Message: "Order not found",
+    };
+  }
+
+  return {
+    RspCode: "99",
+    Message: "Unknown error",
+  };
 }

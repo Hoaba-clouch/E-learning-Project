@@ -110,6 +110,17 @@ Nếu dùng ngrok cho frontend:
 VNPAY_RETURN_URL=https://<NGROK_DOMAIN>/student/payment-return
 ```
 
+IPN phải trỏ tới backend bằng một URL HTTPS công khai, ví dụ khi chạy
+`ngrok http 3000`:
+
+```text
+https://<BACKEND_NGROK_DOMAIN>/api/student/payments/vnpay/ipn
+```
+
+Không dùng `localhost` cho IPN và không trỏ IPN vào endpoint `/return`.
+Endpoint IPN không yêu cầu Bearer token nhưng luôn kiểm tra chữ ký HMAC-SHA512,
+mã giao dịch, số tiền và xử lý callback lặp an toàn.
+
 Khi domain ngrok thay đổi, phải cập nhật:
 
 1. `VNPAY_RETURN_URL` trong `server/.env`.
@@ -423,6 +434,7 @@ Base URL: `http://localhost:3000/api`.
 - `GET /student/my-courses`
 - `GET|POST|DELETE /student/cart...`
 - `POST /student/payments/vnpay/create`
+- `GET /student/payments/vnpay/ipn`
 - `GET /student/payments/vnpay/return`
 - `PUT /student/lessons/:id/progress`
 - `GET|POST|PUT /student/exams...`
@@ -485,16 +497,16 @@ Các mục dưới đây là giới hạn hiện tại, không phải lỗi môi
 
 1. Session được lưu bằng `Map` trong RAM của backend. Restart server sẽ làm mất
    phiên đăng nhập.
-2. Đã có kiểm thử tự động: 4 test Frontend, 133 test Backend và 7 test
+2. Đã có kiểm thử tự động: 4 test Frontend, 259 test Backend và 7 test
    Playwright (5 E2E nghiệp vụ, 1 fuzz, 1 visual regression). Chạy `npm test` trong `client`, `server` và chạy
    `npm run test:e2e` ở thư mục gốc. Coverage Backend toàn bộ hiện đạt 35,20%
    statements, vì vậy chưa được xem là đạt mục tiêu 75% toàn dự án.
 3. VNPAY Sandbox phụ thuộc cấu hình merchant và URL return. Lần kiểm thử ngày
    05/08/2026 cổng ngoài trả mã 71 vì merchant chưa được phê duyệt; callback local
    có kiểm soát đã xác nhận payment SUCCESS và enrollment ACTIVE.
-4. Luồng VNPAY hiện xác nhận qua Return URL trên trình duyệt. Chưa có endpoint
-   IPN server-to-server riêng; nếu người dùng thanh toán xong nhưng không quay lại
-   Return URL thì hệ thống chưa tự đối soát giao dịch như hệ thống production.
+4. Luồng VNPAY hỗ trợ cả Return URL trên trình duyệt và endpoint IPN
+   server-to-server tại `/api/student/payments/vnpay/ipn`. IPN phải được công khai
+   qua HTTPS và đăng ký đúng trên cổng VNPAY Sandbox trước khi chạy SIT.
 5. CORS đọc danh sách origin từ `CLIENT_ORIGINS` (phân tách bằng dấu phẩy) và
    mặc định hỗ trợ cả `localhost:5173` lẫn `127.0.0.1:5173`. Khi domain ngrok
    thay đổi vẫn phải cập nhật biến môi trường này rồi khởi động lại Backend.

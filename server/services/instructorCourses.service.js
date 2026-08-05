@@ -152,6 +152,55 @@ function parseDateOnly(value) {
   return new Date(year, month - 1, day);
 }
 
+function normalizeDateOnlyForBatchValidation(value) {
+  const normalized = String(value ?? "").trim();
+  if (!normalized) return null;
+
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(normalized)) return null;
+
+  const date = new Date(`${normalized}T00:00:00Z`);
+  if (Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== normalized) {
+    return null;
+  }
+
+  return normalized;
+}
+
+function assertBatchDateOrder({ startDate, endDate, enrollmentStartDate, enrollmentDeadline }) {
+  const start = normalizeDateOnlyForBatchValidation(startDate);
+  const end = normalizeDateOnlyForBatchValidation(endDate);
+  const enrollmentStart = normalizeDateOnlyForBatchValidation(enrollmentStartDate);
+  const deadline = normalizeDateOnlyForBatchValidation(enrollmentDeadline);
+
+  if (!start || !end) {
+    throw new Error("Start date and end date must be valid dates.");
+  }
+
+  if (end <= start) {
+    throw new Error("End date must be later than start date.");
+  }
+
+  if (enrollmentStartDate && !enrollmentStart) {
+    throw new Error("Enrollment start date must be a valid date.");
+  }
+
+  if (enrollmentDeadline && !deadline) {
+    throw new Error("Enrollment deadline must be a valid date.");
+  }
+
+  if (enrollmentStart && deadline && enrollmentStart > deadline) {
+    throw new Error("Enrollment start date must be on or before enrollment deadline.");
+  }
+
+  if (enrollmentStart && enrollmentStart > start) {
+    throw new Error("Enrollment must start before the class starts.");
+  }
+
+  if (deadline && deadline > start) {
+    throw new Error("Enrollment deadline must be on or before the class start date.");
+  }
+}
+
 function formatDateOnly(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -2619,9 +2668,12 @@ export async function createInstructorBatch(rawTeacherId, rawCourseId, batchData
     throw new Error("Start date and end date are required.");
   }
 
-  if (new Date(endDate) <= new Date(startDate)) {
-    throw new Error("End date must be later than start date.");
-  }
+  assertBatchDateOrder({
+    startDate,
+    endDate,
+    enrollmentStartDate,
+    enrollmentDeadline,
+  });
 
   if (!Number.isFinite(minStudents) || minStudents <= 0) {
     throw new Error("Min students must be greater than zero.");
@@ -2763,9 +2815,12 @@ export async function updateInstructorBatch(rawTeacherId, rawCourseId, rawBatchI
     throw new Error("Start date and end date are required.");
   }
 
-  if (new Date(endDate) <= new Date(startDate)) {
-    throw new Error("End date must be later than start date.");
-  }
+  assertBatchDateOrder({
+    startDate,
+    endDate,
+    enrollmentStartDate,
+    enrollmentDeadline,
+  });
 
   if (!Number.isFinite(minStudents) || minStudents <= 0) {
     throw new Error("Min students must be greater than zero.");

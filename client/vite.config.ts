@@ -11,7 +11,16 @@ export default defineConfig({
   },
   plugins: [react()],
   server: {
-    allowedHosts: ["demetrice-atomistical-georgene.ngrok-free.dev"],
+    allowedHosts: [
+      "demetrice-atomistical-georgene.ngrok-free.dev",
+      "hesitant-aerobics-striving.ngrok-free.dev",
+    ],
+    proxy: {
+      "/api": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+      },
+    },
   },
   test: {
     globals: true,

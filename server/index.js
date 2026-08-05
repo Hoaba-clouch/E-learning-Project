@@ -16,7 +16,7 @@ app.use(express.json());
 
 const allowedOrigins = new Set(
   (process.env.CLIENT_ORIGINS ??
-    "http://localhost:5173,http://127.0.0.1:5173,https://demetrice-atomistical-georgene.ngrok-free.dev")
+    "http://localhost:5173,http://127.0.0.1:5173,https://demetrice-atomistical-georgene.ngrok-free.dev,https://hesitant-aerobics-striving.ngrok-free.dev")
     .split(",")
     .map((origin) => origin.trim())
     .filter(Boolean),
