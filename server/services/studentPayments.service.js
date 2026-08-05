@@ -101,7 +101,12 @@ async function getActiveCartItems(connection, studentId) {
   return rows;
 }
 
-async function validateCartItemsForEnrollment(connection, studentId, items) {
+async function validateCartItemsForEnrollment(
+  connection,
+  studentId,
+  items,
+  { lockBatches = false } = {},
+) {
   if (!items.length) {
     return {
       ok: false,
@@ -110,8 +115,25 @@ async function validateCartItemsForEnrollment(connection, studentId, items) {
     };
   }
 
-  const batchIds = items.map((item) => Number(item.batch_id));
+  const batchIds = [...new Set(items.map((item) => Number(item.batch_id)))].sort(
+    (left, right) => left - right,
+  );
   const placeholders = batchIds.map(() => "?").join(", ");
+
+  if (lockBatches) {
+    // Serialize successful payment callbacks that target the same class. Without
+    // this row lock, two callbacks can both observe the last available seat and
+    // create enrollments that exceed max_students.
+    await connection.execute(
+      `SELECT batch_id
+       FROM course_batches
+       WHERE batch_id IN (${placeholders})
+       ORDER BY batch_id
+       FOR UPDATE`,
+      batchIds,
+    );
+  }
+
   const [batchRows] = await connection.execute(
     `SELECT
        cb.batch_id,
@@ -152,6 +174,18 @@ async function validateCartItemsForEnrollment(connection, studentId, items) {
       };
     }
 
+    if (
+      String(batch.status) === "FULL" ||
+      (Number(batch.max_students ?? 0) > 0 &&
+        Number(batch.enrolled_count ?? 0) >= Number(batch.max_students ?? 0))
+    ) {
+      return {
+        ok: false,
+        status: 409,
+        message: "Lớp học bạn chọn đã đủ số lượng học viên.",
+      };
+    }
+
     if (!["OPEN", "STARTED"].includes(String(batch.status))) {
       return {
         ok: false,
@@ -181,16 +215,6 @@ async function validateCartItemsForEnrollment(connection, studentId, items) {
       };
     }
 
-    if (
-      Number(batch.max_students ?? 0) > 0 &&
-      Number(batch.enrolled_count ?? 0) >= Number(batch.max_students ?? 0)
-    ) {
-      return {
-        ok: false,
-        status: 409,
-        message: "Lớp học bạn chọn đã đủ số lượng học viên.",
-      };
-    }
   }
 
   const courseIds = [...new Set(batchRows.map((row) => Number(row.course_id)))];
@@ -214,6 +238,23 @@ async function validateCartItemsForEnrollment(connection, studentId, items) {
   }
 
   return { ok: true };
+}
+
+async function markBatchFullWhenAtCapacity(connection, batchId) {
+  await connection.execute(
+    `UPDATE course_batches
+     SET status = 'FULL'
+     WHERE batch_id = ?
+       AND max_students > 0
+       AND status IN ('OPEN', 'STARTED')
+       AND (
+         SELECT COUNT(*)
+         FROM enrollments
+         WHERE batch_id = ?
+           AND status IN ('PENDING', 'ACTIVE', 'COMPLETED')
+       ) >= max_students`,
+    [batchId, batchId],
+  );
 }
 
 export async function createStudentVnpayPayment(studentId, req) {
@@ -379,7 +420,8 @@ export async function verifyStudentVnpayReturn(studentId, query) {
       `SELECT cart_id
        FROM carts
        WHERE cart_id = ? AND student_id = ? AND status = 'ACTIVE'
-       LIMIT 1`,
+       LIMIT 1
+       FOR UPDATE`,
       [parsedRef.cartId, studentId],
     );
 
@@ -448,7 +490,12 @@ export async function verifyStudentVnpayReturn(studentId, query) {
       };
     }
 
-    const validation = await validateCartItemsForEnrollment(connection, studentId, items);
+    const validation = await validateCartItemsForEnrollment(
+      connection,
+      studentId,
+      items,
+      { lockBatches: true },
+    );
 
     if (!validation.ok) {
       await connection.rollback();
@@ -476,6 +523,8 @@ export async function verifyStudentVnpayReturn(studentId, query) {
           status = IF(status = 'COMPLETED', status, 'ACTIVE')`,
         [studentId, item.batch_id],
       );
+
+      await markBatchFullWhenAtCapacity(connection, item.batch_id);
     }
 
     await connection.execute(`DELETE FROM cart_items WHERE cart_id = ?`, [

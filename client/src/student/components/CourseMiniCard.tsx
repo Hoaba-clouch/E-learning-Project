@@ -1,26 +1,43 @@
 import { useTranslation } from "react-i18next";
-import type { RecommendedCourse } from "../types/student.types";
+import { getIntlLocale } from "../../i18n/locale";
+import type { StudentCourse } from "../types/course.types";
 import Icon from "./Icon";
 
 type CourseMiniCardProps = {
-  course: RecommendedCourse;
+  course: StudentCourse;
+  onOpen: () => void;
 };
 
-function CourseMiniCard({ course }: CourseMiniCardProps) {
-  const { t } = useTranslation("student");
+const fallbackImage =
+  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80";
+
+function CourseMiniCard({ course, onOpen }: CourseMiniCardProps) {
+  const { t, i18n } = useTranslation("student");
+  const price = new Intl.NumberFormat(getIntlLocale(i18n.resolvedLanguage), {
+    currency: "VND",
+    maximumFractionDigits: 0,
+    style: "currency",
+  }).format(course.price);
 
   return (
     <article className="sp-mini-card">
-      <img src={course.image} alt={course.title} />
-      <span>{course.category}</span>
+      <img
+        src={course.thumbnailUrl?.startsWith("http") ? course.thumbnailUrl : fallbackImage}
+        alt={course.name}
+      />
+      <span>{course.category.name}</span>
       <div className="sp-stars">
-        <small>({t("courseCard.reviews", { count: 1209 })})</small>
+        <small>
+          {course.stats.averageRating.toFixed(1)} ({t("courseCard.reviews", {
+            count: course.stats.reviewCount,
+          })})
+        </small>
       </div>
-      <h3>{course.title}</h3>
-      <p>{course.author}</p>
+      <h3>{course.name}</h3>
+      <p>{course.teacher.fullName}</p>
       <div>
-        <strong>{course.price}</strong>
-        <button type="button">
+        <strong>{price}</strong>
+        <button type="button" onClick={onOpen}>
           {t("courseCard.enroll")} <Icon name="add" />
         </button>
       </div>

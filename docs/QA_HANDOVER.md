@@ -485,13 +485,19 @@ Các mục dưới đây là giới hạn hiện tại, không phải lỗi môi
 
 1. Session được lưu bằng `Map` trong RAM của backend. Restart server sẽ làm mất
    phiên đăng nhập.
-2. Backend chưa có test tự động; script `npm test` hiện chưa triển khai.
-3. VNPAY Sandbox phụ thuộc cấu hình merchant và URL return. Domain ngrok miễn phí
-   có thể thay đổi hoặc offline.
+2. Đã có kiểm thử tự động: 4 test Frontend, 133 test Backend và 7 test
+   Playwright (5 E2E nghiệp vụ, 1 fuzz, 1 visual regression). Chạy `npm test` trong `client`, `server` và chạy
+   `npm run test:e2e` ở thư mục gốc. Coverage Backend toàn bộ hiện đạt 35,20%
+   statements, vì vậy chưa được xem là đạt mục tiêu 75% toàn dự án.
+3. VNPAY Sandbox phụ thuộc cấu hình merchant và URL return. Lần kiểm thử ngày
+   05/08/2026 cổng ngoài trả mã 71 vì merchant chưa được phê duyệt; callback local
+   có kiểm soát đã xác nhận payment SUCCESS và enrollment ACTIVE.
 4. Luồng VNPAY hiện xác nhận qua Return URL trên trình duyệt. Chưa có endpoint
    IPN server-to-server riêng; nếu người dùng thanh toán xong nhưng không quay lại
    Return URL thì hệ thống chưa tự đối soát giao dịch như hệ thống production.
-5. CORS và allowed host đang liệt kê domain cụ thể, không tự nhận domain ngrok mới.
+5. CORS đọc danh sách origin từ `CLIENT_ORIGINS` (phân tách bằng dấu phẩy) và
+   mặc định hỗ trợ cả `localhost:5173` lẫn `127.0.0.1:5173`. Khi domain ngrok
+   thay đổi vẫn phải cập nhật biến môi trường này rồi khởi động lại Backend.
 6. Điểm danh online chưa đồng bộ tự động với Zoom/Google Meet.
 7. Web Push cần HTTPS, quyền trình duyệt và VAPID hợp lệ.
 8. Một số migration được viết để nâng cấp database cũ; luôn backup trước khi chạy.
@@ -558,4 +564,3 @@ Không đưa các nội dung sau vào ảnh/log công khai:
 - [ ] Nếu dùng ngrok, tunnel đang online và CORS đã cập nhật.
 - [ ] Đã backup database trước khi chạy seed/migration.
 - [ ] Nhóm kiểm định đã nhận credential nhạy cảm qua kênh riêng.
-

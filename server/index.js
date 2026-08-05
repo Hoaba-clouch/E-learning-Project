@@ -14,11 +14,15 @@ const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(express.json());
 
+const allowedOrigins = new Set(
+  (process.env.CLIENT_ORIGINS ??
+    "http://localhost:5173,http://127.0.0.1:5173,https://demetrice-atomistical-georgene.ngrok-free.dev")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+);
+
 app.use((req, res, next) => {
-  const allowedOrigins = new Set([
-    "http://localhost:5173",
-    "https://demetrice-atomistical-georgene.ngrok-free.dev",
-  ]);
   const requestOrigin = req.headers.origin;
 
   if (allowedOrigins.has(requestOrigin)) {

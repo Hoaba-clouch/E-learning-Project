@@ -10,6 +10,8 @@ const {
   mockCreateStudentVnpayPayment,
   mockVerifyStudentVnpayReturn,
   mockGetStudentCourseCategories,
+  mockCreateStudentCourseReview,
+  mockGetStudentCourseReviewEligibility,
 } = vi.hoisted(() => ({
   mockGetSessionUser: vi.fn(),
   mockGetStudentCart: vi.fn(),
@@ -18,6 +20,8 @@ const {
   mockCreateStudentVnpayPayment: vi.fn(),
   mockVerifyStudentVnpayReturn: vi.fn(),
   mockGetStudentCourseCategories: vi.fn(),
+  mockCreateStudentCourseReview: vi.fn(),
+  mockGetStudentCourseReviewEligibility: vi.fn(),
 }));
 
 vi.mock("../../services/auth.service.js", () => ({
@@ -37,6 +41,8 @@ vi.mock("../../services/studentPayments.service.js", () => ({
 
 vi.mock("../../services/studentCourses.service.js", () => ({
   getStudentCourseCategories: mockGetStudentCourseCategories,
+  createStudentCourseReview: mockCreateStudentCourseReview,
+  getStudentCourseReviewEligibility: mockGetStudentCourseReviewEligibility,
 }));
 
 import studentRoutes from "../../routes/student.routes.js";
@@ -57,6 +63,8 @@ describe("student routes", () => {
     mockCreateStudentVnpayPayment.mockReset();
     mockVerifyStudentVnpayReturn.mockReset();
     mockGetStudentCourseCategories.mockReset();
+    mockCreateStudentCourseReview.mockReset();
+    mockGetStudentCourseReviewEligibility.mockReset();
   });
 
   it("should return course categories successfully without authentication", async () => {
@@ -147,6 +155,35 @@ describe("student routes", () => {
     expect(response.body.success).toBe(true);
     expect(response.body.data).toEqual({ url: "https://vnpay.example.com" });
     expect(mockCreateStudentVnpayPayment).toHaveBeenCalled();
+  });
+
+  it("should return 403 when an unpaid student attempts to review a course", async () => {
+    const app = createApp();
+    mockGetSessionUser.mockReturnValue({ id: 18, role: "STUDENT" });
+    mockCreateStudentCourseReview.mockResolvedValue({
+      status: 403,
+      message: "Bạn cần hoàn tất thanh toán khóa học trước khi đánh giá.",
+    });
+
+    const response = await request(app)
+      .post("/student/courses/10/reviews")
+      .set("Authorization", "Bearer valid-token")
+      .send({
+        rating: 5,
+        teacherRating: 5,
+        comment: "Khóa học tốt",
+      });
+
+    expect(response.status).toBe(403);
+    expect(response.body).toEqual({
+      success: false,
+      message: "Bạn cần hoàn tất thanh toán khóa học trước khi đánh giá.",
+    });
+    expect(mockCreateStudentCourseReview).toHaveBeenCalledWith(18, "10", {
+      rating: 5,
+      teacherRating: 5,
+      comment: "Khóa học tốt",
+    });
   });
 
   it("should reject access to protected student endpoints when the token is invalid", async () => {

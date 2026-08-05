@@ -1,7 +1,9 @@
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import CourseMiniCard from "../components/CourseMiniCard";
 import Icon from "../components/Icon";
-import { recommended } from "../data/courseData";
+import { getCourseCategories, getCourses } from "../services/studentCoursesApi";
+import type { StudentCourse, StudentCourseCategory } from "../types/course.types";
 import type { StudentView } from "../types/student.types";
 
 type HomePageProps = {
@@ -10,6 +12,40 @@ type HomePageProps = {
 
 function HomePage({ onNavigate }: HomePageProps) {
   const { t } = useTranslation("student");
+  const [categories, setCategories] = useState<StudentCourseCategory[]>([]);
+  const [featuredCourses, setFeaturedCourses] = useState<StudentCourse[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
+  const categoryStyles = ["large", "blue", "muted", "wide"];
+  const categoryIcons = ["code", "palette", "query_stats", "psychology"];
+
+  useEffect(() => {
+    let isMounted = true;
+
+    Promise.all([getCourseCategories(), getCourses()])
+      .then(([nextCategories, nextCourses]) => {
+        if (!isMounted) return;
+        setCategories(nextCategories);
+        setFeaturedCourses(nextCourses.slice(0, 3));
+      })
+      .catch(() => {
+        if (isMounted) {
+          setLoadError("Không thể tải dữ liệu khóa học từ hệ thống.");
+        }
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const totalCourseCount = useMemo(
+    () => categories.reduce((total, category) => total + category.courseCount, 0),
+    [categories],
+  );
 
   return (
     <>
@@ -64,42 +100,45 @@ function HomePage({ onNavigate }: HomePageProps) {
         </div>
 
         <div className="sp-discipline-grid">
-          <article className="sp-discipline large">
-            <Icon name="code" />
-            <h3>{t("home.technology")}</h3>
-            <p>{t("home.technologyDescription")}</p>
-            <small>{t("home.courseCount", { count: 142 })}</small>
-            <button type="button" onClick={() => onNavigate("courses")}>
-              <Icon name="north_east" />
-            </button>
-          </article>
-          <article className="sp-discipline blue">
-            <Icon name="palette" />
-            <h3>{t("home.creativeDesign")}</h3>
-            <small>{t("home.courseCount", { count: 84 })}</small>
-          </article>
-          <article className="sp-discipline muted">
-            <Icon name="query_stats" />
-            <h3>{t("home.business")}</h3>
-            <small>{t("home.courseCount", { count: 56 })}</small>
-          </article>
-          <article className="sp-discipline wide">
-            <Icon name="psychology" />
-            <div>
-              <h3>{t("home.humanities")}</h3>
-              <p>{t("home.humanitiesDescription")}</p>
-            </div>
-            <Icon name="chevron_right" />
-          </article>
+          {categories.slice(0, 4).map((category, index) => (
+            <article
+              className={`sp-discipline ${categoryStyles[index]}`}
+              key={category.id}
+            >
+              <Icon name={categoryIcons[index]} />
+              <div>
+                <h3>{category.name}</h3>
+                {category.description ? <p>{category.description}</p> : null}
+                <small>{t("home.courseCount", { count: category.courseCount })}</small>
+              </div>
+              <button type="button" onClick={() => onNavigate("courses")}>
+                <Icon name={index === 3 ? "chevron_right" : "north_east"} />
+              </button>
+            </article>
+          ))}
+          {!isLoading && categories.length === 0 ? (
+            <p className="sp-state-line">Chưa có danh mục đang hoạt động.</p>
+          ) : null}
         </div>
       </section>
 
       <section className="sp-content-section">
         <p className="sp-eyebrow">{t("home.featured")}</p>
         <h2>{t("home.recommended")}</h2>
+        {isLoading ? <p className="sp-state-line">Đang tải dữ liệu khóa học...</p> : null}
+        {loadError ? <p className="sp-state-line error">{loadError}</p> : null}
+        {!isLoading && !loadError && featuredCourses.length === 0 ? (
+          <p className="sp-state-line">
+            Hiện chưa có lớp đang mở đăng ký trong {totalCourseCount} khóa học của hệ thống.
+          </p>
+        ) : null}
         <div className="sp-card-row">
-          {recommended.map((course) => (
-            <CourseMiniCard key={course.title} course={course} />
+          {featuredCourses.map((course) => (
+            <CourseMiniCard
+              key={course.id}
+              course={course}
+              onOpen={() => onNavigate("courses")}
+            />
           ))}
         </div>
       </section>

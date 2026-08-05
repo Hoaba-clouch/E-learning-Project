@@ -1,0 +1,14 @@
+{
+  "name": "learnx-quality-assurance",
+  "private": true,
+  "scripts": {
+    "start:client": "npm --prefix client run dev -- --host 127.0.0.1",
+    "start:server": "npm --prefix server start",
+    "test:e2e": "playwright test",
+    "test:e2e:report": "playwright show-report docs/test-evidence/playwright-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "fast-check": "^4.9.0"
+  }
+}
