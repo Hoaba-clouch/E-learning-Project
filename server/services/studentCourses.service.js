@@ -782,7 +782,11 @@ export async function getStudentCourseDetail(courseId, studentId) {
         canAccessLearningContent || lesson.is_preview ? lesson.content : null,
       videoUrl:
         canAccessLearningContent || lesson.is_preview
-          ? normalizeVideoUrl(lesson.video_web_url || lesson.video_url)
+          // The instructor form edits `video_url`; prefer that value so a new
+          // YouTube link is immediately visible to enrolled students. The
+          // web-video column remains a fallback for legacy lessons that only
+          // have a direct video file URL.
+          ? normalizeVideoUrl(lesson.video_url || lesson.video_web_url)
           : null,
       durationMinutes: toNumber(lesson.duration_minutes),
       isPreview: Boolean(lesson.is_preview),
