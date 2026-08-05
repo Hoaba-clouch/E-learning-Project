@@ -161,6 +161,28 @@ INSERT IGNORE INTO answer_options (option_id, question_id, option_text, is_corre
 (179, 53, 'Lượt xem và thời gian xem', TRUE), (180, 53, 'Chi phí và tỷ lệ chuyển đổi', TRUE), (181, 53, 'Số đơn hàng', TRUE), (182, 53, 'Số lần đổi avatar', FALSE),
 (183, 54, 'Đúng', FALSE), (184, 54, 'Sai', TRUE);
 
+-- 4c) Bổ sung bài tập cho toàn bộ bài học của khóa demo.
+INSERT IGNORE INTO assignments
+    (assignment_id, batch_id, lesson_id, title, description, due_date, max_score)
+VALUES
+(11, 5, 19, 'Bài tập: Phân tích hook video', 'Viết ba hook khác nhau cho một sản phẩm và giải thích lợi ích của từng hook.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 5 DAY), 10),
+(12, 5, 20, 'Bài tập: Quy trình quay điện thoại', 'Lập checklist chuẩn bị bối cảnh, ánh sáng và góc quay cho một video ngắn.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 7 DAY), 10),
+(13, 5, 21, 'Bài tập: Kịch bản livestream', 'Soạn phần mở đầu livestream và cách giới thiệu một sản phẩm mẫu.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 9 DAY), 10),
+(14, 5, 22, 'Bài tập: Xử lý từ chối', 'Viết câu trả lời cho ba tình huống khách hàng từ chối mua hàng.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 11 DAY), 10),
+(15, 5, 23, 'Bài tập: Thương hiệu cá nhân', 'Xây dựng mô tả thương hiệu cá nhân và ba chủ đề nội dung phù hợp.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 13 DAY), 10),
+(16, 5, 24, 'Bài tập: Kế hoạch hợp tác KOC', 'Đề xuất tiêu chí chọn KOC và một mẫu tin nhắn mời hợp tác.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 15 DAY), 10),
+(17, 5, 62, 'Bài tập: Năm trụ cột nội dung', 'Lập năm trụ cột nội dung và viết một ý tưởng video cho mỗi trụ cột.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 18 DAY), 10),
+(18, 5, 63, 'Bài tập: Lịch đăng tuần đầu', 'Lập lịch đăng bảy ngày gồm chủ đề, định dạng và mục tiêu từng video.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 20 DAY), 10),
+(19, 5, 65, 'Bài tập: Bộ hashtag ngách', 'Chọn một bộ hashtag cho sản phẩm và giải thích ý định tìm kiếm của từng nhóm.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 22 DAY), 10),
+(20, 5, 66, 'Bài tập: Checklist thiết bị live', 'Hoàn thành checklist kiểm tra mạng, mic, ánh sáng và sản phẩm trước khi live.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 24 DAY), 10),
+(21, 5, 67, 'Bài tập: Thiết lập sản phẩm Shop', 'Tạo mẫu thông tin sản phẩm gồm giá, tồn kho, voucher và chính sách giao hàng.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 26 DAY), 10),
+(22, 5, 69, 'Bài tập: Đề xuất Spark Ads', 'Chọn một video có tín hiệu tốt và đề xuất mục tiêu quảng cáo, ngân sách, chỉ số đo.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 28 DAY), 10),
+(23, 5, 70, 'Bài tập: Đọc Analytics', 'Phân tích một bảng số liệu mẫu và nêu ba điểm cần cải thiện.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 30 DAY), 10),
+(24, 5, 71, 'Bài tập: Vẽ phễu chuyển đổi', 'Vẽ phễu từ lượt xem đến đơn hàng và nêu cách đo từng bước.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 32 DAY), 10),
+(25, 5, 72, 'Bài tập: Tối ưu video mẫu', 'Đề xuất hai thay đổi cho hook, nhịp dựng hoặc CTA của video mẫu.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 34 DAY), 10),
+(26, 5, 73, 'Bài tập: Viết brief chiến dịch', 'Hoàn thành brief gồm mục tiêu, đối tượng, thông điệp, kênh và KPI.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 36 DAY), 10),
+(27, 5, 75, 'Bài tập: Báo cáo chiến dịch', 'Viết phần kết luận và insight dựa trên kết quả của chiến dịch bảy ngày.', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 38 DAY), 10);
+
 -- 5) Lịch học cho cả batch cũ và học viên đang demo.
 INSERT IGNORE INTO class_sessions
     (session_id, batch_id, teacher_id, session_title, session_description,
